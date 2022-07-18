@@ -1,6 +1,6 @@
 package com.sparta.simulator;
 
-public class Simulator {
+public class  Simulator {
 	private Intake intake;
 
 	private final int CENTRE_GENERATION_INTERVAL = 2; // centre generation interval (months) times 4 we are working in weeks, 4 weeks in a month,
