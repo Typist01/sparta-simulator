@@ -39,6 +39,7 @@ public class View {
         System.out.println(" there  are currently " + traineeCount + " training at a centre");
     }
 
+    //__________________________INPUT FUNCTIONS_______________________________
     public static class UserChoiceModule{
         public static int getUserWeeks(){
             // boolean to hold while loop
