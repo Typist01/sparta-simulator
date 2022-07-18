@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Intake {
     Collection<Centre> trainingCentres = new ArrayList();
-    RandGenerator randGenerator = new RandGenerator();
 
     private Queue<Trainee> waitingList = new LinkedList<>();
 
@@ -33,52 +32,45 @@ public class Intake {
         return getOpenCentres().size();
     }
 
-
 	//Add new random trainees to the waiting list.
     public void addTraineeGroup() {
-        for (int i = 0; i < randGenerator.randomTrainee(); i++)
-            waitingList.add(new Trainee());
-    }
 
-    public void addTraineesToCentre() {
-//        int intakeAmount;
-//        int randomCentreNum = randGenerator.randomCenter();
-//        if (randomCentreNum > numOfTrainees) {
-//			intakeAmount = numOfTrainees;
-//        } else
-//            intakeAmount = numOfTrainees;
-//        for (int i = 0; i < intakeAmount; i++) {
-//            if (!centre.isFull()) {    //add trainees if centre not full
-//                centre.addTrainee(new Trainee());
-//            } else {
-//                return (numOfTrainees - i);
-//                //extraTrainees = (numOfTrainees - i); // maybe create this variable in this class
-//            }
-//        }
-//        return 0;
-        for (Centre openCentre: getOpenCentres()){
-            //Gen random amount of new trainees.
-            int randomTrainees = randGenerator.randomCenter();
-
-            //While centre isnt full add trainees from waiting list.
-            while (!openCentre.isFull()){
-                openCentre.addTrainee(new Trainee());
-            }
-            //Populate with random trainees.
-            if(openCentre.getNumOfTrainees() + randomTrainees <= 100){
-                for (int i =0 ; i<randomTrainees;i++){
-                    openCentre.addTrainee(new Trainee());
+        Queue<Trainee> intakeList = new LinkedList<>();
+        for (int i = 0; i < RandGenerator.randomTrainee(); i++) {
+            intakeList.add(new Trainee());
+        }
+        for (Centre centre : trainingCentres) {
+            if (!centre.isFull() && intakeList.size() > 0) {
+                for (int i=0; i<RandGenerator.randomCenter(); i++){
+                    if (!centre.isFull()){
+                        centre.addTrainee(intakeList.remove());
+                    }
                 }
             }
+        }
+        for (Trainee t : intakeList){
+            waitingList.add(t);
         }
     }
 
 
 
+    public void addWaitingTraineesToCentre() {
+        Random random = new Random();
+        while (waitingList.size() > 0) {
+            for (Centre centre : trainingCentres) {
+                if (!centre.isFull() && random.nextBoolean() && waitingList.size() > 0) {
+                    centre.addTrainee(waitingList.remove());
+                }
+            }
+        }
+    }
+
     private List<Centre> getOpenCentres() {
         List<Centre> openCentres = new ArrayList();
         for (Centre centre : trainingCentres) {
             if (!centre.isFull()) {
+
                 openCentres.add(centre);
             }
         }

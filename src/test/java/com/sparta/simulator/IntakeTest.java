@@ -1,0 +1,19 @@
+package com.sparta.simulator;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class IntakeTest {
+
+    @Test
+    void testWaitingListGeneration(){
+        for (int i = 0; i < 100; i++) {
+            Intake intake = new Intake();
+            intake.addTraineeGroup();
+            assertTrue(intake.getWaitingList() >= 50 && intake.getWaitingList()<=100);
+        }
+    }
+
+}
