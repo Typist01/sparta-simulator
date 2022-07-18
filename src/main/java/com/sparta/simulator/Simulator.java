@@ -29,4 +29,20 @@ public class Simulator {
 	}
 
 
+	//_______________GETTERS_________________
+	public int getTotalTrainees() {
+		return totalTrainees;
+	}
+
+	public int getWaitingList() {
+		return waitingList;
+	}
+
+	public int getOpenCenters() {
+		return openCenters;
+	}
+
+	public int getFullCenters() {
+		return fullCenters;
+	}
 }
