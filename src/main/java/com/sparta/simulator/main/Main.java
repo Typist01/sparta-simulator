@@ -1,4 +1,6 @@
-package com.sparta.simulator;
+package com.sparta.simulator.main;
+
+import com.sparta.simulator.controller.ProjectManager;
 
 public class Main {
     public static void main(String[] args) {

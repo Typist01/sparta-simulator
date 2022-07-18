@@ -1,4 +1,4 @@
-package com.sparta.simulator;
+package com.sparta.simulator.model;
 
 import java.util.*;
 

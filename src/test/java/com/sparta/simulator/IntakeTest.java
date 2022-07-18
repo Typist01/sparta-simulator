@@ -1,6 +1,6 @@
 package com.sparta.simulator;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.sparta.simulator.model.Intake;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

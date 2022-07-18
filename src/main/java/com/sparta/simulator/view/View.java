@@ -1,4 +1,4 @@
-package com.sparta.simulator;
+package com.sparta.simulator.view;
 
 import java.util.ArrayList;
 import java.util.List;

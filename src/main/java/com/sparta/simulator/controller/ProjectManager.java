@@ -1,4 +1,7 @@
-package com.sparta.simulator;
+package com.sparta.simulator.controller;
+
+import com.sparta.simulator.model.Simulator;
+import com.sparta.simulator.view.View;
 
 public class ProjectManager {
     View view = new View();
