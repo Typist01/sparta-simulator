@@ -18,7 +18,7 @@ public class View {
     }
     //_____________________OUTPUTS__________________________
     public void introduction(){
-        System.out.println("Welcome to the sparta simulator!!\n\n this program is designed to simulate operations at Sparta Global");
+        System.out.println("Welcome to the sparta simulator!!\n\nthis program is designed to simulate operations at Sparta Global");
     }
 
 
@@ -65,7 +65,7 @@ public class View {
                 System.out.println("Would you like to simulate again? (y or n)");
                 input=scanner.next().toLowerCase(Locale.ROOT);
                 switch (input){
-                    case "y" : break;
+                    case "y" : break leave;
                     case "n" : simulateAgain=false; break leave;
                     default:
                         System.out.println("Invalid input, please enter 'y' or 'n'");
