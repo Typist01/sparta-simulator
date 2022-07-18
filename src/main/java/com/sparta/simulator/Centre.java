@@ -34,23 +34,23 @@ public class Centre {
         }
     }*/
 
-    void addTrainee(Trainee trainee){
+    public void addTrainee(Trainee trainee){
         traineeList.add(trainee);
     }
 
-    public int getTraineeCount(){
+    /*public int getTraineeCount(){
         return traineeList.size();
-    }
+    }*/
 
 //    int getExtraTrainees(){
 //        return extraTrainees;
 //    }
 
-    int getNumOfTrainees(){
+    public int getNumOfTrainees(){
         return traineeList.size();
     }
 
-    boolean isFull(){
+    public boolean isFull(){
         return traineeList.size() >= 100 ;
     }
 
