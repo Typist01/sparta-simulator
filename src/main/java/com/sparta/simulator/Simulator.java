@@ -24,7 +24,7 @@ public class  Simulator {
 
 	public void run(){
 		for (int i = 0; i< totalDuration; i++){
-			if(i % CENTRE_GENERATION_INTERVAL == 0){
+			if(i % CENTRE_GENERATION_INTERVAL == 0 && i > 1){
 				//Generate new TrainingCentre through Intake then tick.
 				intake.addCentre();
 			}
