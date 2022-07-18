@@ -39,7 +39,7 @@ public class View {
 
     //__________________________INPUT FUNCTIONS_______________________________ called by functions above
     public static class UserChoiceModule{
-        public static int getUserWeeks(){
+        public static int getUserMonths(){
             // boolean to hold while loop
             boolean userChoosing=true;
             Scanner scanner = new Scanner(System.in);
