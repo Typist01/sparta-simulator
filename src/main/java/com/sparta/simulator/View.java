@@ -18,13 +18,13 @@ public class View {
     }
     //_____________________OUTPUTS__________________________
     public void introduction(){
-        System.out.println("Welcome to the sparta simulator!!\n\n this program is designed to simulate operations at Sparta Global");
+        System.out.println("Welcome to the sparta simulator!!\n\nthis program is designed to simulate operations at Sparta Global");
     }
 
 
     // requires a list of centres and those to have an isFull function that returns a boolean when no more trainees can be accepted
     public void displayOutputCentres(int totalCentres, int fullCentres){
-        System.out.println("There are " + totalCentres + " of which " + fullCentres + " have full capacity");
+        System.out.println("There are " + totalCentres + " centres of which " + fullCentres + " have full capacity");
     }
 
     // requires a list containing all trainees tha have not yet been assigned to a placement
@@ -61,12 +61,12 @@ public class View {
             Scanner scanner = new Scanner(System.in);
             String input;
             boolean simulateAgain=true;
-            while (userChoosing){
+            leave: while (userChoosing){
                 System.out.println("Would you like to simulate again? (y or n)");
                 input=scanner.next().toLowerCase(Locale.ROOT);
                 switch (input){
-                    case "y" : break;
-                    case "n" : simulateAgain=false; break;
+                    case "y" : break leave;
+                    case "n" : simulateAgain=false; break leave;
                     default:
                         System.out.println("Invalid input, please enter 'y' or 'n'");
                 }
