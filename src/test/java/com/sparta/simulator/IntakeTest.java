@@ -7,15 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IntakeTest {
 
-    private Intake intake;
-    @BeforeEach
-    void setUp() {
-        intake = new Intake();
+    @Test
+    void testWaitingListGeneration(){
+        for (int i = 0; i < 100; i++) {
+            Intake intake = new Intake();
+            intake.addTraineeGroup();
+            assertTrue(intake.getWaitingList() >= 50 && intake.getWaitingList()<=100);
+        }
     }
 
-    @Test
-    void addTrainees(){
-        intake.addTraineeGroup();
-        assertTrue(intake.getWaitingList() >= 50 && intake.getWaitingList()<=100);
-    }
 }

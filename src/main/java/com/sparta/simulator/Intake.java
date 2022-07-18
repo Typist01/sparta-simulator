@@ -2,8 +2,6 @@ package com.sparta.simulator;
 
 import java.util.*;
 
-import static java.util.Collections.*;
-
 public class Intake {
     Collection<Centre> trainingCentres = new ArrayList();
 
@@ -36,6 +34,7 @@ public class Intake {
 
 	//Add new random trainees to the waiting list.
     public void addTraineeGroup() {
+
         Queue<Trainee> intakeList = new LinkedList<>();
         for (int i = 0; i < RandGenerator.randomTrainee(); i++) {
             intakeList.add(new Trainee());
