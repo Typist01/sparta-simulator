@@ -6,11 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class View {
-
-    public void introduction(){
-        System.out.println("Welcome to the sparta simulator!!\n\n this program is designed to simulate operations at Sparta Global");
-    }
-
+    //_____________________INPUTS_________________________
     // will return true if the user wishes to continue the simulation and false if they wish not to
     public boolean continueCheck(){
         return UserChoiceModule.simulateAgain();
@@ -22,29 +18,25 @@ public class View {
         userTime = UserChoiceModule.getUserWeeks();
         return userTime;
     }
+    //_____________________OUTPUTS__________________________
+    public void introduction(){
+        System.out.println("Welcome to the sparta simulator!!\n\n this program is designed to simulate operations at Sparta Global");
+    }
+
 
     // requires a list of centres and those to have an isFull function that returns a boolean when no more trainees can be accepted
-    public void displayOutputCentres(List<Centre> centres){
-        int fullCentres=0;
-        for (Centre c : centres){
-            if (Centre.isfull){
-            fullCentres++;
-            }
-        }
-        System.out.println("There are " + centres.size() + " of which " + fullCentres + " have full capacity");
+    public void displayOutputCentres(int totalCentres, int fullCentres){
+        System.out.println("There are " + totalCentres + " of which " + fullCentres + " have full capacity");
     }
 
     // requires a list containing all trainees tha have not yet been assigned to a placement
-    public void displayWaitingCount(List<Trainee> waitingList){
-        System.out.println(" there are currently " +waitingList.size() + " trainees waiting for a placement");
+    public void displayWaitingCount(int waitingTrainees){
+        System.out.println(" there are currently " + waitingTrainees + " trainees waiting for a placement");
     }
 
     // requires a list of centres, and those centres to contain a list of trainees that are currently training there
-    public void currentlyTraining( List<Centre> centres){
-        int traineeCount=0;
-        for (Centre c : centres){
-            traineeCount+= centres.trainees.size();
-        }
+    public void currentlyTraining( int traineeCount){
+        System.out.println(" there  are currently " + traineeCount + " training at a centre");
     }
 
     public static class UserChoiceModule{
