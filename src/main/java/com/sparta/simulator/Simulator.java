@@ -30,10 +30,10 @@ public class  Simulator {
 			}
 			tick();
 		}
-		this.totalTrainees=intake.getTrainees();
-		this.openCenters=intake.openCentres();
+		this.totalTrainees=intake.numOfTotalTrainees();
+		this.openCenters=intake.numOfOpenCentres();
 		this.waitingList=intake.getWaitingList();
-		this.fullCenters=intake.getFullCentresNum();
+		this.fullCenters=intake.numOfFullCentres();
 
 	}
 
