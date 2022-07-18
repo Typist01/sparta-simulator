@@ -58,10 +58,15 @@ public class Intake {
 
     public void addWaitingTraineesToCentre() {
         Random random = new Random();
-        while (waitingList.size() > 0) {
+        boolean allFull=false;
+        while (waitingList.size() > 0 && !allFull) {
+            allFull=true;
             for (Centre centre : trainingCentres) {
-                if (!centre.isFull() && random.nextBoolean() && waitingList.size() > 0) {
-                    centre.addTrainee(waitingList.remove());
+                if (!centre.isFull()){
+                    allFull=false;
+                    if (random.nextBoolean() && waitingList.size() > 0) {
+                        centre.addTrainee(waitingList.remove());
+                    }
                 }
             }
         }

@@ -20,7 +20,7 @@ public class Centre {
         }
     }*/
 
-    void addTrainees(int numOfTrainees, ArrayList<Trainee> inputList) { // don't put in more than it can handle
+    /*void addTrainees(int numOfTrainees, ArrayList<Trainee> inputList) { // don't put in more than it can handle
 
         for (int i = 0; i < numOfTrainees; i++) {
             if (!this.isFull()) {    //add trainees if centre not full
@@ -32,7 +32,7 @@ public class Centre {
                 break;
             }
         }
-    }
+    }*/
 
     void addTrainee(Trainee trainee){
         traineeList.add(trainee);
