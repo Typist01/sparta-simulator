@@ -2,6 +2,10 @@ package com.sparta.simulator;
 
 public class  Simulator {
 	private Intake intake;
+	private int totalTrainees;
+	private int waitingList;
+	private int openCenters;
+	private int fullCenters;
 
 	private final int CENTRE_GENERATION_INTERVAL = 2; // centre generation interval (months) times 4 we are working in weeks, 4 weeks in a month,
 	// about the
@@ -26,7 +30,28 @@ public class  Simulator {
 			}
 			tick();
 		}
+		this.totalTrainees=intake.getTrainees();
+		this.openCenters=intake.openCentres();
+		this.waitingList=intake.getWaitingList();
+		this.fullCenters=intake.getFullCentresNum();
+
 	}
 
 
+	//_______________GETTERS_________________
+	public int getTotalTrainees() {
+		return totalTrainees;
+	}
+
+	public int getWaitingList() {
+		return waitingList;
+	}
+
+	public int getOpenCenters() {
+		return openCenters;
+	}
+
+	public int getFullCenters() {
+		return fullCenters;
+	}
 }

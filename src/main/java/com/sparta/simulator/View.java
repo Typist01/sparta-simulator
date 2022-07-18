@@ -14,9 +14,7 @@ public class View {
 
     // function will call to userChoice class, which will only let the user return a value of 1 or greater
     public int getUserTime(){
-        int userTime;
-        userTime = UserChoiceModule.getUserWeeks();
-        return userTime;
+        return UserChoiceModule.getUserMonths();
     }
     //_____________________OUTPUTS__________________________
     public void introduction(){
@@ -35,13 +33,13 @@ public class View {
     }
 
     // requires a list of centres, and those centres to contain a list of trainees that are currently training there
-    public void currentlyTraining( int traineeCount){
+    public void displayCurrentlyTraining( int traineeCount){
         System.out.println(" there  are currently " + traineeCount + " training at a centre");
     }
 
-    //__________________________INPUT FUNCTIONS_______________________________
+    //__________________________INPUT FUNCTIONS_______________________________ called by functions above
     public static class UserChoiceModule{
-        public static int getUserWeeks(){
+        public static int getUserMonths(){
             // boolean to hold while loop
             boolean userChoosing=true;
             Scanner scanner = new Scanner(System.in);
