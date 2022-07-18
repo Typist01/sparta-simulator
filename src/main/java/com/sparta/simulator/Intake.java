@@ -65,7 +65,7 @@ public class Intake {
     private List<Centre> getOpenCentres() {
         List<Centre> openCentres = new ArrayList();
         for (Centre centre : trainingCentres) {
-            if (!centre.isFull()) {
+            if (centre.isFull()) {
                 openCentres.add(centre);
             }
         }
@@ -75,7 +75,7 @@ public class Intake {
     private List<Centre> getFullCentres() {
         List<Centre> fullCentres = new ArrayList();
         for (Centre centre : trainingCentres) {
-            if (centre.isFull()) {
+            if (!centre.isFull()) {
                 fullCentres.add(centre);
             }
         }

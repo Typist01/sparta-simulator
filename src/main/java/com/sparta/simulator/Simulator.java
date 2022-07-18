@@ -23,12 +23,18 @@ public class  Simulator {
 	}
 
 	public void run(){
-		for (int i = 0; i< totalDuration; i++){
+		for (int i = 1; i< totalDuration+1; i++){
 			if(i % CENTRE_GENERATION_INTERVAL == 0 && i > 1){
 				//Generate new TrainingCentre through Intake then tick.
 				intake.addCentre();
 			}
 			tick();
+			// add to centres method
+			for (Centre centre : intake.trainingCentres){
+				if (!centre.isFull()){
+					intake.addTraineesToCentre()
+				}
+			}
 		}
 		this.totalTrainees=intake.numOfTotalTrainees();
 		this.openCenters=intake.numOfOpenCentres();
