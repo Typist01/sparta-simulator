@@ -30,12 +30,6 @@ public class  Simulator {
 				intake.addCentre();
 			}
 			tick();
-			// add to centres method
-			for (Centre centre : intake.trainingCentres){
-				if (!centre.isFull()){
-					intake.addTraineesToCentre()
-				}
-			}
 		}
 		this.totalTrainees=intake.numOfTotalTrainees();
 		this.openCenters=intake.numOfOpenCentres();
