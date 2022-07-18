@@ -1,13 +1,13 @@
 **This ReadME.md would include each of the phases and how we completed them and what challenges we faced.**
 
-Jamie Macaulay Scofield - Scrum Master
-Muhammad Mustafa Nawaz - Git Master
-Mac Murray -
-Alfred Abraham -
-Jeffrey Steven Champion - 
-Adur-Rahmaan Azam - 
+[Jamie Macaulay Scofield - Scrum Master](https://github.com/JamieScofield)
+[Muhammad Mustafa Nawaz - Git Master ](https://github.com/Typist01)
+[Mac Murray -](https://github.com/Erratika)
+[Alfred Abraham -](https://github.com/AlfredAbra)
+[Jeffrey Steven Champion - ](https://github.com/Jchampion42)
+[Abdur-Rahmaan Azam - ](https://github.com/abdurshazam)
 
-***TASK***
+### TASK
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
 
 **Phase One**
@@ -26,3 +26,6 @@ PART ONE:
 -number of trainees in waiting list
 
 **SOLUTION**
+We completed the tasks the where issued. 
+New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
+
