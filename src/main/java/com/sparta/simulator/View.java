@@ -2,9 +2,21 @@ package com.sparta.simulator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class View {
+
+    public void introduction(){
+        System.out.println("Welcome to the sparta simulator!!\n\n this program is designed to simulate operations at Sparta Global");
+    }
+
+    // will return true if the user wishes to continue the simulation and false if they wish not to
+    public boolean continueCheck(){
+        return UserChoiceModule.simulateAgain();
+    }
+
+    // function will call to userChoice class, which will only let the user return a value of 1 or greater
     public int getUserTime(){
         int userTime;
         userTime = UserChoiceModule.getUserWeeks();
@@ -51,6 +63,24 @@ public class View {
                 else userChoosing=false;
             }
             return  userValue;
+        }
+
+        public static boolean simulateAgain(){
+            boolean userChoosing=true;
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            boolean simulateAgain=true;
+            while (userChoosing){
+                System.out.println("Would you like to simulate again? (y or n)");
+                input=scanner.next().toLowerCase(Locale.ROOT);
+                switch (input){
+                    case "y" : break;
+                    case "n" : simulateAgain=false; break;
+                    default:
+                        System.out.println("Invalid input, please enter 'y' or 'n'");
+                }
+            }
+            return simulateAgain;
         }
 
     }
