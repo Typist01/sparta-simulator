@@ -35,7 +35,6 @@ public class Intake {
         return getOpenCentres().size();
     }
 
-
 	//Add new random trainees to the waiting list.
     public void addTraineeGroup() {
         for (int i = 0; i < randGenerator.randomTrainee(); i++)
