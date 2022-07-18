@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Centre {
     ArrayList<Trainee> traineeList[] = new ArrayList[100];
-    static int numOfTrainees = 0;
+    int numOfTrainees = 0;
 
     Centre(){
         //trainees = new ArrayList<Trainee>[];
@@ -23,6 +23,11 @@ public class Centre {
             }
         }
         return remainingTrainees;
+    }
+
+    boolean isFull(){
+        if (numOfTrainees < 100) return true;
+        else return false;
     }
 
 }
