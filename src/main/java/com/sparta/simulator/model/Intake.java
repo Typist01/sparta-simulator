@@ -170,26 +170,36 @@ public class Intake {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreName)) {
-
 				sum++;
 			}
 		}
 		return sum;
 	}
 
-	public int getTechCentresNum(String centreType) {
+
+	public int getClosedCentresNum() {
+		return closedCentres.size();
+	}
+	public int getClosedCentresNumByType(String centreType){
 		int sum = 0;
-		for (Centre centre : trainingCentres) {
-			if (centre instanceof TechCenter techCenter) {
-				if (techCenter.getTechType().equalsIgnoreCase(centreType))
-					sum++;
+		for (Centre centre: closedCentres){
+			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreType)){
+				sum ++;
 			}
 		}
 		return sum;
 	}
 
-	public int getClosedCentresNum() {
-		return closedCentres.size();
+	public int getClosedTechCentreNumByType(String techCentreType){
+		int sum = 0;
+		for (Centre centre: closedCentres){
+			if (centre instanceof TechCenter techCenter) {
+				if(techCenter.getTechType().equalsIgnoreCase(techCentreType)){
+					sum ++;
+				}
+				}
+			}
+		return sum;
 	}
 
 	public int getTechCentresTraineeNumByType(String centreType) {
@@ -202,7 +212,6 @@ public class Intake {
 		}
 		return sum;
 	}
-
 
 	public int getFullTechCentresNumByType(String centreType) {
 		int sum = 0;
