@@ -1,7 +1,8 @@
 package com.sparta.simulator.model;
 
 public class  Simulator {
-	private final Intake intake;
+	private Intake intake;
+
 	private int totalTrainees;
 	private int waitingList;
 	private int openCenters;
@@ -64,4 +65,8 @@ public class  Simulator {
 	public int getCurrentMonth() {
 		return currentMonth;
 	}
+	public Intake getIntake() {
+		return intake;
+	}
+
 }
