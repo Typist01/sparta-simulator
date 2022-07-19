@@ -114,6 +114,18 @@ public class Intake {
         }
     }
 
+    public void closingCenters(){
+        ArrayList<Trainee> spareTrainees = new ArrayList<>();
+        for (Centre centre : trainingCentres){
+            if (centre.getNumOfTrainees() < 25){
+                for(Trainee trainee: centre.getTraineeList()){
+                    spareTrainees.add(trainee);
+                }
+            }
+        }
+        waitingList.addAll(spareTrainees);
+    }
+
     private List<Centre> getOpenCentres() {
         List<Centre> openCentres = new ArrayList();
         for (Centre centre : trainingCentres) {
