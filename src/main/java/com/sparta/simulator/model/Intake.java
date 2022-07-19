@@ -168,11 +168,15 @@ public class Intake {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreName)) {
-
 				sum++;
 			}
 		}
 		return sum;
+	}
+
+
+	public int getClosedCentresNum() {
+		return closedCentres.size();
 	}
 
 	public int getTechCentresNum(String centreType) {
@@ -184,10 +188,6 @@ public class Intake {
 			}
 		}
 		return sum;
-	}
-
-	public int getClosedCentresNum() {
-		return closedCentres.size();
 	}
 
 	public int getTechCentresTraineeNumByType(String centreType) {
