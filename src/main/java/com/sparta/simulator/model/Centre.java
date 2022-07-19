@@ -3,7 +3,15 @@ package com.sparta.simulator.model;
 import java.util.ArrayList;
 
 public abstract class Centre {
-    ArrayList<Trainee> traineeList = new ArrayList();
+    public ArrayList<Trainee> getTraineeList() {
+        return traineeList;
+    }
+
+    public void setTraineeList(ArrayList<Trainee> traineeList) {
+        this.traineeList = traineeList;
+    }
+
+    private ArrayList<Trainee> traineeList = new ArrayList();
 
     Centre(){
     }
