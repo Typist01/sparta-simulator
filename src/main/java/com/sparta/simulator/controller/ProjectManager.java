@@ -36,7 +36,7 @@ public class ProjectManager {
                     for (String s : types) {
                         System.out.println("______________" + s + " Tech centres__________");
                         view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s);
-                        //   view.techCentresClosed(intak);
+                        view.techCentresClosed(intake.getClosedTechCentreNumByType(s),s);
                         view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s);
                     }
                     view.waitForUser();
@@ -54,7 +54,7 @@ public class ProjectManager {
                 for (String s : types) {
                     System.out.println("______________" + s + " Tech centres__________");
                     view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s);
-                    //   view.techCentresClosed(intak);
+                    view.techCentresClosed(intake.getClosedTechCentreNumByType(s),s);
                     view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s);
                 }
             executeProgram=view.continueCheck();
