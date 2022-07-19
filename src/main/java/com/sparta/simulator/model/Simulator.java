@@ -22,8 +22,8 @@ public class  Simulator {
 	//Will probably return some results back to the controller so may not be void.
 	public void tick(){
 		//Generate new Trainees through intake.
-		intake.addWaitingTraineesToCentre();
 		intake.addTraineeGroup();
+		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
 
 	}
