@@ -20,6 +20,7 @@ public class  Simulator {
 		//Generate new Trainees through intake.
 		intake.addWaitingTraineesToCentre();
 		intake.addTraineeGroup();
+		intake.closingCenters();
 
 	}
 
