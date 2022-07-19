@@ -1,4 +1,4 @@
-package com.sparta.simulator.main;
+package com.sparta.simulator.model.main;
 
 import com.sparta.simulator.controller.ProjectManager;
 

@@ -15,5 +15,9 @@ class IntakeTest {
             assertTrue(intake.getWaitingList() >= 50 && intake.getWaitingList()<=100);
         }
     }
+    @Test
+    void testtotaltrainees(){
+
+    }
 
 }

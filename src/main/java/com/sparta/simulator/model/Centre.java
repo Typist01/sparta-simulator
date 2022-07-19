@@ -2,56 +2,28 @@ package com.sparta.simulator.model;
 
 import java.util.ArrayList;
 
-public class Centre {
-    ArrayList<Trainee> traineeList = new ArrayList();
-//    private int extraTrainees = 0;
+public abstract class Centre {
+    public ArrayList<Trainee> getTraineeList() {
+        return traineeList;
+    }
+
+    public void setTraineeList(ArrayList<Trainee> traineeList) {
+        this.traineeList = traineeList;
+    }
+
+    private ArrayList<Trainee> traineeList = new ArrayList();
 
     Centre(){
-        //trainees = new ArrayList<Trainee>[];
-    }
-    /*void addTrainees(int numOfTrainees) { // insert random num between 0 and 50
-        for (int i = 0; i < numOfTrainees; i++) {
-            if (!this.isFull()) {    //add trainees if centre not full
-                traineeList.add(new Trainee());
-            } else {
-                extraTrainees = (numOfTrainees - i); //stops loop and correctly sets num of extras
-                break;
-            }
-        }
-    }*/
-
-    /*void addTrainees(int numOfTrainees, ArrayList<Trainee> inputList) { // don't put in more than it can handle
-
-        for (int i = 0; i < numOfTrainees; i++) {
-            if (!this.isFull()) {    //add trainees if centre not full
-                traineeList.add(inputList.get(i));
-                inputList.remove(i);
-                //traineeList.add(new Trainee());
-            } else {
-                //extraTrainees = (numOfTrainees - i); //stops loop and correctly sets num of extras
-                break;
-            }
-        }
-    }*/
-
-    void addTrainee(Trainee trainee){
-        traineeList.add(trainee);
     }
 
-    public int getTraineeCount(){
-        return traineeList.size();
-    }
-
-//    int getExtraTrainees(){
-//        return extraTrainees;
-//    }
+    //TODO change to boolean? if cant add trainee return false otherwise if trainee was added return true.
+    abstract void addTrainee(Trainee trainee);
 
     int getNumOfTrainees(){
         return traineeList.size();
     }
 
-    boolean isFull(){
-        return traineeList.size() >= 100 ;
-    }
+   abstract boolean isFull();
+
 
 }
