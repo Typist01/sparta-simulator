@@ -16,7 +16,7 @@ public abstract class Centre {
     Centre(){
     }
 
-    abstract void addTrainee();
+    abstract void addTrainee(Trainee trainee);
 
     int getNumOfTrainees(){
         return traineeList.size();
