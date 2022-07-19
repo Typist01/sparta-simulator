@@ -16,6 +16,7 @@ public abstract class Centre {
     Centre(){
     }
 
+    //TODO change to boolean? if cant add trainee return false otherwise if trainee was added return true.
     abstract void addTrainee(Trainee trainee);
 
     int getNumOfTrainees(){
