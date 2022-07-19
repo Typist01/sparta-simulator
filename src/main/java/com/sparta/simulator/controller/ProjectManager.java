@@ -48,7 +48,7 @@ public class ProjectManager {
                 view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
                 view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
                 System.out.println("______________Boot camps__________");
-                view.bootCampsDisplay((intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
+                view.bootCampsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
                 view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
                 view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
                 for (String s : types) {
