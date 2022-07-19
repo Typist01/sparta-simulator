@@ -9,8 +9,11 @@ public class  Simulator {
 
 	private final int CENTRE_GENERATION_INTERVAL = 2; // centre generation interval (months) times 4 we are working in weeks, 4 weeks in a month,
 	// about the
-	private final int totalDuration; // Total duration of the simulation (months).
+	private int totalDuration; // Total duration of the simulation (months).
 	private int currentMonth=1;
+
+
+
 	public Simulator(int totalDuration){
 		this.intake = new Intake();
 		this.totalDuration = totalDuration;
@@ -32,12 +35,10 @@ public class  Simulator {
 			}
 		tick();
 		currentMonth++;
-
 		this.totalTrainees=intake.numOfTotalTrainees();
 		this.openCenters=intake.numOfOpenCentres();
 		this.waitingList=intake.getWaitingList();
 		this.fullCenters=intake.numOfFullCentres();
-
 	}
 
 	//_______________GETTERS_________________
@@ -55,5 +56,12 @@ public class  Simulator {
 
 	public int getFullCenters() {
 		return fullCenters;
+	}
+	public int getTotalDuration() {
+		return totalDuration;
+	}
+
+	public int getCurrentMonth() {
+		return currentMonth;
 	}
 }

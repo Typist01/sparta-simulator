@@ -17,9 +17,15 @@ public class ProjectManager {
 
         while (executeProgram) {
             boolean iterateMonths= view.iterateEveryMonthCheck();
-
-            // TODO create two variants, one for one month with iterator, one for all
             simulator = new Simulator(view.getUserTime());
+            // TODO create two variants, one for one month with iterator, one for all
+            if (iterateMonths){
+                while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
+                    simulator.run();
+                    simulator.
+                }
+            }
+
             simulator.run(); // currently runs all months and finishes
             fullCenters = simulator.getFullCenters();
             openCenters = simulator.getOpenCenters();
