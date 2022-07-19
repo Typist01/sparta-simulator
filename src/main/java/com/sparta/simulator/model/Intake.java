@@ -17,52 +17,26 @@ public class Intake {
         return waitingList.size();
     }
 
-    enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE};
-
-    //returns centre object
-     Centre generateCentre(centres centreType) throws GenerateCentreException {
+    public Centre generateCentre(String centreType) throws GenerateCentreException {
         switch(centreType){
-            case TRAINEE_HUB:
+            case "trainee hub":
                 return new TrainingHub();
-            case BOOTCAMP:
+            case "bootcamp":
                 return new BootCamp();
-            case TECH_CENTRE:
+            case "tech centre":
                 return new TechCenter();
             default:
                 throw new GenerateCentreException("Could not determine centre type");
         }
     }
-    // adds centre to list
-    public void addCentre(centres name) {
+
+    public void addCentre(String centreName) {
         try{
-            trainingCentres.add(generateCentre(name));
+            trainingCentres.add(generateCentre(centreName));
         } catch (GenerateCentreException e){
             e.printStackTrace();
         }
     }
-    // create new centres
-    public void createCentresRandomly(){
-        int randNum = new Random().nextInt(3);
-        centres name;
-        switch(randNum){
-            case(0):
-                name = centres.TRAINEE_HUB;
-                int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
-                for(int i=0; i<centreNum; i++){
-                    addCentre(name);
-                }
-            case(1):
-                name = centres.BOOTCAMP;
-                addCentre(name);
-            case(2):
-                name = centres.TECH_CENTRE;
-                addCentre(name);
-        }
-        return;
-
-    }
-
-
 
 
     public int numOfTotalTrainees() {
