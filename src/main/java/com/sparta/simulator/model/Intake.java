@@ -5,6 +5,12 @@ import java.util.*;
 public class Intake {
     Collection<Centre> trainingCentres = new ArrayList();
 
+    public Collection<Centre> getClosedCentres() {
+        return closedCentres;
+    }
+
+    Collection<Centre> closedCentres = new ArrayList();
+
     private Queue<Trainee> waitingList = new LinkedList<>();
 
     public int getWaitingList() {
@@ -91,10 +97,12 @@ public class Intake {
     public void closingCenters(){
         ArrayList<Trainee> spareTrainees = new ArrayList<>();
         for (Centre centre : trainingCentres){
-            if (centre.getNumOfTrainees() < 25){
+            if (centre.isClosable()){
                 for(Trainee trainee: centre.getTraineeList()){
                     spareTrainees.add(trainee);
                 }
+                closedCentres.add(centre);
+                trainingCentres.remove(centre);
             }
         }
         waitingList.addAll(spareTrainees);

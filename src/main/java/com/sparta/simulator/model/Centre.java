@@ -23,7 +23,9 @@ public abstract class Centre {
         return traineeList.size();
     }
 
-   abstract boolean isFull();
+    abstract boolean isFull();
 
-
+    boolean isClosable(){
+        return traineeList.size() <= 25;
+    }
 }
