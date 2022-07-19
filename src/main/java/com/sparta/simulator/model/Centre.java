@@ -7,7 +7,6 @@ public abstract class Centre {
         return traineeList;
     }
 
-
     public void setTraineeList(ArrayList<Trainee> traineeList) {
         this.traineeList = traineeList;
     }
@@ -18,16 +17,15 @@ public abstract class Centre {
     }
 
     //TODO change to boolean? if cant add trainee return false otherwise if trainee was added return true.
-
-
     abstract void addTrainee(Trainee trainee);
 
     int getNumOfTrainees(){
         return traineeList.size();
     }
 
-   abstract boolean isFull();
+    abstract boolean isFull();
 
-
-
+    boolean isClosable(){
+        return traineeList.size() <= 25;
+    }
 }
