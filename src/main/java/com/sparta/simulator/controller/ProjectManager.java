@@ -27,7 +27,7 @@ public class ProjectManager {
             totalTrainees = simulator.getTotalTrainees();
 
             view.AllOutputCentres(openCenters,fullCenters);
-            view.displayAllWaitingCount(waitingList);
+//                view.displayAllWaitingCount(waitingList);
             view.AllCurrentlyTraining(totalTrainees);
 
             executeProgram=view.continueCheck();

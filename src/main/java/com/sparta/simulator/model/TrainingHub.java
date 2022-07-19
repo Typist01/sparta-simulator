@@ -11,6 +11,8 @@ public class TrainingHub extends Centre{
             list.add(t);
     }
 
-    boolean isFull(){ return list.size() >= 100 ; }
+
+    boolean isFull(){
+        return list.size() >= 100 ; }
 
 }

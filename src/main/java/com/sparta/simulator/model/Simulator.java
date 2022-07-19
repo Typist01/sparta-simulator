@@ -28,7 +28,7 @@ public class  Simulator {
 		if(currentMonth<totalDuration+1)
 			if(currentMonth % CENTRE_GENERATION_INTERVAL == 0 && currentMonth > 1){
 				//Generate new TrainingCentre through Intake then tick.
-				intake.addCentre("centre name");
+				intake.createCentresRandomly();
 			}
 		tick();
 		currentMonth++;
