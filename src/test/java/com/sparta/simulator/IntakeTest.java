@@ -12,7 +12,7 @@ class IntakeTest {
         for (int i = 0; i < 100; i++) {
             Intake intake = new Intake();
             intake.addTraineeGroup();
-            assertTrue(intake.getWaitingList() >= 50 && intake.getWaitingList()<=100);
+            assertTrue(intake.getWaitingCount() >= 50 && intake.getWaitingCount()<=100);
         }
     }
     @Test

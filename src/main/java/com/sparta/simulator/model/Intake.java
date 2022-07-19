@@ -15,7 +15,7 @@ public class Intake {
 	}
 
 
-	public int getWaitingList() {
+	public int getWaitingCount() {
 		return waitingList.size();
 	}
 
