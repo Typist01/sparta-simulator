@@ -32,10 +32,7 @@ public class TechCenter extends Centre{
 
     @Override
     boolean isFull() {
-        if(trainees < 200){
-            return false;
-        }
-        else return true;
+        return trainees >= 200;
     }
 
     public String getTechType(){
