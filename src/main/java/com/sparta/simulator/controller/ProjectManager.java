@@ -24,13 +24,13 @@ public class ProjectManager {
                 while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
                     simulator.run();
                     if (iterateMonths){
-                        System.out.println("CURRENT MONTH :" + simulator.getCurrentMonth());
+                        System.out.println("CURRENT MONTH :" + (simulator.getCurrentMonth()-1));
                     System.out.println("______________Training hubs__________");
                     view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullTechCentresNumByType("traininghub"));
                     view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
                     view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
                     System.out.println("______________Boot camps__________");
-                    view.bootCampsDisplay((intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
+                    view.bootCampsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
                     view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
                     view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
                     for (String s : types) {
