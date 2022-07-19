@@ -18,6 +18,11 @@ public class ProjectManager {
         String[] types= {"Java","C#","Data","DevOps","Business"};
         while (executeProgram) {
             boolean iterateMonths= view.iterateEveryMonthCheck();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             simulator = new Simulator(view.getUserTime());
             // TODO create two variants, one for one month with iterator, one for all
             Intake intake= simulator.getIntake();
@@ -39,6 +44,8 @@ public class ProjectManager {
                         view.techCentresClosed(intake.getClosedTechCentreNumByType(s),s);
                         view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s);
                     }
+                        System.out.println("_____________WAITING LIST_________________");
+                    view.allWaitingCount(intake.getWaitingCount());
                     view.waitForUser();
                     }
                  }
@@ -57,6 +64,9 @@ public class ProjectManager {
                     view.techCentresClosed(intake.getClosedTechCentreNumByType(s),s);
                     view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s);
                 }
+            System.out.println("_____________WAITING LIST_________________");
+            view.allWaitingCount(intake.getWaitingCount());
+            view.waitForUser();
             executeProgram=view.continueCheck();
         }
     }

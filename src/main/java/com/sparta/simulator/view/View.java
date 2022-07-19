@@ -34,10 +34,10 @@ public class View {
         System.out.println("Welcome to the sparta simulator!!\n\nthis program is designed to simulate operations at Sparta Global");
     }
     // requires a list containing all trainees tha have not yet been assigned to a placement
-    public void AllWaitingCount(int waitingTrainees){
+    public void allWaitingCount(int waitingTrainees){
         System.out.println(" there are currently " + waitingTrainees + " trainees waiting for a placement");
     }
-    public void WaitingType(int waitingTrainees, String type){
+    public void waitingType(int waitingTrainees, String type){
         System.out.println(" there are currently " + waitingTrainees + " " + type + "trainees waiting for a placement");
     }
 
