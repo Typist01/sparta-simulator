@@ -48,9 +48,7 @@ public class Intake {
                 }
             }
         }
-        for (Trainee t : intakeList){
-            waitingList.add(t);
-        }
+        waitingList.addAll(intakeList);
     }
 
 
