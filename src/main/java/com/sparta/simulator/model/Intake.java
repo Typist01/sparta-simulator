@@ -13,8 +13,8 @@ public class Intake {
 
     public Centre generateCentre(String centreType) throws GenerateCentreException {
         switch(centreType){
-//            case "trainee hub":
-//                return new traineeHub();
+            case "trainee hub":
+                return new TrainingHub();
             case "bootcamp":
                 return new BootCamp();
             case "tech centre":
