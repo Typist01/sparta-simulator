@@ -1,5 +1,6 @@
 package com.sparta.simulator.view;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -25,7 +26,11 @@ public class View {
             case 2 : return false;
             default: throw new RuntimeException();
         }
-
+    }
+    public void waitForUser(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("press enter to continue");
+        scanner.nextLine();
     }
     //_____________________OUTPUTS__________________________
     public void introduction(){
