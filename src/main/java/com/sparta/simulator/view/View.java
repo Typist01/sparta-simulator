@@ -1,7 +1,6 @@
 package com.sparta.simulator.view;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -16,30 +15,149 @@ public class View {
     public int getUserTime(){
         return UserChoiceModule.getUserMonths();
     }
+
+    // this function will return true if the user wishes to iterate over every month
+    public boolean iterateEveryMonthCheck(){
+        System.out.println("Would you like to\n" +
+                "1. iterate per month and receive a full readout each month\n" +
+                "2. complete the simulation and receive readouts only on the final month?");
+        switch (UserChoiceModule.getOperationType() ){
+            case 1 : return true;
+            case 2 : return false;
+            default: throw new RuntimeException();
+        }
+    }
+    public void waitForUser(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("press enter to continue");
+        scanner.nextLine();
+    }
     //_____________________OUTPUTS__________________________
     public void introduction(){
         System.out.println("Welcome to the sparta simulator!!\n\nthis program is designed to simulate operations at Sparta Global");
     }
-
-
-    // requires a list of centres and those to have an isFull function that returns a boolean when no more trainees can be accepted
-    public void displayOutputCentres(int totalCentres, int fullCentres){
-        System.out.println("There are " + totalCentres + " centres of which " + fullCentres + " have full capacity");
-    }
-
     // requires a list containing all trainees tha have not yet been assigned to a placement
-    public void displayWaitingCount(int waitingTrainees){
+    public void AllWaitingCount(int waitingTrainees){
         System.out.println(" there are currently " + waitingTrainees + " trainees waiting for a placement");
     }
+    public void WaitingType(int waitingTrainees, String type){
+        System.out.println(" there are currently " + waitingTrainees + " " + type + "trainees waiting for a placement");
+    }
 
-    // requires a list of centres, and those centres to contain a list of trainees that are currently training there
-    public void displayCurrentlyTraining( int traineeCount){
-        System.out.println(" there  are currently " + traineeCount + " training at a centre");
+    //________________**READOUTS FOR EACH CENTRE**_________________
+
+    //___________GENERIC___________________
+    public void AllOutputCentres(int totalCentres, int fullCentres){
+        if (totalCentres==1){
+            System.out.print("There is 1 training centre, ");
+            if (fullCentres==1){
+                System.out.println("but it is closed..");
+            }
+            else System.out.println(" it is not closed");
+
+        }
+        else System.out.println("There is a total of " + totalCentres + " training centres of which " + fullCentres + " have full capacity");
+    }
+    public void AllCurrentlyTraining(int traineeCount){
+        System.out.println("There  are currently " + traineeCount + " people training at Sparta Global");
+    }
+    public void AllClosed (int closedCount){
+        if (closedCount == 1){
+            System.out.println(closedCount + " centre has been closed");
+        }
+        else
+            System.out.println(closedCount + " centres have been closed");
+    }
+
+    //_________TRAINING HUB_________
+    public void trainingHubsDisplay(int totalCentres, int fullCentres){
+        if (totalCentres==1){
+            System.out.print("There is 1 training hub, ");
+            if (fullCentres==1){
+                System.out.println("it is full");
+            }
+            else System.out.println(" it is not full");
+
+        }
+        else System.out.println("There is a total of " + totalCentres + " training hubs of which " + fullCentres + " have full capacity");
+    }
+    public void trainingHubTrainees(int traineeCount){
+        System.out.println("There  are currently " + traineeCount + " people training at training hubs");
+    }
+    public void trainingHubsClosed (int closedCount){
+        if (closedCount == 1){
+            System.out.println(closedCount + " training hub has been closed");
+        }
+        else
+        System.out.println(closedCount + " training hubs have been closed");
+    }
+
+    // _______BOOTCAMP___________
+    public void bootCampsDisplay(int totalCentres, int fullCentres){
+        if (totalCentres==1){
+            System.out.print("There is 1 boot camp, ");
+            if (fullCentres==1){
+                System.out.println("it is full");
+            }
+            else System.out.println(" it is not full");
+        }
+        else System.out.println("There is a total of " + totalCentres + " training hubs of which " + fullCentres + " have full capacity");
+    }
+    public void bootCampTrainees(int traineeCount){
+        System.out.println("There  are currently " + traineeCount + " people training at boot camps");
+    }
+    public void bootCampsClosed (int closedCount){
+        if (closedCount == 1){
+            System.out.println(closedCount + " boot camp has been closed");
+        }
+        else
+            System.out.println(closedCount + " boot camps have been closed");
+    }
+
+    //________TECH CENTRE_________
+    public void techCentresDisplay(int totalCentres, int fullCentres , String type){
+        if (totalCentres==1){
+            System.out.print("There is 1" + type + " tech centre of type ,");
+            if (fullCentres==1){
+                System.out.println("it is full");
+            }
+            else System.out.println(" it is not full");
+        }
+        else System.out.println("There is a total of " + totalCentres + " tech centres of type " + type + " of which " + fullCentres + " have full capacity");
+    }
+    public void techCentreTrainees(int traineeCount , String type){
+        System.out.println("There  are currently " + traineeCount + " people training at " + type + " tech centres");
+    }
+    public void techCentresClosed (int closedCount, String type){
+        if (closedCount == 1){
+            System.out.println(closedCount + " "+ type + " tech centre has been closed");
+        }
+        else
+            System.out.println(closedCount + " "+ type + " tech centres have been closed");
     }
 
     //__________________________INPUT FUNCTIONS_______________________________ called by functions above
-    public static class UserChoiceModule{
+     static class UserChoiceModule{
         public static int getUserMonths(){
+            // boolean to hold while loop
+            boolean userChoosing=true;
+            Scanner scanner = new Scanner(System.in);
+            int userValue=1;
+            while (userChoosing) {
+                System.out.println("Would you like to\n" +
+                        "1. iterate per month and receive a full readout each month\n" +
+                        "2. complete the simulation and receive readouts only on the final month?");
+                userValue= StringConverter.stringToInt(scanner.next()); // uses converter to only return a positive int, and loop refuses a null array.
+                switch (userValue){
+                    case 1 : userChoosing=false; break;
+                    case 2 : userChoosing=false; break;
+                    default:
+                        System.out.println(" please check that you input a correct number");
+                }
+            }
+            return  userValue;
+        }
+        public static int getOperationType(){
             // boolean to hold while loop
             boolean userChoosing=true;
             Scanner scanner = new Scanner(System.in);
@@ -75,7 +193,7 @@ public class View {
         }
 
     }
-    public static class StringConverter {
+    static class StringConverter {
         public static int stringToInt(String inputString){
             // create a stringBuilder to be delivered
             StringBuilder stringBuilder= new StringBuilder(inputString.length());
