@@ -11,7 +11,7 @@ public class Intake {
 
     Collection<Centre> closedCentres = new ArrayList();
 
-    private Queue<Trainee> waitingList = new LinkedList<>();
+    private Deque<Trainee> waitingList = new LinkedList<>();
 
     public int getWaitingList() {
         return waitingList.size();
@@ -129,7 +129,11 @@ public class Intake {
                 trainingCentres.remove(centre);
             }
         }
-        waitingList.addAll(spareTrainees);
+        for (int i = 0; i < spareTrainees.size(); i++) {
+            waitingList.addFirst(spareTrainees.get(i));
+        }
+        //waitingList.addAll(spareTrainees);
+
     }
 
     private List<Centre> getOpenCentres() {
