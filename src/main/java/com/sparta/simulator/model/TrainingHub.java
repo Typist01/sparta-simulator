@@ -15,4 +15,9 @@ public class TrainingHub extends Centre{
     boolean isFull(){
         return list.size() >= 100 ; }
 
+    @Override
+    boolean acceptsTrainee(Trainee trainee) {
+        return false;
+    }
+
 }
