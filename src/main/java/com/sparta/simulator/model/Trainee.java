@@ -7,7 +7,7 @@ public class Trainee {
 
     public Trainee(){
         int randomNum = new Random().nextInt(5);
-        
+
         if (randomNum == 0)
         {
             courseType = "Java";

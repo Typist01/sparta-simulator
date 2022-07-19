@@ -37,4 +37,8 @@ public class TechCenter extends Centre{
         }
         else return true;
     }
+
+    public String getTechType(){
+        return techType;
+    }
 }

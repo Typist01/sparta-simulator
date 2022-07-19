@@ -57,8 +57,6 @@ public class Intake {
     }
 
 
-
-
     public int numOfTotalTrainees() {
         int sum = 0;
         for (Centre centre : trainingCentres) {
@@ -145,4 +143,99 @@ public class Intake {
         }
         return fullCentres;
     }
+
+    public int getFullCentreNumByType(String centreName){
+        int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre.getClass().getSimpleName() == centreName && centre.isFull()){
+                sum ++;
+            }
+        }
+        return sum;
+    }
+
+    public int getNumTraineesByCentreType(String centreName){
+         int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre.getClass().getSimpleName() == centreName){
+                sum += centre.getNumOfTrainees();
+            }
+        }
+        return sum;
+    }
+    public int getNumTrainee(String centreName){
+        int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre.getClass().getSimpleName() == centreName){
+                sum += centre.getNumOfTrainees();
+            }
+        }
+        return sum;
+    }
+
+    public int getCentreNumByType(String centreName){
+         int sum = 0;
+         for (Centre centre: trainingCentres){
+             if (centre.getClass().getSimpleName() == centreName){
+                 sum ++;
+             }
+         }
+         return sum;
+    }
+
+    public int getTechCentresNum(String centreName){
+        int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre instanceof TechCenter){
+                TechCenter techCenter = (TechCenter) centre;
+                if (techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                    sum ++;
+            }
+        }
+        return sum;
+    }
+
+
+    public int getClosedCentresNum(){
+         return closedCentres.size();
+    }
+
+    public int getTechCentresTraineeNumByType(String centreName){
+        int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre instanceof TechCenter){
+                TechCenter techCenter = (TechCenter) centre;
+                if (techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                    sum += techCenter.getNumOfTrainees();
+            }
+        }
+        return sum;
+    }
+
+
+
+    public int getFullTechCentresNumByType(String centreName){
+        int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre instanceof TechCenter){
+                TechCenter techCenter = (TechCenter) centre;
+                if (techCenter.isFull() && techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                    sum ++;
+            }
+        }
+        return sum;
+    }
+
+    public int getTechCentresNumByType(String centreName){
+        int sum = 0;
+        for (Centre centre: trainingCentres){
+            if (centre instanceof TechCenter){
+                TechCenter techCenter = (TechCenter) centre;
+                if (techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                    sum ++;
+            }
+        }
+        return sum;
+    }
+
 }
