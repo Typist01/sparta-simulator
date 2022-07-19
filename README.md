@@ -31,7 +31,7 @@
 - The simulation should now offer the choice of summary data at the end of the simulation or a running output updated each month.
 - Trainees will now have a course type (Java, C#, Data, DevOps or Business); a trainee will be randomly assigned a course when they are created and this will never change.
 - Sparta now has 3 different types of centre - when a new centre can be opened, one of the following will be randomly chosen:
-  - Training Hub: can train a maximum of 100 trainees, but 3 (randomly 1-3) can be opened at a time each month.
+  - Training Hub: can train a maximum of 100 trainees, but 3 (randomly 1-3) can be opened.
   - Bootcamp: can train a maximum of 500 trainees, but can remain open for 3 months if there are fewer than 25 trainees in attendance. If a Bootcamp has 3 consecutive months of low attendance, it will close. For the lifetime of the simulation, only 2 Bootcamps can exist at a time.
   - Tech Centre: Can train 200 trainees but only teaches one course per centre. This is chosen randomly when a Tech Centre is opened.
 - The simulation should report on the following:
