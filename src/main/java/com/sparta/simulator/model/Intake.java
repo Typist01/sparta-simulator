@@ -12,7 +12,7 @@ public class Intake {
     }
 
     public void addCentre() {
-        trainingCentres.add(new Centre());
+        ///trainingCentres.add(new Centre());
     }
 
 
