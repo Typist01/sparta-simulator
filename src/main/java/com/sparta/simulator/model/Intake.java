@@ -3,34 +3,31 @@ package com.sparta.simulator.model;
 import java.util.*;
 
 public class Intake {
-    Collection<Centre> trainingCentres = new ArrayList();
+    enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
+    private final Collection<Centre> trainingCentres = new ArrayList();
+    private final Collection<Centre> closedCentres = new ArrayList();
+    private final Queue<Trainee> waitingList = new LinkedList<>();
+
 
     public Collection<Centre> getClosedCentres() {
         return closedCentres;
     }
 
-    Collection<Centre> closedCentres = new ArrayList();
 
-    private Queue<Trainee> waitingList = new LinkedList<>();
 
     public int getWaitingList() {
         return waitingList.size();
     }
 
-    enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE};
 
     //returns centre object
      Centre generateCentre(centres centreType) throws GenerateCentreException {
-        switch(centreType){
-            case TRAINEE_HUB:
-                return new TrainingHub();
-            case BOOTCAMP:
-                return new BootCamp();
-            case TECH_CENTRE:
-                return new TechCenter();
-            default:
-                throw new GenerateCentreException("Could not determine centre type");
-        }
+         return switch (centreType) {
+             case TRAINEE_HUB -> new TrainingHub();
+             case BOOTCAMP -> new BootCamp();
+             case TECH_CENTRE -> new TechCenter();
+             default -> throw new GenerateCentreException("Could not determine centre type");
+         };
     }
     // adds centre to list
     public void addCentre(centres name) {
@@ -58,10 +55,7 @@ public class Intake {
                 name = centres.TECH_CENTRE;
                 addCentre(name);
         }
-        return;
-
     }
-
 
     public int numOfTotalTrainees() {
         int sum = 0;
@@ -95,9 +89,7 @@ public class Intake {
                 }
             }
         }
-        for (Trainee t : intakeList){
-            waitingList.add(t);
-        }
+        waitingList.addAll(intakeList);
     }
 
 
@@ -155,7 +147,7 @@ public class Intake {
     public int getFullCentreNumByType(String centreName){
         int sum = 0;
         for (Centre centre: trainingCentres){
-            if (centre.getClass().getSimpleName() == centreName && centre.isFull()){
+            if (centre.getClass().getSimpleName().equals(centreName) && centre.isFull()){
                 sum ++;
             }
         }
@@ -165,7 +157,7 @@ public class Intake {
     public int getNumTraineesByCentreType(String centreName){
          int sum = 0;
         for (Centre centre: trainingCentres){
-            if (centre.getClass().getSimpleName() == centreName){
+            if (centre.getClass().getSimpleName().equals(centreName)){
                 sum += centre.getNumOfTrainees();
             }
         }
@@ -174,7 +166,7 @@ public class Intake {
     public int getNumTrainee(String centreName){
         int sum = 0;
         for (Centre centre: trainingCentres){
-            if (centre.getClass().getSimpleName() == centreName){
+            if (centre.getClass().getSimpleName().equals(centreName)){
                 sum += centre.getNumOfTrainees();
             }
         }
@@ -184,7 +176,7 @@ public class Intake {
     public int getCentreNumByType(String centreName){
          int sum = 0;
          for (Centre centre: trainingCentres){
-             if (centre.getClass().getSimpleName() == centreName){
+             if (centre.getClass().getSimpleName().equals(centreName)){
                  sum ++;
              }
          }
@@ -196,7 +188,7 @@ public class Intake {
         for (Centre centre: trainingCentres){
             if (centre instanceof TechCenter){
                 TechCenter techCenter = (TechCenter) centre;
-                if (techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                if (techCenter.getTechType().toLowerCase().equals(centreName.toLowerCase()))
                     sum ++;
             }
         }
@@ -213,7 +205,7 @@ public class Intake {
         for (Centre centre: trainingCentres){
             if (centre instanceof TechCenter){
                 TechCenter techCenter = (TechCenter) centre;
-                if (techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                if (techCenter.getTechType().toLowerCase().equals(centreName.toLowerCase()))
                     sum += techCenter.getNumOfTrainees();
             }
         }
@@ -227,7 +219,7 @@ public class Intake {
         for (Centre centre: trainingCentres){
             if (centre instanceof TechCenter){
                 TechCenter techCenter = (TechCenter) centre;
-                if (techCenter.isFull() && techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                if (techCenter.isFull() && techCenter.getTechType().toLowerCase().equals(centreName.toLowerCase()))
                     sum ++;
             }
         }
@@ -239,7 +231,7 @@ public class Intake {
         for (Centre centre: trainingCentres){
             if (centre instanceof TechCenter){
                 TechCenter techCenter = (TechCenter) centre;
-                if (techCenter.getTechType().toLowerCase() == centreName.toLowerCase())
+                if (techCenter.getTechType().toLowerCase().equals(centreName.toLowerCase()))
                     sum ++;
             }
         }
