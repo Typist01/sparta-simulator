@@ -35,6 +35,14 @@ public class TechCenter extends Centre{
         return trainees >= 200;
     }
 
+    @Override
+    boolean acceptsTrainee(Trainee trainee) {
+        if(trainee.getType().equalsIgnoreCase(this.techType)){
+            return true;
+        }
+        else return false;
+    }
+
     public String getTechType(){
         return techType;
     }

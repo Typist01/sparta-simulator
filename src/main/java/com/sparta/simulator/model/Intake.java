@@ -15,7 +15,7 @@ public class Intake {
 	}
 
 
-	public int getWaitingList() {
+	public int getWaitingCount() {
 		return waitingList.size();
 	}
 
@@ -82,6 +82,7 @@ public class Intake {
 		for (int i = 0; i < RandGenerator.randomTrainee(); i++) {
 			intakeList.add(new Trainee());
 		}
+/*
 		for (Centre centre : trainingCentres) {
 			if (!centre.isFull() && intakeList.size() > 0) {
 				for (int i = 0; i < RandGenerator.randomCenter(); i++) {
@@ -91,6 +92,8 @@ public class Intake {
 				}
 			}
 		}
+		REDUNDANT REQUIREMENT FROM PHASE 1 TO PHASE 2---DONT DELETE
+		*/
 		waitingList.addAll(intakeList);
 	}
 
@@ -103,8 +106,10 @@ public class Intake {
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull()) {
 					allFull = false;
-					if (random.nextBoolean() && waitingList.size() > 0) {
-						centre.addTrainee(waitingList.remove());
+					if (centre.acceptsTrainee(waitingList.peek())){
+						if (random.nextBoolean() && waitingList.size() > 0) {
+							centre.addTrainee(waitingList.remove());
+						}
 					}
 				}
 			}
