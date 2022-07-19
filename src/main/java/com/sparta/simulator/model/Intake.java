@@ -113,13 +113,15 @@ public class Intake {
 
 	public void closingCenters() {
 		ArrayList<Trainee> spareTrainees = new ArrayList<>();
+		List<Centre> centresToBeClosed = new ArrayList<>();
 		for (Centre centre : trainingCentres) {
 			if (centre.isClosable()) {
 				spareTrainees.addAll(centre.getTraineeList());
 				closedCentres.add(centre);
-				trainingCentres.remove(centre);
+				centresToBeClosed.add(centre);
 			}
 		}
+		trainingCentres.removeAll(centresToBeClosed);
 		waitingList.addAll(spareTrainees);
 	}
 
