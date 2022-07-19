@@ -11,8 +11,25 @@ public class Intake {
         return waitingList.size();
     }
 
-    public void addCentre() {
-        ///trainingCentres.add(new Centre());
+    public Centre generateCentre(String centreType) throws GenerateCentreException {
+        switch(centreType){
+//            case "trainee hub":
+//                return new traineeHub();
+            case "bootcamp":
+                return new BootCamp();
+            case "tech centre":
+                return new TechCenter();
+            default:
+                throw new GenerateCentreException("Could not determine centre type");
+        }
+    }
+
+    public void addCentre(String centreName) {
+        try{
+            trainingCentres.add(generateCentre(centreName));
+        } catch (GenerateCentreException e){
+            e.printStackTrace();
+        }
     }
 
 
