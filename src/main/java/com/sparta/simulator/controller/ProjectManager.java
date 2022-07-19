@@ -24,14 +24,15 @@ public class ProjectManager {
                 while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
                     simulator.run();
                     if (iterateMonths){
+                        System.out.println("CURRENT MONTH :" + simulator.getCurrentMonth());
                     System.out.println("______________Training hubs__________");
                     view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullTechCentresNumByType("traininghub"));
-                    //view.trainingHubsClosed(intake.getClosedNumByType("traininghub"));
+                    view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
                     view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
                     System.out.println("______________Boot camps__________");
-                    view.trainingHubsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
-                    //view.trainingHubsClosed(intake.getClosedNumByType("bootcamp"));
-                    view.trainingHubTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                    view.bootCampsDisplay((intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
+                    view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
+                    view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
                     for (String s : types) {
                         System.out.println("______________" + s + " Tech centres__________");
                         view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s);
@@ -44,12 +45,12 @@ public class ProjectManager {
             System.out.println("____________Final readings_________");
                 System.out.println("______________Training hubs__________");
                 view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullTechCentresNumByType("traininghub"));
-                //view.trainingHubsClosed(intake.getClosedNumByType("traininghub"));
+                view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
                 view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
                 System.out.println("______________Boot camps__________");
-                view.trainingHubsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
-                //view.trainingHubsClosed(intake.getClosedNumByType("bootcamp"));
-                view.trainingHubTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                view.bootCampsDisplay((intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
+                view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
+                view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
                 for (String s : types) {
                     System.out.println("______________" + s + " Tech centres__________");
                     view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s);
