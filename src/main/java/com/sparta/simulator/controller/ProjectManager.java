@@ -20,11 +20,10 @@ public class ProjectManager {
             boolean iterateMonths= view.iterateEveryMonthCheck();
             simulator = new Simulator(view.getUserTime());
             // TODO create two variants, one for one month with iterator, one for all
-            Intake intake;
-            if (iterateMonths){
+            Intake intake= simulator.getIntake();
                 while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
                     simulator.run();
-                    intake= simulator.getIntake();
+                    if (iterateMonths){
                     System.out.println("______________Training hubs__________");
                     view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullTechCentresNumByType("traininghub"));
                     //view.trainingHubsClosed(intake.getClosedNumByType("traininghub"));
@@ -33,25 +32,30 @@ public class ProjectManager {
                     view.trainingHubsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
                     //view.trainingHubsClosed(intake.getClosedNumByType("bootcamp"));
                     view.trainingHubTrainees(intake.getNumTraineesByCentreType("bootcamp"));
-                    for (String s : types){
+                    for (String s : types) {
                         System.out.println("______________" + s + " Tech centres__________");
-                        view.techCentresDisplay(intake.getTechCentresNumByType(s),intake.getFullTechCentresNumByType(s),s);
-                     //   view.techCentresClosed(intak);
-                        view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s),s);
+                        view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s);
+                        //   view.techCentresClosed(intak);
+                        view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s);
                     }
+                    view.waitForUser();
+                    }
+                 }
+            System.out.println("____________Final readings_________");
+                System.out.println("______________Training hubs__________");
+                view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullTechCentresNumByType("traininghub"));
+                //view.trainingHubsClosed(intake.getClosedNumByType("traininghub"));
+                view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
+                System.out.println("______________Boot camps__________");
+                view.trainingHubsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullTechCentresNumByType("bootcamp"));
+                //view.trainingHubsClosed(intake.getClosedNumByType("bootcamp"));
+                view.trainingHubTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                for (String s : types) {
+                    System.out.println("______________" + s + " Tech centres__________");
+                    view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s);
+                    //   view.techCentresClosed(intak);
+                    view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s);
                 }
-            }
-
-            simulator.run(); // currently runs all months and finishes
-            fullCenters = simulator.getFullCenters();
-            openCenters = simulator.getOpenCenters();
-            waitingList = simulator.getWaitingList();
-            totalTrainees = simulator.getTotalTrainees();
-
-            view.AllOutputCentres(openCenters,fullCenters);
-//                view.displayAllWaitingCount(waitingList);
-            view.AllCurrentlyTraining(totalTrainees);
-
             executeProgram=view.continueCheck();
         }
     }
