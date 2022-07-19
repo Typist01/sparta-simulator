@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class TechCenter extends Centre{
 
-    private String techType;
+    private final String techType;
     private int trainees = 0;
 
-    private ArrayList<Trainee> list = getTraineeList();
+    private final ArrayList<Trainee> list = getTraineeList();
 
     TechCenter(){
         Random rand = new Random();

@@ -34,7 +34,7 @@ public class BootCamp extends Centre {
 			return true;
 
 		} else {
-			//Reset since its not reached 3 consecutive months.
+			//Reset since it's not reached 3 consecutive months.
 			lowAttendanceDuration = 0;
 			return false;
 		}

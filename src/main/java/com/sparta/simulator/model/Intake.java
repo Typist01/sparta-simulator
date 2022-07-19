@@ -146,7 +146,7 @@ public class Intake {
 	public int getFullCentreNumByType(String centreName) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
-			if (centre.getClass().getSimpleName().toLowerCase().equals(centreName.toLowerCase()) && centre.isFull()) {
+			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreName) && centre.isFull()) {
 				sum++;
 			}
 		}
@@ -157,7 +157,7 @@ public class Intake {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 
-			if (centre.getClass().getSimpleName().toLowerCase().equals(centreName.toLowerCase())) {
+			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreName)) {
 				sum += centre.getNumOfTrainees();
 			}
 		}
@@ -167,7 +167,7 @@ public class Intake {
 	public int getCentreNumByType(String centreName) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
-			if (centre.getClass().getSimpleName().toLowerCase().equals(centreName.toLowerCase())) {
+			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreName)) {
 
 				sum++;
 			}
@@ -179,7 +179,7 @@ public class Intake {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
-				if (techCenter.getTechType().toLowerCase().equals(centreType.toLowerCase()))
+				if (techCenter.getTechType().equalsIgnoreCase(centreType))
 					sum++;
 			}
 		}
@@ -194,7 +194,7 @@ public class Intake {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
-				if (techCenter.getTechType().toLowerCase().equals(centreType.toLowerCase()))
+				if (techCenter.getTechType().equalsIgnoreCase(centreType))
 					sum += techCenter.getNumOfTrainees();
 			}
 		}
@@ -206,7 +206,7 @@ public class Intake {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
-				if (techCenter.isFull() && techCenter.getTechType().toLowerCase().equals(centreType.toLowerCase()))
+				if (techCenter.isFull() && techCenter.getTechType().equalsIgnoreCase(centreType))
 					sum++;
 			}
 		}
@@ -218,7 +218,7 @@ public class Intake {
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
 
-				if (techCenter.getTechType().toLowerCase().equals(centreType.toLowerCase()))
+				if (techCenter.getTechType().equalsIgnoreCase(centreType))
 					sum++;
 			}
 		}

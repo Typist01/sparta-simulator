@@ -1,7 +1,7 @@
 package com.sparta.simulator.model;
 
 public class  Simulator {
-	private Intake intake;
+	private final Intake intake;
 	private int totalTrainees;
 	private int waitingList;
 	private int openCenters;
