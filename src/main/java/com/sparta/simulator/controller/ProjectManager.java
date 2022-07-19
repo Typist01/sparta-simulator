@@ -33,6 +33,5 @@ public class ProjectManager {
             executeProgram=view.continueCheck();
         }
     }
-    public void
 
 }
