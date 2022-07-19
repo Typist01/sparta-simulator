@@ -16,8 +16,11 @@ public class ProjectManager {
         int totalTrainees;
 
         while (executeProgram) {
+            boolean iterateMonths= view.iterateEveryMonthCheck();
+
+            // TODO create two variants, one for one month with iterator, one for all
             simulator = new Simulator(view.getUserTime());
-            simulator.run();
+            simulator.run(); // currently runs all months and finishes
             fullCenters = simulator.getFullCenters();
             openCenters = simulator.getOpenCenters();
             waitingList = simulator.getWaitingList();
@@ -30,5 +33,6 @@ public class ProjectManager {
             executeProgram=view.continueCheck();
         }
     }
+    public void
 
 }

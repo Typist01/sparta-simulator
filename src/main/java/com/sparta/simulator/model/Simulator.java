@@ -10,7 +10,7 @@ public class  Simulator {
 	private final int CENTRE_GENERATION_INTERVAL = 2; // centre generation interval (months) times 4 we are working in weeks, 4 weeks in a month,
 	// about the
 	private final int totalDuration; // Total duration of the simulation (months).
-
+	private int currentMonth=1;
 	public Simulator(int totalDuration){
 		this.intake = new Intake();
 		this.totalDuration = totalDuration;
@@ -25,13 +25,14 @@ public class  Simulator {
 	}
 
 	public void run(){
-		for (int i = 1; i< totalDuration+1; i++){
-			if(i % CENTRE_GENERATION_INTERVAL == 0 && i > 1){
+		if(currentMonth<totalDuration+1)
+			if(currentMonth % CENTRE_GENERATION_INTERVAL == 0 && currentMonth > 1){
 				//Generate new TrainingCentre through Intake then tick.
 				intake.addCentre("centre name");
 			}
-			tick();
-		}
+		tick();
+		currentMonth++;
+
 		this.totalTrainees=intake.numOfTotalTrainees();
 		this.openCenters=intake.numOfOpenCentres();
 		this.waitingList=intake.getWaitingList();
