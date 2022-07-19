@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sparta-simulator" />
         <module name="sparta-simulator2" />
+        <module name="sparta-simulator3" />
       </profile>
     </annotationProcessing>
   </component>
