@@ -18,14 +18,15 @@ public class View {
 
     // this function will return true if the user wishes to iterate over every month
     public boolean iterateEveryMonthCheck(){
-        System.out.println("Would you like to\n" +
-                "1. iterate per month and receive a full readout each month\n" +
-                "2. complete the simulation and receive readouts only on the final month?");
-        switch (UserChoiceModule.getOperationType() ){
-            case 1 : return true;
-            case 2 : return false;
-            default: throw new RuntimeException();
-        }
+        System.out.println("""
+                Would you like to
+                1. iterate per month and receive a full readout each month
+                2. complete the simulation and receive readouts only on the final month?""");
+        return switch (UserChoiceModule.getOperationType()) {
+            case 1 -> true;
+            case 2 -> false;
+            default -> throw new RuntimeException();
+        };
     }
     public void waitForUser(){
         Scanner scanner = new Scanner(System.in);
@@ -88,8 +89,9 @@ public class View {
         if (closedCount == 1){
             System.out.println(closedCount + " training hub has been closed");
         }
-        else
-        System.out.println(closedCount + " training hubs have been closed");
+        else {
+            System.out.println(closedCount + " training hubs have been closed");
+        }
     }
 
     // _______BOOTCAMP___________
@@ -144,15 +146,15 @@ public class View {
             Scanner scanner = new Scanner(System.in);
             int userValue=1;
             while (userChoosing) {
-                System.out.println("Would you like to\n" +
-                        "1. iterate per month and receive a full readout each month\n" +
-                        "2. complete the simulation and receive readouts only on the final month?");
+                System.out.println("""
+                        Would you like to
+                        1. iterate per month and receive a full readout each month
+                        2. complete the simulation and receive readouts only on the final month?""");
                 userValue= StringConverter.stringToInt(scanner.next()); // uses converter to only return a positive int, and loop refuses a null array.
-                switch (userValue){
-                    case 1 : userChoosing=false; break;
-                    case 2 : userChoosing=false; break;
-                    default:
-                        System.out.println(" please check that you input a correct number");
+                switch (userValue) {
+                    case 1 -> userChoosing = false;
+                    case 2 -> userChoosing = false;
+                    default -> System.out.println(" please check that you input a correct number");
                 }
             }
             return  userValue;
