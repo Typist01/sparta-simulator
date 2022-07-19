@@ -1,7 +1,11 @@
 package com.sparta.simulator.model;
 
 public class Trainee {
-    String name;
-    int timeInTraining;
 
+
+    String type;
+
+    public String getType() {
+        return type;
+    }
 }
