@@ -59,6 +59,9 @@ public class ProjectManager {
                         if (intake.getWaitingCount() != 0) {
                             System.out.println("_____________WAITING LIST_________________");
                             view.allWaitingCount(intake.getWaitingCount());
+                            for ( CourseType s : CourseType.values()){
+                                view.waitingType(intake.getTraineeNumByType(s),s.getCourseName());
+                            }
                         }
                         view.waitForUser();
                     }
@@ -93,6 +96,9 @@ public class ProjectManager {
             if (intake.getWaitingCount() != 0) {
                 System.out.println("_____________WAITING LIST_________________");
                 view.allWaitingCount(intake.getWaitingCount());
+                for ( CourseType s : CourseType.values()){
+                    view.waitingType(intake.getTraineeNumByType(s),s.getCourseName());
+                }
             }
             view.waitForUser();
             executeProgram=view.continueCheck();

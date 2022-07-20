@@ -26,7 +26,7 @@ public class View {
     }
     public void waitForUser(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("enter anything to continue");
+        System.out.println("\nenter anything to continue");
         scanner.nextLine();
     }
     //_____________________OUTPUTS__________________________
@@ -35,10 +35,10 @@ public class View {
     }
     // requires a list containing all trainees tha have not yet been assigned to a placement
     public void allWaitingCount(int waitingTrainees){
-        System.out.println("there are currently " + waitingTrainees + " trainees waiting for a placement");
+        System.out.println("total awaiting placement: " + waitingTrainees );
     }
     public void waitingType(int waitingTrainees, String type){
-        System.out.println("there are currently " + waitingTrainees + " " + type + "trainees waiting for a placement");
+        System.out.println(type + " Trainees waiting "  + waitingTrainees);
     }
 
     //________________**READOUTS FOR EACH CENTRE**_________________
