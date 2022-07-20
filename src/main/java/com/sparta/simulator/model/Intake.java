@@ -33,17 +33,7 @@ public class Intake {
 		}
 	}
 
-	public ArrayList<Client> getHappyList() {
-		return happyList;
-	}
 
-	public ArrayList<Client> getUnHappyList() {
-		return unHappyList;
-	}
-
-	public ArrayList<Client> getClientList() { //changing client list
-		return clientList;
-	}
 
 
 	public void removeUnsatClients() { //this runs at the end of the year
@@ -291,10 +281,6 @@ public class Intake {
 	}
 
 
-	public int getClosedCentresNum() {
-		return closedCentres.size();
-	}
-
 	public int getClosedCentresNumByType(String centreType) {
 		int sum = 0;
 		for (Centre centre : closedCentres) {
@@ -352,6 +338,20 @@ public class Intake {
 	}
 
 	//_______________GETTERS_______________
+	public ArrayList<Client> getHappyList() {
+		return happyList;
+	}
+
+	public ArrayList<Client> getUnHappyList() {
+		return unHappyList;
+	}
+
+	public ArrayList<Client> getClientList() { //changing client list
+		return clientList;
+	}
+	public Collection<Centre> getTrainingCentres() {
+		return trainingCentres;
+	}
 	public Queue<Trainee> getWaitingList() {
 		return waitingList;
 	}
@@ -362,12 +362,17 @@ public class Intake {
 
 	public Collection<Centre> getCenters(){return trainingCentres;}
 
-	public void testAddCenter(Centre centre){
-		trainingCentres.add(centre);
-	}
 
+	public int getClosedCentresNum() {
+		return closedCentres.size();
+	}
 
 	public int getWaitingCount() {
 		return waitingList.size();
+	}
+
+	//_____________TEST CODE______________
+	public void testAddCenter(Centre centre){
+		trainingCentres.add(centre);
 	}
 }
