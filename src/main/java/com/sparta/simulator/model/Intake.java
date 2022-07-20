@@ -1,56 +1,82 @@
 package com.sparta.simulator.model;
 
+import com.sparta.simulator.model.centres.BootCamp;
+import com.sparta.simulator.model.centres.Centre;
+import com.sparta.simulator.model.centres.TechCenter;
+import com.sparta.simulator.model.centres.TrainingHub;
+
 import java.util.*;
 
 public class Intake {
-	enum centres {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
-
-	public Collection<Centre> getTrainingCentres() {
-		return trainingCentres;
-	}
+	enum CentresEnum {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
 	private final Collection<Centre> trainingCentres;
 	private final Collection<Centre> closedCentres;
 	private final Deque<Trainee> waitingList;
 	private final ArrayList<Client> clientList;
-	private final HashMap<CourseType,List<Trainee>> benchList;
+	private final HashMap<CourseType, List<Trainee>> benchList;
+	private final ArrayList<Client> happyList;
+	private final ArrayList<Client> unHappyList;
 
-	public Intake(){
+
+	public Intake() {
 		trainingCentres = new ArrayList<>();
 		closedCentres = new ArrayList<>();
 		clientList = new ArrayList<>();
 		benchList = new HashMap<>();
 		waitingList = new LinkedList<>();
+		happyList = new ArrayList<>();
+		unHappyList = new ArrayList<>();
 
-		for (CourseType course:	CourseType.values() ) {
-			benchList.put(course,new LinkedList<>());
+		for (CourseType course : CourseType.values()) {
+			benchList.put(course, new LinkedList<>());
 		}
 	}
 
 
-	public ArrayList<Client> getClientList(){ return clientList; }
 
-	public void addClients(){
-		int randTrainees = new Random().nextInt(15,30); //for num of trainees
-		int randCourse = new Random().nextInt(5); //for
 
-		clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+	public void removeUnsatClients() { //this runs at the end of the year
+		for (int i = 0; i < clientList.size() - 1; i++) { //check the "-1" here
+			Client client = clientList.get(i);
+			if (!client.checkSatisfaction()) {
+				//remove unhappy clients, maybe add them to an unhappy list later on
+				unHappyList.add(client);
+				clientList.remove(i);
+			} else {
+				//clear happy client's currentTrainees, maybe add to a happy list
+				happyList.add(client);
+				client.clearTrainees();
+			}
+		}
+	}
+
+	public void addClients() { // 1 to 5 clients per month
+		int numOfClients = new Random().nextInt(1, 5);
+
+		for (int i = 0; i < numOfClients; i++) {
+			int randTrainees = new Random().nextInt(15, 30); //for num of trainees
+			int randCourse = new Random().nextInt(5); //for course type
+
+			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+		}
+
 
 	}
 
-	public void incrementTimeTrained(){
+	public void incrementTimeTrained() {
 		for (Centre centre : trainingCentres) {
-			for (Trainee trainee: centre.getTraineeList()) {
+			for (Trainee trainee : centre.getTraineeList()) {
 				trainee.incrementTimeTrained();
 			}
 		}
 
 	}
 
-	public void benchTrainee(){
-		for (Centre centre: trainingCentres ) {
-			for (Trainee trainee: centre.getTraineeList()) {
-				if (trainee.getTimeTrained() == 3 ){	//checks if training for 3 months
+	public void benchTrainee() {
+		for (Centre centre : trainingCentres) {
+			for (Trainee trainee : centre.getTraineeList()) {
+				if (trainee.getTimeTrained() == 3) {    //checks if training for 3 months
 					benchList.get(trainee.getType()).add(trainee);
 				}
 			}
@@ -58,53 +84,51 @@ public class Intake {
 	}
 
 
-
-	//returns centre object
-	Centre generateCentre(centres centreType) throws GenerateCentreException {
-		return switch (centreType) {
-			case TRAINING_HUB -> new TrainingHub();
-			case BOOTCAMP -> new BootCamp();
-			case TECH_CENTRE -> new TechCenter();
-			default -> throw new GenerateCentreException("Could not determine centre type");
-		};
-	}
-
 	// adds centre to list
-	public void addCentre(centres name) {
-		try {
-			trainingCentres.add(generateCentre(name));
-		} catch (GenerateCentreException e) {
-			e.printStackTrace();
-		}
+	public void addCentre(Centre centre) {
+		trainingCentres.add(centre);
+
 	}
 
 	// create new centres
-	public int createCentresRandomly() {
+	public void createCentresRandomly() {
 		int randNum = new Random().nextInt(3);
-		centres name;
-		switch (randNum) {
-			case (0):
-				name = centres.TRAINING_HUB;
-				int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
-				for (int i = 0; i < centreNum; i++) {
-					addCentre(name);
+		CentresEnum centreType = CentresEnum.values()[randNum];
+
+		if (centreType.equals(CentresEnum.TRAINEE_HUB)) {
+			int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
+			for (int i = 0; i < centreNum; i++) {
+				addCentre(new TrainingHub());
+			}
+			addCentre(new TechCenter());
+		} else if (centreType.equals(CentresEnum.TECH_CENTRE)) {
+			addCentre(new TechCenter());
+		} else if (centreType.equals(CentresEnum.BOOTCAMP)) {
+			if (numOfBootCamps() < 2) {
+				addCentre(new BootCamp());
+			} else {
+				int rand = new Random().nextInt(2);
+				switch (rand) {
+					case 0:
+						int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
+						for (int i = 0; i < centreNum; i++) {
+							addCentre(new TrainingHub());
+						}
+					case 1:
+						addCentre(new TechCenter());
 				}
-				break;
-			case (1):
-				if (getCentreNumByType("bootcamp")<2){
-					name = centres.BOOTCAMP;
-					addCentre(name);
-					break;
-				} else{
-					createCentresRandomly();
-					return 1;
-				}
-			case (2):
-				name = centres.TECH_CENTRE;
-				addCentre(name);
-				break;
+			}
 		}
-		return randNum;
+	}
+
+	private int numOfBootCamps() {
+		int numOfBootCamp = 0;
+		for (Centre centre : trainingCentres) {
+			if (centre instanceof BootCamp) {
+				numOfBootCamp++;
+			}
+		}
+		return numOfBootCamp;
 	}
 
 	public int numOfTotalTrainees() {
@@ -149,7 +173,7 @@ public class Intake {
 	public void addWaitingTraineesToCentre() {
 		Random random = new Random();
 		boolean allFull = false;
-		Queue <Trainee> temp = new LinkedList<>();
+		Queue<Trainee> temp = new LinkedList<>();
 		//DEBUG ______
 		//Queue <Trainee> debugQueue = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
@@ -171,12 +195,12 @@ public class Intake {
 					}
 				}
 			}
-			if (waitingList.size() > 0 && allFull){
+			if (waitingList.size() > 0 && allFull) {
 				temp.add(waitingList.remove());
-				allFull=false;
+				allFull = false;
 			}
 		}
-		while (temp.size()>0){
+		while (temp.size() > 0) {
 			waitingList.add(temp.remove());
 		}
 	}
@@ -191,7 +215,7 @@ public class Intake {
 				centresToBeClosed.add(centre);
 			}
 		}
-		for(Trainee trainee:spareTrainees){
+		for (Trainee trainee : spareTrainees) {
 			waitingList.addFirst(trainee);
 		}
 		trainingCentres.removeAll(centresToBeClosed);
@@ -258,28 +282,25 @@ public class Intake {
 	}
 
 
-	public int getClosedCentresNum() {
-		return closedCentres.size();
-	}
-	public int getClosedCentresNumByType(String centreType){
+	public int getClosedCentresNumByType(String centreType) {
 		int sum = 0;
-		for (Centre centre: closedCentres){
-			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreType)){
-				sum ++;
+		for (Centre centre : closedCentres) {
+			if (centre.getClass().getSimpleName().equalsIgnoreCase(centreType)) {
+				sum++;
 			}
 		}
 		return sum;
 	}
 
-	public int getClosedTechCentreNumByType(CourseType techCentreType){
+	public int getClosedTechCentreNumByType(CourseType techCentreType) {
 		int sum = 0;
-		for (Centre centre: closedCentres){
+		for (Centre centre : closedCentres) {
 			if (centre instanceof TechCenter techCenter) {
-				if(techCenter.getTechType().equals(techCentreType)){
-					sum ++;
-				}
+				if (techCenter.getTechType().equals(techCentreType)) {
+					sum++;
 				}
 			}
+		}
 		return sum;
 	}
 
@@ -317,6 +338,20 @@ public class Intake {
 		return sum;
 	}
 	//_______________GETTERS_______________
+	public ArrayList<Client> getHappyList() {
+		return happyList;
+	}
+
+	public ArrayList<Client> getUnHappyList() {
+		return unHappyList;
+	}
+
+	public ArrayList<Client> getClientList() { //changing client list
+		return clientList;
+	}
+	public Collection<Centre> getTrainingCentres() {
+		return trainingCentres;
+	}
 	public Queue<Trainee> getWaitingList() {
 		return waitingList;
 	}
@@ -334,8 +369,16 @@ public class Intake {
 		closedCentres.add(center);
 	}
 
+	public int getClosedCentresNum() {
+		return closedCentres.size();
+	}
 
 	public int getWaitingCount() {
 		return waitingList.size();
+	}
+
+	//_____________TEST CODE______________
+	public void testAddCenter(Centre centre){
+		trainingCentres.add(centre);
 	}
 }

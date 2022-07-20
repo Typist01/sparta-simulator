@@ -1,26 +1,13 @@
-package com.sparta.simulator.model;
+package com.sparta.simulator.model.centres;
 
 public class BootCamp extends Centre {
-	private final int CAPACITY = 500;
 	private final int MAX_LOW_ATTENDANCE_DURATION = 3;
 	private int lowAttendanceDuration;
 
-	BootCamp() {
+	public BootCamp() {
+		super(500);
 		this.lowAttendanceDuration = 0;
 	}
-
-	@Override
-	void addTrainee(Trainee trainee) {
-		if (!isFull()) {
-			super.getTraineeList().add(trainee);
-		}
-	}
-
-	@Override
-	boolean isFull() {
-		return (super.getTraineeList().size() == CAPACITY);
-	}
-
 
 	@Override
 	public boolean isClosable() {
@@ -39,11 +26,6 @@ public class BootCamp extends Centre {
 			return false;
 		}
 
-	}
-
-	@Override
-	boolean acceptsTrainee(Trainee trainee) {
-		return true;
 	}
 
 }
