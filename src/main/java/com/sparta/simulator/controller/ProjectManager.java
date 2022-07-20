@@ -32,18 +32,18 @@ public class ProjectManager {
                         System.out.println("CURRENT MONTH :" + (simulator.getCurrentMonth()-1));
                         if (intake.getCentreNumByType("traininghub")!=0||intake.getFullCentreNumByType("traininghub") != 0 || intake.getClosedCentresNumByType("traininghub") !=0 ) {
                             System.out.println("______________Training hubs__________");
-                            view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"), intake.getFullCentreNumByType("traininghub"));
-                            view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
+                            view.centreDisplay(intake.getCentreNumByType("traininghub"), intake.getFullCentreNumByType("traininghub"));
+                            view.centreClosed(intake.getClosedCentresNumByType("traininghub"));
                             if (intake.getCentreNumByType("traininghub")!=0) {
-                                view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
+                                view.centreTrainees(intake.getNumTraineesByCentreType("traininghub"));
                             }
                         }
                         if (intake.getCentreNumByType("bootcamp")!=0||intake.getFullCentreNumByType("bootcamp") != 0 || intake.getClosedCentresNumByType("bootcamp") !=0 ) {
                             System.out.println("______________Boot camps__________");
-                            view.bootCampsDisplay(intake.getCentreNumByType("bootcamp"), intake.getFullCentreNumByType("bootcamp"));
-                            view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
+                            view.centreDisplay(intake.getCentreNumByType("bootcamp"), intake.getFullCentreNumByType("bootcamp"));
+                            view.centreClosed(intake.getClosedCentresNumByType("bootcamp"));
                             if (intake.getCentreNumByType("bootcamp")!=0) {
-                                view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                                view.centreTrainees(intake.getNumTraineesByCentreType("bootcamp"));
                             }
                         }
                         for (CourseType s : CourseType.values()) {
@@ -69,18 +69,18 @@ public class ProjectManager {
             System.out.println("____________Final readings_________");
             if (intake.getCentreNumByType("traininghub")!=0||intake.getFullCentreNumByType("traininghub") != 0 || intake.getClosedCentresNumByType("traininghub") !=0 ) {
                 System.out.println("______________Training hubs__________");
-                view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"), intake.getFullCentreNumByType("traininghub"));
-                view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
+                view.centreDisplay(intake.getCentreNumByType("traininghub"), intake.getFullCentreNumByType("traininghub"));
+                view.centreClosed(intake.getClosedCentresNumByType("traininghub"));
                 if (intake.getCentreNumByType("traininghub")!=0) {
-                    view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
+                    view.centreTrainees(intake.getNumTraineesByCentreType("traininghub"));
                 }
             }
             if (intake.getCentreNumByType("bootcamp")!=0||intake.getFullCentreNumByType("bootcamp") != 0 || intake.getClosedCentresNumByType("bootcamp") !=0 ) {
                 System.out.println("______________Boot camps__________");
-                view.bootCampsDisplay(intake.getCentreNumByType("bootcamp"), intake.getFullCentreNumByType("bootcamp"));
-                view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
+                view.centreDisplay(intake.getCentreNumByType("bootcamp"), intake.getFullCentreNumByType("bootcamp"));
+                view.centreClosed(intake.getClosedCentresNumByType("bootcamp"));
                 if (intake.getCentreNumByType("bootcamp")!=0) {
-                    view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                    view.centreTrainees(intake.getNumTraineesByCentreType("bootcamp"));
                 }
             }
             for (CourseType s : CourseType.values()) {

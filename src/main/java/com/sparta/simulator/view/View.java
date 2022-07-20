@@ -48,49 +48,14 @@ public class View {
     //________________**READOUTS FOR EACH CENTRE**_________________
 
     //___________GENERIC___________________
-    public void AllOutputCentres(int totalCentres, int fullCentres){
-        if (totalCentres==1){
-            System.out.print("There is 1 training centre, ");
-            if (fullCentres==1){
-                System.out.println("but it is closed..");
-            }
-            else System.out.println(" it is not closed");
-
-        }
-        else System.out.println("There is a total of " + totalCentres + " training centres of which " + fullCentres + " have full capacity");
-    }
-    public void AllCurrentlyTraining(int traineeCount){
-        System.out.println("There  are currently " + traineeCount + " people training at Sparta Global");
-    }
-    public void AllClosed (int closedCount){
-        if (closedCount == 1){
-            System.out.println(closedCount + " centre has been closed");
-        }
-        else
-            System.out.println(closedCount + " centres have been closed");
-    }
-
-    //_________TRAINING HUB_________
-    public void trainingHubsDisplay(int totalCentres, int fullCentres){
+    public void centreDisplay(int totalCentres, int fullCentres){
         System.out.println("Open         : " + totalCentres + "\n" +
                 "Full         : " + fullCentres);
     }
-    public void trainingHubTrainees(int traineeCount){
+    public void centreTrainees(int traineeCount){
         System.out.println("trainee count: " + traineeCount );
     }
-    public void trainingHubsClosed (int closedCount){
-        System.out.println("closed       : " + closedCount);
-    }
-
-    // _______BOOTCAMP___________
-    public void bootCampsDisplay(int totalCentres, int fullCentres) {
-        System.out.println("Open         : " + totalCentres + "\n" +
-                "Full         : " + fullCentres);
-    }
-    public void bootCampTrainees(int traineeCount){
-        System.out.println("trainee count: " + traineeCount );
-    }
-    public void bootCampsClosed (int closedCount){
+    public void centreClosed (int closedCount){
         System.out.println("closed       : " + closedCount);
     }
 
