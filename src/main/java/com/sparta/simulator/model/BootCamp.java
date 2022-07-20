@@ -10,12 +10,6 @@ public class BootCamp extends Centre {
 	}
 
 	@Override
-	boolean isFull() {
-		return (super.getTraineeList().size() == super.getCAPACITY());
-	}
-
-
-	@Override
 	public boolean isClosable() {
 		if (super.getTraineeList().size() < 25 && lowAttendanceDuration < MAX_LOW_ATTENDANCE_DURATION) {
 			//Increment for consecutive months with less than 25
@@ -32,11 +26,6 @@ public class BootCamp extends Centre {
 			return false;
 		}
 
-	}
-
-	@Override
-	boolean acceptsTrainee(Trainee trainee) {
-		return true;
 	}
 
 }

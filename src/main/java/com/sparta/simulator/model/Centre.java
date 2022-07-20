@@ -35,7 +35,9 @@ public abstract class Centre {
     boolean isClosable(){
         return traineeList.size() <= 25;
     }
-    abstract boolean acceptsTrainee(Trainee trainee);
+    boolean acceptsTrainee(Trainee trainee){
+        return true;
+    }
 
 
 }

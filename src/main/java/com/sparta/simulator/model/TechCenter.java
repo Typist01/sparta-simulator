@@ -6,10 +6,6 @@ import java.util.Random;
 public class TechCenter extends Centre{
 
     private final CourseType techType;
-    private int trainees = 0;
-
-    private final ArrayList<Trainee> list = getTraineeList();
-
     TechCenter() {
         super(200);
         Random rand = new Random();
