@@ -102,7 +102,7 @@ public class ProjectManager {
             if (intake.getHappyList().size() !=0 || intake.getUnHappyList().size() != 0 || intake.getClientList().size() !=0){
                 System.out.println("_______________CLIENTS_______________");
                 view.allClients(intake.getClientList().size());
-                view.happyClients(intake.getUnHappyList().size());
+                view.happyClients(intake.getHappyList().size());
                 view.sadClients(intake.getUnHappyList().size());
             }
             if (intake.getWaitingCount() != 0) {
