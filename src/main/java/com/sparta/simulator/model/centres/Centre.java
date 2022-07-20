@@ -5,9 +5,6 @@ import com.sparta.simulator.model.Trainee;
 import java.util.ArrayList;
 
 public abstract class Centre {
-    public int getCAPACITY() {
-        return CAPACITY;
-    }
 
     private final int CAPACITY;
     private final ArrayList<Trainee> traineeList;
