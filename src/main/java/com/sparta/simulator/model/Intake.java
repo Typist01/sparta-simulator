@@ -203,7 +203,15 @@ public class Intake {
 		}
 		return fullCentres;
 	}
-
+	public int getTraineeNumByType(CourseType element){
+		int sum=0;
+		for (Trainee trainee: waitingList){
+			if (trainee.getType().equals(element)){
+				sum++;
+			}
+		}
+		return sum;
+	}
 	public int getFullCentreNumByType(String centreName) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
