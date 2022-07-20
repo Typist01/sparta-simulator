@@ -1,10 +1,10 @@
-package com.sparta.simulator.model;
+package com.sparta.simulator.model.centres;
 
 public class BootCamp extends Centre {
 	private final int MAX_LOW_ATTENDANCE_DURATION = 3;
 	private int lowAttendanceDuration;
 
-	BootCamp() {
+	public BootCamp() {
 		super(500);
 		this.lowAttendanceDuration = 0;
 	}

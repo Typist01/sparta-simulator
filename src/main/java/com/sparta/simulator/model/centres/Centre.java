@@ -1,4 +1,6 @@
-package com.sparta.simulator.model;
+package com.sparta.simulator.model.centres;
+
+import com.sparta.simulator.model.Trainee;
 
 import java.util.ArrayList;
 
@@ -8,14 +10,16 @@ public abstract class Centre {
     }
 
     private final int CAPACITY;
+    private final ArrayList<Trainee> traineeList;
+
     public ArrayList<Trainee> getTraineeList() {
         return traineeList;
     }
     protected Centre(int CAPACITY){
         this.CAPACITY = CAPACITY;
+        traineeList = new ArrayList<>();
     }
 
-    private ArrayList<Trainee> traineeList = new ArrayList();
 
     public boolean addTrainee(Trainee trainee){
         if (!isFull()){
