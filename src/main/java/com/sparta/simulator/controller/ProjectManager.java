@@ -25,48 +25,81 @@ public class ProjectManager {
                 throw new RuntimeException(e);
             }
             simulator = new Simulator(view.getUserTime());
-            // TODO create two variants, one for one month with iterator, one for all
             Intake intake= simulator.getIntake();
                 while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
                     simulator.run();
                     if (iterateMonths){
                         System.out.println("CURRENT MONTH :" + (simulator.getCurrentMonth()-1));
-                    System.out.println("______________Training hubs__________");
-                    view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullCentreNumByType("traininghub"));
-                    view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
-                    view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
-                    System.out.println("______________Boot camps__________");
-                    view.bootCampsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullCentreNumByType("bootcamp"));
-                    view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
-                    view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
-                    for (CourseType s : CourseType.values()) {
-                        System.out.println("______________" + s + " Tech centres__________");
-                        view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s.getCourseName());
-                        view.techCentresClosed(intake.getClosedTechCentreNumByType(s),s.getCourseName());
-                        view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s.getCourseName());
-                    }
-                        System.out.println("_____________WAITING LIST_________________");
-                    view.allWaitingCount(intake.getWaitingCount());
-                    view.waitForUser();
+                        if (intake.getCentreNumByType("traininghub")!=0||intake.getFullCentreNumByType("traininghub") != 0 || intake.getClosedCentresNumByType("traininghub") !=0 ) {
+                            System.out.println("______________Training hubs__________");
+                            view.centreDisplay(intake.getCentreNumByType("traininghub"), intake.getFullCentreNumByType("traininghub"));
+                            view.centreClosed(intake.getClosedCentresNumByType("traininghub"));
+                            if (intake.getCentreNumByType("traininghub")!=0) {
+                                view.centreTrainees(intake.getNumTraineesByCentreType("traininghub"));
+                            }
+                        }
+                        if (intake.getCentreNumByType("bootcamp")!=0||intake.getFullCentreNumByType("bootcamp") != 0 || intake.getClosedCentresNumByType("bootcamp") !=0 ) {
+                            System.out.println("______________Boot camps__________");
+                            view.centreDisplay(intake.getCentreNumByType("bootcamp"), intake.getFullCentreNumByType("bootcamp"));
+                            view.centreClosed(intake.getClosedCentresNumByType("bootcamp"));
+                            if (intake.getCentreNumByType("bootcamp")!=0) {
+                                view.centreTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                            }
+                        }
+                        for (CourseType s : CourseType.values()) {
+                            if (intake.getTechCentresNumByType(s) !=0 || intake.getFullTechCentresNumByType(s) !=0 || intake.getClosedTechCentreNumByType(s) !=0) {
+                                System.out.println("______________" + s + " Tech centres__________");
+                                view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s.getCourseName());
+                                view.techCentresClosed(intake.getClosedTechCentreNumByType(s), s.getCourseName());
+                                if (intake.getTechCentresTraineeNumByType(s) !=0) {
+                                    view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s.getCourseName());
+                                }
+                            }
+                        }
+                        if (intake.getWaitingCount() != 0) {
+                            System.out.println("_____________WAITING LIST_________________");
+                            view.allWaitingCount(intake.getWaitingCount());
+                            for ( CourseType s : CourseType.values()){
+                                view.waitingType(intake.getTraineeNumByType(s),s.getCourseName());
+                            }
+                        }
+                        view.waitForUser();
                     }
                  }
             System.out.println("____________Final readings_________");
+            if (intake.getCentreNumByType("traininghub")!=0||intake.getFullCentreNumByType("traininghub") != 0 || intake.getClosedCentresNumByType("traininghub") !=0 ) {
                 System.out.println("______________Training hubs__________");
-                view.trainingHubsDisplay(intake.getCentreNumByType("traininghub"),intake.getFullCentreNumByType("traininghub"));
-                view.trainingHubsClosed(intake.getClosedCentresNumByType("traininghub"));
-                view.trainingHubTrainees(intake.getNumTraineesByCentreType("traininghub"));
+                view.centreDisplay(intake.getCentreNumByType("traininghub"), intake.getFullCentreNumByType("traininghub"));
+                view.centreClosed(intake.getClosedCentresNumByType("traininghub"));
+                if (intake.getCentreNumByType("traininghub")!=0) {
+                    view.centreTrainees(intake.getNumTraineesByCentreType("traininghub"));
+                }
+            }
+            if (intake.getCentreNumByType("bootcamp")!=0||intake.getFullCentreNumByType("bootcamp") != 0 || intake.getClosedCentresNumByType("bootcamp") !=0 ) {
                 System.out.println("______________Boot camps__________");
-                view.bootCampsDisplay(intake.getCentreNumByType("bootcamp"),intake.getFullCentreNumByType("bootcamp"));
-                view.bootCampsClosed(intake.getClosedCentresNumByType("bootcamp"));
-                view.bootCampTrainees(intake.getNumTraineesByCentreType("bootcamp"));
-                for (CourseType s : CourseType.values()) {
+                view.centreDisplay(intake.getCentreNumByType("bootcamp"), intake.getFullCentreNumByType("bootcamp"));
+                view.centreClosed(intake.getClosedCentresNumByType("bootcamp"));
+                if (intake.getCentreNumByType("bootcamp")!=0) {
+                    view.centreTrainees(intake.getNumTraineesByCentreType("bootcamp"));
+                }
+            }
+            for (CourseType s : CourseType.values()) {
+                if (intake.getTechCentresNumByType(s) !=0 || intake.getFullTechCentresNumByType(s) !=0 || intake.getClosedTechCentreNumByType(s) !=0) {
                     System.out.println("______________" + s + " Tech centres__________");
                     view.techCentresDisplay(intake.getTechCentresNumByType(s), intake.getFullTechCentresNumByType(s), s.getCourseName());
-                    view.techCentresClosed(intake.getClosedTechCentreNumByType(s),s.getCourseName());
-                    view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s.getCourseName());
+                    view.techCentresClosed(intake.getClosedTechCentreNumByType(s), s.getCourseName());
+                    if (intake.getTechCentresTraineeNumByType(s) !=0) {
+                        view.techCentreTrainees(intake.getTechCentresTraineeNumByType(s), s.getCourseName());
+                    }
                 }
-            System.out.println("_____________WAITING LIST_________________");
-            view.allWaitingCount(intake.getWaitingCount());
+            }
+            if (intake.getWaitingCount() != 0) {
+                System.out.println("_____________WAITING LIST_________________");
+                view.allWaitingCount(intake.getWaitingCount());
+                for ( CourseType s : CourseType.values()){
+                    view.waitingType(intake.getTraineeNumByType(s),s.getCourseName());
+                }
+            }
             view.waitForUser();
             executeProgram=view.continueCheck();
         }
