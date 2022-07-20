@@ -34,7 +34,26 @@ public class Intake {
 	}
 
 
+	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
+		List<Trainee> tempList;
+		for (CourseType course : CourseType.values()){
+			for (Client client : clientList) {
+				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
 
+					tempList = benchList.get(course); //list of benched trainees relevant course
+					int traineesWanted = new Random().nextInt(1, 15); //takes between 1 and 15 trainees
+
+					traineesWanted = client.numToTake(traineesWanted); //doesn't allow more than they can handle
+					int index = 0;
+					while (tempList.size() > 0 && index < traineesWanted && index <= tempList.size() ){ // adds trainees here and removes from benchlist
+						client.addTrainee(tempList.remove(index));
+						index++;
+					}
+
+				}
+			}
+		}
+	}
 
 	public void removeUnsatClients() { //this runs at the end of the year
 		for (int i = 0; i < clientList.size() - 1; i++) { //check the "-1" here
