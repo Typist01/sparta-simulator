@@ -75,9 +75,12 @@ public class Intake {
 
 	public void benchTrainee() {
 		for (Centre centre : trainingCentres) {
-			for (Trainee trainee : centre.getTraineeList()) {
+			Iterator<Trainee> traineeIterator = centre.getTraineeList().iterator();
+			while (traineeIterator.hasNext()) {
+				Trainee trainee = traineeIterator.next();
 				if (trainee.getTimeTrained() == 3) {    //checks if training for 3 months
 					benchList.get(trainee.getType()).add(trainee);
+					traineeIterator.remove();
 				}
 			}
 		}
@@ -186,7 +189,6 @@ public class Intake {
 			}*/
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull() && waitingList.size() > 0) {
-					System.out.println(waitingList.size());
 					if (centre.acceptsTrainee(waitingList.peek())){
 						allFull = false;
 						if (random.nextBoolean() && waitingList.size() > 0) {

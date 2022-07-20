@@ -24,6 +24,9 @@ public abstract class Centre {
         }
         return false;
     }
+    public Trainee removeTrainee(int index){
+        return traineeList.remove(index);
+    }
 
     public int getNumOfTrainees(){
         return traineeList.size();
