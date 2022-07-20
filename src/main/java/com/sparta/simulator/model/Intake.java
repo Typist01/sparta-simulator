@@ -11,14 +11,14 @@ public class Intake {
 	private final ArrayList<Client> clientList;
 	private final HashMap<CourseType,List<Trainee>> benchList;
 
-	Intake(){
+	public Intake(){
 		trainingCentres = new ArrayList<>();
 		closedCentres = new ArrayList<>();
 		waitingList = new LinkedList<>();
 		clientList = new ArrayList<>();
 		benchList = new HashMap<>();
 		for (CourseType course:	CourseType.values() ) {
-			benchList.put(course,new ArrayList<>());
+			benchList.put(course,new LinkedList<>());
 		}
 	}
 
