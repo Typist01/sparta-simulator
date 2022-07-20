@@ -10,8 +10,8 @@ import java.util.*;
 public class Intake {
 	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private final Collection<Centre> trainingCentres;
-	private final Collection<Centre> closedCentres;
+	private final List<Centre> trainingCentres;
+	private final List<Centre> closedCentres;
 	private final Deque<Trainee> waitingList;
 	private final ArrayList<Client> clientList;
 	private final HashMap<CourseType, List<Trainee>> benchList;
@@ -74,13 +74,11 @@ public class Intake {
 		int numOfClients = new Random().nextInt(1, 5);
 
 		for (int i = 0; i < numOfClients; i++) {
-			int randTrainees = new Random().nextInt(15, 30); //for num of trainees
+			int randTrainees = RandGenerator.generateClientRequest(); //for num of trainees
 			int randCourse = new Random().nextInt(5); //for course type
 
 			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
 		}
-
-
 	}
 
 	public void incrementTimeTrained() {
@@ -193,9 +191,11 @@ public class Intake {
 		Random random = new Random();
 		boolean allFull = false;
 		Queue<Trainee> temp = new LinkedList<>();
+		Collections.shuffle(trainingCentres);
 		//DEBUG ______
 		//Queue <Trainee> debugQueue = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
+
 			allFull = true;
 			//DEBUG___
 			/*System.out.println(waitingList.peek());
@@ -207,7 +207,7 @@ public class Intake {
 				if (!centre.isFull() && waitingList.size() > 0) {
 					if (centre.acceptsTrainee(waitingList.peek())){
 						allFull = false;
-						if (random.nextBoolean() && waitingList.size() > 0) {
+						if (random.nextInt(4)==0 && waitingList.size() > 0) {
 							centre.addTrainee(waitingList.remove());
 						}
 					}
@@ -367,7 +367,7 @@ public class Intake {
 	public ArrayList<Client> getClientList() { //changing client list
 		return clientList;
 	}
-	public Collection<Centre> getTrainingCentres() {
+	public List<Centre> getTrainingCentres() {
 		return trainingCentres;
 	}
 	public Queue<Trainee> getWaitingList() {
