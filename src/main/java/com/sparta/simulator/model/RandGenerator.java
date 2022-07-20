@@ -21,6 +21,7 @@ public class RandGenerator {
             case 7,8 : return random.nextInt(10,35);    //20% chance for 10-35
             case 9 :return random.nextInt(5,50);        //10% chance for 5-50
         }
+        return 15;
     }
 
 }
