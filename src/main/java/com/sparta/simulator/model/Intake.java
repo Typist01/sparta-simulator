@@ -5,9 +5,7 @@ import java.util.*;
 public class Intake {
 	enum centres {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
-	public Collection<Centre> getTrainingCentres() {
-		return trainingCentres;
-	}
+
 
 	private final Collection<Centre> trainingCentres;
 	private final Collection<Centre> closedCentres;
@@ -257,9 +255,7 @@ public class Intake {
 	}
 
 
-	public int getClosedCentresNum() {
-		return closedCentres.size();
-	}
+
 	public int getClosedCentresNumByType(String centreType){
 		int sum = 0;
 		for (Centre centre: closedCentres){
@@ -316,6 +312,9 @@ public class Intake {
 		return sum;
 	}
 	//_______________GETTERS_______________
+	public Collection<Centre> getTrainingCentres() {
+		return trainingCentres;
+	}
 	public Queue<Trainee> getWaitingList() {
 		return waitingList;
 	}
@@ -329,7 +328,9 @@ public class Intake {
 	public void testAddCenter(Centre centre){
 		trainingCentres.add(centre);
 	}
-
+	public int getClosedCentresNum() {
+		return closedCentres.size();
+	}
 
 	public int getWaitingCount() {
 		return waitingList.size();
