@@ -5,11 +5,62 @@ import java.util.*;
 public class Intake {
 	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private  Collection<Centre> trainingCentres = new ArrayList();
-	private  Collection<Centre> closedCentres = new ArrayList();
-	private  Deque<Trainee> waitingList = new LinkedList<>();
+	private final Collection<Centre> trainingCentres;
+	private final Collection<Centre> closedCentres;
+	private final Deque<Trainee> waitingList;
+	private final ArrayList<Client> clientList;
+	private final HashMap<CourseType,List<Trainee>> benchList;
 
-	private  Collection<Trainee> benchedTrainee = new ArrayList<>();
+	public Intake(){
+		trainingCentres = new ArrayList<>();
+		closedCentres = new ArrayList<>();
+		clientList = new ArrayList<>();
+		benchList = new HashMap<>();
+		waitingList = new LinkedList<>();
+
+		for (CourseType course:	CourseType.values() ) {
+			benchList.put(course,new LinkedList<>());
+		}
+	}
+
+
+	public Collection<Centre> getClosedCentres() {
+		return closedCentres;
+	}
+
+	public ArrayList<Client> getClientList(){ return clientList; }
+
+	public void addClients(){
+		int randTrainees = new Random().nextInt(15,30); //for num of trainees
+		int randCourse = new Random().nextInt(5); //for
+
+		clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+
+	}
+
+	public void incrementTimeTrained(){
+		for (Centre centre : trainingCentres) {
+			for (Trainee trainee: centre.getTraineeList()) {
+				trainee.incrementTimeTrained();
+			}
+		}
+
+	}
+
+	public void benchTrainee(){
+		for (Centre centre: trainingCentres ) {
+			for (Trainee trainee: centre.getTraineeList()) {
+				if (trainee.getTimeTrained() == 3 ){	//checks if training for 3 months
+					benchList.get(trainee.getType()).add(trainee);
+				}
+			}
+		}
+	}
+
+	public int getWaitingCount() {
+		return waitingList.size();
+	}
+
 
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
@@ -140,27 +191,6 @@ public class Intake {
 		trainingCentres.removeAll(centresToBeClosed);
 
 	}
-	public void benchingTrainees(){
-		List<Trainee> traineesToBeBenched = new ArrayList<>();
-		for(Centre centre: trainingCentres){
-			for(Trainee trainee: centre.getTraineeList()){
-				if(trainee.finishedTraining()){
-					traineesToBeBenched.add(trainee);
-				}
-			}
-		}
-		benchedTrainee.addAll(traineesToBeBenched);
-		for(Centre centre: trainingCentres){
-			centre.getTraineeList().removeIf(Trainee::finishedTraining);
-		}
-	}
-
-
-
-
-
-
-
 
 	private List<Centre> getOpenCentres() {
 		List<Centre> openCentres = new ArrayList();
@@ -227,11 +257,11 @@ public class Intake {
 		return sum;
 	}
 
-	public int getClosedTechCentreNumByType(String techCentreType){
+	public int getClosedTechCentreNumByType(CourseType techCentreType){
 		int sum = 0;
 		for (Centre centre: closedCentres){
 			if (centre instanceof TechCenter techCenter) {
-				if(techCenter.getTechType().equalsIgnoreCase(techCentreType)){
+				if(techCenter.getTechType().equals(techCentreType)){
 					sum ++;
 				}
 				}
@@ -239,34 +269,34 @@ public class Intake {
 		return sum;
 	}
 
-	public int getTechCentresTraineeNumByType(String centreType) {
+	public int getTechCentresTraineeNumByType(CourseType centreType) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
-				if (techCenter.getTechType().equalsIgnoreCase(centreType))
+				if (techCenter.getTechType().equals(centreType))
 					sum += techCenter.getNumOfTrainees();
 			}
 		}
 		return sum;
 	}
 
-	public int getFullTechCentresNumByType(String centreType) {
+	public int getFullTechCentresNumByType(CourseType centreType) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
-				if (techCenter.isFull() && techCenter.getTechType().equalsIgnoreCase(centreType))
+				if (techCenter.isFull() && techCenter.getTechType().equals(centreType))
 					sum++;
 			}
 		}
 		return sum;
 	}
 
-	public int getTechCentresNumByType(String centreType) {
+	public int getTechCentresNumByType(CourseType centreType) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof TechCenter techCenter) {
 
-				if (techCenter.getTechType().equalsIgnoreCase(centreType))
+				if (techCenter.getTechType().equals(centreType))
 					sum++;
 			}
 		}

@@ -26,11 +26,11 @@ public class  Simulator {
 	public void tick(){
 		//Generate new Trainees through intake.
 		intake.addTraineeGroup();
-
-		Queue<Trainee> temp = intake.getWaitingList();
 		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
-		intake.benchingTrainees();
+		if (currentMonth > 12){
+			//generate 1 to 5 Clients
+		}
 
 	}
 
@@ -43,6 +43,9 @@ public class  Simulator {
 			}
 		tick();
 		currentMonth++;
+		intake.incrementTimeTrained(); //for incrementing trainee months trained
+		intake.benchTrainee();
+
 		this.totalTrainees=intake.numOfTotalTrainees();
 		this.openCenters=intake.numOfOpenCentres();
 		this.waitingList=intake.getWaitingCount();

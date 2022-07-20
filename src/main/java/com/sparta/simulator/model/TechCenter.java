@@ -5,21 +5,15 @@ import java.util.Random;
 
 public class TechCenter extends Centre{
 
-    private final String techType;
+    private final CourseType techType;
     private int trainees = 0;
 
     private final ArrayList<Trainee> list = getTraineeList();
 
-    TechCenter(){
+    TechCenter() {
         Random rand = new Random();
         int num = rand.nextInt(5);
-        ArrayList<String> list = new ArrayList<>();
-        list.add("Java");
-        list.add("C#");
-        list.add("Data");
-        list.add("DevOps");
-        list.add("Business");
-        this.techType = list.get(num);
+        this.techType = CourseType.values()[num];
     }
 
     @Override
@@ -40,9 +34,9 @@ public class TechCenter extends Centre{
         // DEBUG CODE
         //try {
 
-            if (trainee.getType().equalsIgnoreCase(this.techType)) {
-                return true;
-            } else return false;
+           // if (trainee.getType().equalsIgnoreCase(this.techType)) {
+             //   return true;
+            //} else return false;
         //}
 //        catch (Exception e){
 //            System.out.println(trainee);
@@ -50,9 +44,10 @@ public class TechCenter extends Centre{
 //            e.printStackTrace();
 //        }
 //        //return false;
+        return trainee.getType().equals(this.techType);
     }
 
-    public String getTechType(){
+    public CourseType getTechType(){
         return techType;
     }
 }
