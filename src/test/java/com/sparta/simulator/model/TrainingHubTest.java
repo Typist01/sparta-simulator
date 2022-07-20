@@ -1,9 +1,8 @@
 package com.sparta.simulator.model;
 
+import com.sparta.simulator.model.centres.TrainingHub;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TrainingHubTest {
 

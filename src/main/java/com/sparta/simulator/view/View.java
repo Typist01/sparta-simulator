@@ -33,7 +33,18 @@ public class View {
     public void introduction(){
         System.out.println("Welcome to the sparta simulator!!\n\nthis program is designed to simulate operations at Sparta Global");
     }
-    // requires a list containing all trainees tha have not yet been assigned to a placement
+    //___________CLIENTS_________
+    public void allClients(int clientCount){
+        System.out.println("Current  : " + clientCount);
+    }
+    public void happyClients(int clientCount){
+        System.out.println("Satisfied: " + clientCount);
+    }
+    public void sadClients(int clientCount){
+        System.out.println("Left     : " + clientCount);
+    }
+
+    //_______WAITING LIST___________
     public void allWaitingCount(int waitingTrainees){
         String temp = "total";
         temp = String.format("%-9s",temp);
@@ -47,7 +58,7 @@ public class View {
 
     //________________**READOUTS FOR EACH CENTRE**_________________
 
-    //___________GENERIC___________________
+    //___________TRAINING HUB / BOOT CAMP___________________
     public void centreDisplay(int totalCentres, int fullCentres){
         System.out.println("Open         : " + totalCentres + "\n" +
                 "Full         : " + fullCentres);
