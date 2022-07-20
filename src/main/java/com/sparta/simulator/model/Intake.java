@@ -286,10 +286,6 @@ public class Intake {
 	}
 
 
-	public int getClosedCentresNum() {
-		return closedCentres.size();
-	}
-
 	public int getClosedCentresNumByType(String centreType) {
 		int sum = 0;
 		for (Centre centre : closedCentres) {
