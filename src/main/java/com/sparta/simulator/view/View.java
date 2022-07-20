@@ -35,10 +35,14 @@ public class View {
     }
     // requires a list containing all trainees tha have not yet been assigned to a placement
     public void allWaitingCount(int waitingTrainees){
-        System.out.println("total awaiting placement: " + waitingTrainees );
+        String temp = "total";
+        temp = String.format("%-9s",temp);
+        System.out.println(temp + ": " + waitingTrainees );
     }
     public void waitingType(int waitingTrainees, String type){
-        System.out.println(type + " Trainees waiting "  + waitingTrainees);
+        String temp = (type);
+        temp = String.format("%-9s",temp);
+        System.out.println(temp + ": " + waitingTrainees);
     }
 
     //________________**READOUTS FOR EACH CENTRE**_________________
@@ -68,38 +72,38 @@ public class View {
 
     //_________TRAINING HUB_________
     public void trainingHubsDisplay(int totalCentres, int fullCentres){
-        System.out.println("Training hubs: " + totalCentres + "\n" +
-                "Full training hubs: " + fullCentres);
+        System.out.println("Open         : " + totalCentres + "\n" +
+                "Full         : " + fullCentres);
     }
     public void trainingHubTrainees(int traineeCount){
-        System.out.println("Training hub total trainee count: " + traineeCount );
+        System.out.println("trainee count: " + traineeCount );
     }
     public void trainingHubsClosed (int closedCount){
-            System.out.println("Training hubs closed: " + closedCount);
+        System.out.println("closed       : " + closedCount);
     }
 
     // _______BOOTCAMP___________
     public void bootCampsDisplay(int totalCentres, int fullCentres) {
-        System.out.println("Boot camps: " + totalCentres + "\n" +
-                "Full boot camps: " + fullCentres);
+        System.out.println("Open         : " + totalCentres + "\n" +
+                "Full         : " + fullCentres);
     }
     public void bootCampTrainees(int traineeCount){
-        System.out.println("Boot camp total trainee count: " + traineeCount );
+        System.out.println("trainee count: " + traineeCount );
     }
     public void bootCampsClosed (int closedCount){
-        System.out.println("Boot camps closed: " + closedCount);
+        System.out.println("closed       : " + closedCount);
     }
 
     //________TECH CENTRE_________
     public void techCentresDisplay(int totalCentres, int fullCentres , String type){
-        System.out.println(type +" tech centres: " + totalCentres + "\n" +
-                "Full "+type+" tech centres: " + fullCentres);
+        System.out.println("Open         : " + totalCentres + "\n" +
+                "Full         : " + fullCentres);
     }
     public void techCentreTrainees(int traineeCount , String type){
-        System.out.println(type+ " tech centre total trainee count: " + traineeCount );
+        System.out.println("trainee count: " + traineeCount );
     }
     public void techCentresClosed (int closedCount, String type){
-        System.out.println(type + " tech centres closed: " + closedCount);
+        System.out.println("closed       : " + closedCount);
     }
 
     //__________________________INPUT FUNCTIONS_______________________________ called by functions above
