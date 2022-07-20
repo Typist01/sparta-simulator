@@ -362,9 +362,6 @@ public class Intake {
 
 	public Collection<Centre> getCenters(){return trainingCentres;}
 
-	public void testAddCenter(Centre centre){
-		trainingCentres.add(centre);
-	}
 	public void testAddClosedCenter(Centre center){
 		closedCentres.add(center);
 	}
