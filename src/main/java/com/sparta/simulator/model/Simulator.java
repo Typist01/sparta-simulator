@@ -30,6 +30,7 @@ public class  Simulator {
 		Queue<Trainee> temp = intake.getWaitingList();
 		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
+		intake.benchingTrainees();
 
 	}
 

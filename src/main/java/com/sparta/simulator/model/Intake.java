@@ -5,9 +5,21 @@ import java.util.*;
 public class Intake {
 	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private Collection<Centre> trainingCentres = new ArrayList();
-	private Collection<Centre> closedCentres = new ArrayList();
-	private Queue<Trainee> waitingList = new LinkedList<>();
+	private final Collection<Centre> trainingCentres = new ArrayList();
+	private final Collection<Centre> closedCentres = new ArrayList();
+	private final Deque<Trainee> waitingList = new LinkedList<>();
+
+	private final Collection<Trainee> benchedTrainee = new ArrayList<>();
+
+	public Collection<Centre> getClosedCentres() {
+		return closedCentres;
+	}
+
+
+	public int getWaitingCount() {
+		return waitingList.size();
+	}
+
 
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
@@ -132,9 +144,33 @@ public class Intake {
 				centresToBeClosed.add(centre);
 			}
 		}
+		for(Trainee trainee:spareTrainees){
+			waitingList.addFirst(trainee);
+		}
 		trainingCentres.removeAll(centresToBeClosed);
-		waitingList.addAll(spareTrainees);
+
 	}
+	public void benchingTrainees(){
+		List<Trainee> traineesToBeBenched = new ArrayList<>();
+		for(Centre centre: trainingCentres){
+			for(Trainee trainee: centre.getTraineeList()){
+				if(trainee.finishedTraining()){
+					traineesToBeBenched.add(trainee);
+				}
+			}
+		}
+		benchedTrainee.addAll(traineesToBeBenched);
+		for(Centre centre: trainingCentres){
+			centre.getTraineeList().removeIf(Trainee::finishedTraining);
+		}
+	}
+
+
+
+
+
+
+
 
 	private List<Centre> getOpenCentres() {
 		List<Centre> openCentres = new ArrayList();
