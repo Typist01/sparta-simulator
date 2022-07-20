@@ -51,6 +51,15 @@
     - number of trainees currently training (breakdown for each type)
     - number of trainees on the waiting list (breakdown for each type)
 
+**Phase Three**
+- If a trainee has been in training for 3 months, they are moved to a bench state.
+- Clients will begin to be randomly created after 1 year of the simulation.
+- A client will have a requirement when they are created (for example, a need for 27 Java trainees). The requirement can be any value greater than or equal to 15.
+- A client will take a random number of trainees from the bench each month (1 - full requirement) until their requirement is met.
+- A client will only take one type of trainee (Java, C#, Data, DevOps or Business).
+- If a client does not collect enough trainees from the bench within a year, they will leave unhappy.
+- If a client does collect enough trainees from the bench within a year, they will leave happy and return the next year with the same requirement.
+
 **SOLUTION**
 We completed the tasks the where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
