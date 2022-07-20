@@ -27,8 +27,6 @@ public class  Simulator {
 	public void tick(){
 		//Generate new Trainees through intake.
 		intake.addTraineeGroup();
-
-		List <Centre> temp1 = intake.getTrainingCentres();
 		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
 		if (currentMonth > 12){
