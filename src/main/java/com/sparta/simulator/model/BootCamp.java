@@ -41,4 +41,9 @@ public class BootCamp extends Centre {
 
 	}
 
+	@Override
+	boolean acceptsTrainee(Trainee trainee) {
+		return true;
+	}
+
 }

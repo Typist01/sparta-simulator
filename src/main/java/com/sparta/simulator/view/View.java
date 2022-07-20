@@ -18,10 +18,6 @@ public class View {
 
     // this function will return true if the user wishes to iterate over every month
     public boolean iterateEveryMonthCheck(){
-        System.out.println("""
-                Would you like to
-                1. iterate per month and receive a full readout each month
-                2. complete the simulation and receive readouts only on the final month?""");
         return switch (UserChoiceModule.getOperationType()) {
             case 1 -> true;
             case 2 -> false;
@@ -38,10 +34,10 @@ public class View {
         System.out.println("Welcome to the sparta simulator!!\n\nthis program is designed to simulate operations at Sparta Global");
     }
     // requires a list containing all trainees tha have not yet been assigned to a placement
-    public void AllWaitingCount(int waitingTrainees){
+    public void allWaitingCount(int waitingTrainees){
         System.out.println(" there are currently " + waitingTrainees + " trainees waiting for a placement");
     }
-    public void WaitingType(int waitingTrainees, String type){
+    public void waitingType(int waitingTrainees, String type){
         System.out.println(" there are currently " + waitingTrainees + " " + type + "trainees waiting for a placement");
     }
 
@@ -140,7 +136,7 @@ public class View {
 
     //__________________________INPUT FUNCTIONS_______________________________ called by functions above
      static class UserChoiceModule{
-        public static int getUserMonths(){
+        public static int getOperationType(){
             // boolean to hold while loop
             boolean userChoosing=true;
             Scanner scanner = new Scanner(System.in);
@@ -159,7 +155,7 @@ public class View {
             }
             return  userValue;
         }
-        public static int getOperationType(){
+        public static int getUserMonths(){
             // boolean to hold while loop
             boolean userChoosing=true;
             Scanner scanner = new Scanner(System.in);
