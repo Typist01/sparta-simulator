@@ -91,8 +91,16 @@ public class Intake {
 		Random random = new Random();
 		boolean allFull = false;
 		Queue <Trainee> temp = new LinkedList<>();
+		//DEBUG ______
+		//Queue <Trainee> debugQueue = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
 			allFull = true;
+			//DEBUG___
+			/*System.out.println(waitingList.peek());
+			if (waitingList.peek()==null){
+				System.out.println("There was a null trainess");
+				debugQueue.add(waitingList.remove());
+			}*/
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull()) {
 					if (centre.acceptsTrainee(waitingList.peek())){
