@@ -2,6 +2,7 @@ package com.sparta.simulator;
 
 import com.sparta.simulator.model.Intake;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Array;
