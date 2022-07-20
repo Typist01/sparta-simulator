@@ -45,8 +45,8 @@ public class Intake {
 
 					traineesWanted = client.numToTake(traineesWanted); //doesn't allow more than they can handle
 					int index = 0;
-					while (tempList.size() > 0 && index < traineesWanted && index <= tempList.size() ){ // adds trainees here and removes from benchlist
-						client.addTrainee(tempList.remove(index));
+					while (tempList.size() > 0 && index < traineesWanted && index < tempList.size() ){ // adds trainees here and removes from benchlist
+						client.addTrainee(tempList.remove(0));
 						index++;
 					}
 
