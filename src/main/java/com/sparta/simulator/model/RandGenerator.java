@@ -23,5 +23,4 @@ public class RandGenerator {
         }
         return 15;
     }
-
 }
