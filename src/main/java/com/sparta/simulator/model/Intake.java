@@ -102,7 +102,8 @@ public class Intake {
 				debugQueue.add(waitingList.remove());
 			}*/
 			for (Centre centre : trainingCentres) {
-				if (!centre.isFull()) {
+				if (!centre.isFull() && waitingList.size() > 0) {
+					System.out.println(waitingList.size());
 					if (centre.acceptsTrainee(waitingList.peek())){
 						allFull = false;
 						if (random.nextBoolean() && waitingList.size() > 0) {
