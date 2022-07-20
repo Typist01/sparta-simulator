@@ -55,7 +55,7 @@ public class Intake {
 		int numOfClients = new Random().nextInt(1, 5);
 
 		for (int i = 0; i < numOfClients; i++) {
-			int randTrainees = new Random().nextInt(15, 30); //for num of trainees
+			int randTrainees = RandGenerator.generateClientRequest(); //for num of trainees
 			int randCourse = new Random().nextInt(5); //for course type
 
 			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
@@ -186,7 +186,6 @@ public class Intake {
 			}*/
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull() && waitingList.size() > 0) {
-					System.out.println(waitingList.size());
 					if (centre.acceptsTrainee(waitingList.peek())){
 						allFull = false;
 						if (random.nextBoolean() && waitingList.size() > 0) {
