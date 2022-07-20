@@ -1,5 +1,7 @@
 package com.sparta.simulator;
 
+import com.sparta.simulator.model.*;
+import org.junit.jupiter.api.Assertions;
 import com.sparta.simulator.model.centres.Centre;
 import com.sparta.simulator.model.Intake;
 import com.sparta.simulator.model.Trainee;
@@ -8,6 +10,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,11 +31,15 @@ class IntakeTest {
         Intake intake = new Intake();
         for (int i = 0; i < 100; i++) {
             intake.addTraineeGroup();
-            assertTrue(intake.getWaitingCount() >= 50 && intake.getWaitingCount()<=100);
+           Assertions.assertTrue(intake.getWaitingCount() >= 50 && intake.getWaitingCount()<=100);
         }
     }
     @Test
     void testGenerateCentre(){
+        Intake intake = new Intake();
+        System.out.println(intake.getTrainingCentres());
+        intake.createCentresRandomly();
+        System.out.println(intake.getTrainingCentres());
 
     }
     
@@ -45,6 +57,47 @@ class IntakeTest {
         }
         intake.testAddCenter(hub);
         Assertions.assertEquals(1,intake.getFullCentres().size());
+    }
+
+    @Test
+    @DisplayName("Testing full centers by type")
+    void testingNumFullCentersByType(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        int i = 0;
+        while(i<100){
+            hub.addTrainee(new Trainee());
+            i++;
+        }
+        intake.testAddCenter(hub);
+        Assertions.assertEquals(1,intake.getFullCentreNumByType("TrainingHub"));
+    }
+    @Test
+    @DisplayName("Testing get centre num by type")
+    void testGetNumOfTraineesByCenterType(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        int i = 0;
+        while (i<50){
+            hub.addTrainee(new Trainee());
+            i++;
+        }
+        intake.testAddCenter(hub);
+        Assertions.assertEquals(50,intake.getNumTraineesByCentreType("TrainingHub"));
+    }
+    @Test
+    @DisplayName("Testing number of closed centers and by type")
+    void testNumClosedCenters(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        TrainingHub hub2 = new TrainingHub();
+        TrainingHub hub3 = new TrainingHub();
+        intake.testAddClosedCenter(hub);
+        intake.testAddClosedCenter(hub2);
+        intake.testAddClosedCenter(hub3);
+        Assertions.assertEquals(3,intake.getClosedCentresNum());
+        Assertions.assertEquals(3,intake.getClosedCentresNumByType("TrainingHub"));
+
     }
 
 

@@ -186,6 +186,7 @@ public class Intake {
 			}*/
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull() && waitingList.size() > 0) {
+					System.out.println(waitingList.size());
 					if (centre.acceptsTrainee(waitingList.peek())){
 						allFull = false;
 						if (random.nextBoolean() && waitingList.size() > 0) {
@@ -336,7 +337,6 @@ public class Intake {
 		}
 		return sum;
 	}
-
 	//_______________GETTERS_______________
 	public ArrayList<Client> getHappyList() {
 		return happyList;
@@ -362,6 +362,9 @@ public class Intake {
 
 	public Collection<Centre> getCenters(){return trainingCentres;}
 
+	public void testAddClosedCenter(Centre center){
+		closedCentres.add(center);
+	}
 
 	public int getClosedCentresNum() {
 		return closedCentres.size();
