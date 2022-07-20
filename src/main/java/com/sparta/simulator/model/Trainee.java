@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Trainee {
     private String courseType;
+    private int monthsTrained = 0;
 
     public Trainee(){
         int randomNum = new Random().nextInt(5);
@@ -32,6 +33,12 @@ public class Trainee {
 //    Trainee(String courseType){
 //        courseType = courseType
 //    }
+    public void incrementTimeTrained(){
+        monthsTrained++;
+    }
+    public int getTimetrained(){
+        return monthsTrained;
+    }
     public String getType() {
         return courseType;
     }
