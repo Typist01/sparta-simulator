@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Client {
-	private int maxTrainees;
+	private final int maxTrainees;
 	private final ArrayList<Trainee> currentTrainees = new ArrayList();
-	private CourseType courseType;
+	private final CourseType courseType;
 
 	public Client(CourseType courseType, int amountOfTrainees){ //amountOfTrainees should be >= 15
 		this.courseType = courseType;

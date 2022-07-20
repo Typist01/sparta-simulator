@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Queue;
 
 public class  Simulator {
-	private Intake intake;
+	private final Intake intake;
 
 	private int totalTrainees;
 	private int waitingList;
@@ -13,7 +13,7 @@ public class  Simulator {
 
 	private final int CENTRE_GENERATION_INTERVAL = 2; // centre generation interval (months) times 4 we are working in weeks, 4 weeks in a month,
 	// about the
-	private int totalDuration; // Total duration of the simulation (months).
+	private final int totalDuration; // Total duration of the simulation (months).
 	private int currentMonth=1;
 
 

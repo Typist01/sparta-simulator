@@ -10,6 +10,9 @@ public class Intake {
 	private final Deque<Trainee> waitingList;
 	private final ArrayList<Client> clientList;
 	private final HashMap<CourseType, List<Trainee>> benchList;
+	private final ArrayList<Client> happyList;
+	private final ArrayList<Client> unHappyList;
+
 
 	public Intake() {
 		trainingCentres = new ArrayList<>();
@@ -17,35 +20,37 @@ public class Intake {
 		clientList = new ArrayList<>();
 		benchList = new HashMap<>();
 		waitingList = new LinkedList<>();
+		happyList = new ArrayList<>();
+		unHappyList = new ArrayList<>();
 
 		for (CourseType course : CourseType.values()) {
 			benchList.put(course, new LinkedList<>());
 		}
 	}
 
+	public ArrayList<Client> getHappyList() {
+		return happyList;
+	}
 
-	public ArrayList<Client> getClientList() {
+	public ArrayList<Client> getUnHappyList() {
+		return unHappyList;
+	}
+
+	public ArrayList<Client> getClientList() { //changing client list
 		return clientList;
 	}
 
 
 	public void removeUnsatClients() { //this runs at the end of the year
-		/*for(Client client : clientList){
-			if (!client.checkSatisfaction()){
-				//remove unhappy clients, maybe add them to an unhappy list later on
-
-			} else {
-				//clear client's currentTrainees
-				client.clearTrainees();
-			}
-		}*/
 		for (int i = 0; i < clientList.size() - 1; i++) { //check the "-1" here
 			Client client = clientList.get(i);
 			if (!client.checkSatisfaction()) {
 				//remove unhappy clients, maybe add them to an unhappy list later on
+				unHappyList.add(client);
 				clientList.remove(i);
 			} else {
-				//clear client's currentTrainees
+				//clear happy client's currentTrainees, maybe add to a happy list
+				happyList.add(client);
 				client.clearTrainees();
 			}
 		}
@@ -104,7 +109,7 @@ public class Intake {
 		} else if (centreType.equals(CentresEnum.TECH_CENTRE)) {
 			addCentre(new TechCenter());
 		} else if (centreType.equals(CentresEnum.BOOTCAMP)) {
-			if (numOfBootCamps() <= 2) {
+			if (numOfBootCamps() < 2) {
 				addCentre(new BootCamp());
 			} else {
 				int rand = new Random().nextInt(2);
@@ -235,7 +240,7 @@ public class Intake {
 	private List<Centre> getFullCentres() {
 		List<Centre> fullCentres = new ArrayList();
 		for (Centre centre : trainingCentres) {
-			if (!centre.isFull()) {
+			if (centre.isFull()) {
 				fullCentres.add(centre);
 			}
 		}

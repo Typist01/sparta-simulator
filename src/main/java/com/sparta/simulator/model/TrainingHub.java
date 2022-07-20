@@ -6,14 +6,9 @@ public class TrainingHub extends Centre{
 //can train a maximum of 100 trainees, but 3 (randomly 1-3) can be opened at a time each month.
     private final ArrayList<Trainee> list = getTraineeList();
 
-    public void addTrainee(Trainee t){
-            //TrainingHub.super.traineeList.add(t);
-            list.add(t);
+    protected TrainingHub() {
+        super(100);
     }
-
-
-    boolean isFull(){
-        return list.size() >= 100 ; }
 
     @Override
     boolean acceptsTrainee(Trainee trainee) {
