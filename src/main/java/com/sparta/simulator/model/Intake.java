@@ -60,8 +60,6 @@ public class Intake {
 
 			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
 		}
-
-
 	}
 
 	public void incrementTimeTrained() {
@@ -350,7 +348,7 @@ public class Intake {
 	public ArrayList<Client> getClientList() { //changing client list
 		return clientList;
 	}
-	public Collection<Centre> getTrainingCentres() {
+	public List<Centre> getTrainingCentres() {
 		return trainingCentres;
 	}
 	public Queue<Trainee> getWaitingList() {
