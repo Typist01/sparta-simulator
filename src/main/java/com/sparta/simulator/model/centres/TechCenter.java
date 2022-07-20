@@ -1,12 +1,14 @@
-package com.sparta.simulator.model;
+package com.sparta.simulator.model.centres;
 
-import java.util.ArrayList;
+import com.sparta.simulator.model.CourseType;
+import com.sparta.simulator.model.Trainee;
+
 import java.util.Random;
 
 public class TechCenter extends Centre{
 
     private final CourseType techType;
-    TechCenter() {
+    public TechCenter() {
         super(200);
         Random rand = new Random();
         int num = rand.nextInt(5);

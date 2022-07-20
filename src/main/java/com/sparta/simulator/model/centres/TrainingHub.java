@@ -1,6 +1,4 @@
-package com.sparta.simulator.model;
-
-import java.util.ArrayList;
+package com.sparta.simulator.model.centres;
 
 public class TrainingHub extends Centre {
 	public TrainingHub() {

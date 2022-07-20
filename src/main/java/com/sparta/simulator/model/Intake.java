@@ -1,5 +1,10 @@
 package com.sparta.simulator.model;
 
+import com.sparta.simulator.model.centres.BootCamp;
+import com.sparta.simulator.model.centres.Centre;
+import com.sparta.simulator.model.centres.TechCenter;
+import com.sparta.simulator.model.centres.TrainingHub;
+
 import java.util.*;
 
 public class Intake {

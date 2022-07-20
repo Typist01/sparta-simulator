@@ -1,5 +1,6 @@
 package com.sparta.simulator.model;
 
+import com.sparta.simulator.model.centres.BootCamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,15 +1,15 @@
 package com.sparta.simulator.model;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Client {
 	private final int maxTrainees;
-	private final ArrayList<Trainee> currentTrainees = new ArrayList();
+	private final ArrayList<Trainee> traineeList;
 	private final CourseType courseType;
 
 	public Client(CourseType courseType, int amountOfTrainees){ //amountOfTrainees should be >= 15
 		this.courseType = courseType;
+		this.traineeList = new ArrayList<>();
 		maxTrainees = amountOfTrainees;
 
 	}
@@ -26,16 +26,16 @@ public class Client {
 	}*/
 
 	void clearTrainees(){
-		currentTrainees.clear();
+		traineeList.clear();
 	}
 
 	boolean checkSatisfaction(){	//check after a year //if true they come back next year
-		return currentTrainees.size() == maxTrainees;
+		return traineeList.size() == maxTrainees;
 	}
 
 	boolean addTrainee(Trainee trainee){
-		if (maxTrainees >= currentTrainees.size() && trainee.getType().equals(courseType)) {
-			return currentTrainees.add(trainee);
+		if (maxTrainees >= traineeList.size() && trainee.getType().equals(courseType)) {
+			return traineeList.add(trainee);
 		}else {
 			return false;
 		}
