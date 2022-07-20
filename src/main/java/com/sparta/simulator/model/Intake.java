@@ -147,6 +147,7 @@ public class Intake {
 
 
 	public void addWaitingTraineesToCentre() {
+		Collections.shuffle(trainingCentres);
 		Random random = new Random();
 		boolean allFull = false;
 		Queue <Trainee> temp = new LinkedList<>();
