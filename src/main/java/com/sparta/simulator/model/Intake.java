@@ -195,10 +195,10 @@ public class Intake {
 		return openCentres;
 	}
 
-	private List<Centre> getFullCentres() {
+	public List<Centre> getFullCentres() {
 		List<Centre> fullCentres = new ArrayList();
 		for (Centre centre : trainingCentres) {
-			if (!centre.isFull()) {
+			if (centre.isFull()) {
 				fullCentres.add(centre);
 			}
 		}
@@ -302,6 +302,12 @@ public class Intake {
 
 	public Collection<Centre> getClosedCentres() {
 		return closedCentres;
+	}
+
+	public Collection<Centre> getCenters(){return trainingCentres;}
+
+	public void testAddCenter(Centre centre){
+		trainingCentres.add(centre);
 	}
 
 
