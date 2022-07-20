@@ -3,7 +3,7 @@ package com.sparta.simulator.model;
 import java.util.*;
 
 public class Intake {
-	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
+	enum CentresEnum {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
 	private final Collection<Centre> trainingCentres;
 	private final Collection<Centre> closedCentres;
@@ -26,11 +26,22 @@ public class Intake {
 
 	public ArrayList<Client> getClientList(){ return clientList; }
 
-	public void addClients(){
-		int randTrainees = new Random().nextInt(15,30); //for num of trainees
-		int randCourse = new Random().nextInt(5); //for
 
-		clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+
+	public void removeUnsatClients(){
+
+	}
+
+	public void addClients(){ // 1 to 5 clients per month
+		int numOfClients = new Random().nextInt(1,5);
+
+		for (int i = 0; i < numOfClients; i++) {
+			int randTrainees = new Random().nextInt(15,30); //for num of trainees
+			int randCourse = new Random().nextInt(5); //for course type
+
+			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+		}
+
 
 	}
 
@@ -56,7 +67,7 @@ public class Intake {
 
 
 	//returns centre object
-	Centre generateCentre(centres centreType) throws GenerateCentreException {
+	Centre generateCentre(CentresEnum centreType) throws GenerateCentreException {
 		return switch (centreType) {
 			case TRAINEE_HUB -> new TrainingHub();
 			case BOOTCAMP -> new BootCamp();
@@ -66,7 +77,7 @@ public class Intake {
 	}
 
 	// adds centre to list
-	public void addCentre(centres name) {
+	public void addCentre(CentresEnum name) {
 		try {
 			trainingCentres.add(generateCentre(name));
 		} catch (GenerateCentreException e) {
@@ -77,20 +88,26 @@ public class Intake {
 	// create new centres
 	public void createCentresRandomly() {
 		int randNum = new Random().nextInt(3);
-		centres name;
+		CentresEnum name;
 		switch (randNum) {
 			case (0):
-				name = centres.TRAINEE_HUB;
+				name = CentresEnum.TRAINEE_HUB;
 				int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
 				for (int i = 0; i < centreNum; i++) {
 					addCentre(name);
 				}
 			case (1):
-				name = centres.BOOTCAMP;
+				name = CentresEnum.BOOTCAMP;
 				addCentre(name);
 			case (2):
-				name = centres.TECH_CENTRE;
+				name = CentresEnum.TECH_CENTRE;
 				addCentre(name);
+		}
+	}
+
+	private int numOfBootCamps(){
+		for (Centre centre:trainingCentres ) {
+
 		}
 	}
 
