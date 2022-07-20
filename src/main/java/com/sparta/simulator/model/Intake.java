@@ -5,20 +5,9 @@ import java.util.*;
 public class Intake {
 	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private final Collection<Centre> trainingCentres = new ArrayList();
-	private final Collection<Centre> closedCentres = new ArrayList();
-	private final Queue<Trainee> waitingList = new LinkedList<>();
-
-
-	public Collection<Centre> getClosedCentres() {
-		return closedCentres;
-	}
-
-
-	public int getWaitingCount() {
-		return waitingList.size();
-	}
-
+	private Collection<Centre> trainingCentres = new ArrayList();
+	private Collection<Centre> closedCentres = new ArrayList();
+	private Queue<Trainee> waitingList = new LinkedList<>();
 
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
@@ -101,18 +90,26 @@ public class Intake {
 	public void addWaitingTraineesToCentre() {
 		Random random = new Random();
 		boolean allFull = false;
+		Queue <Trainee> temp = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
 			allFull = true;
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull()) {
-					allFull = false;
 					if (centre.acceptsTrainee(waitingList.peek())){
+						allFull = false;
 						if (random.nextBoolean() && waitingList.size() > 0) {
 							centre.addTrainee(waitingList.remove());
 						}
 					}
 				}
 			}
+			if (waitingList.size() > 0 && allFull){
+				temp.add(waitingList.remove());
+				allFull=false;
+			}
+		}
+		while (temp.size()>0){
+			waitingList.add(temp.remove());
 		}
 	}
 
@@ -240,5 +237,17 @@ public class Intake {
 		}
 		return sum;
 	}
+	//_______________GETTERS_______________
+	public Queue<Trainee> getWaitingList() {
+		return waitingList;
+	}
 
+	public Collection<Centre> getClosedCentres() {
+		return closedCentres;
+	}
+
+
+	public int getWaitingCount() {
+		return waitingList.size();
+	}
 }
