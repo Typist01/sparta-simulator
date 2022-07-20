@@ -9,6 +9,11 @@
 
 ### TASK
 
+**User**
+This is how to use the program.
+Firt you run main, you are 
+
+
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
 
 **Phase One**
@@ -72,5 +77,5 @@ after examination.
 **SOLUTION**
 We completed the tasks the where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
-The main issue here is that the trainee are distributed equally across all centers. The way we are going around to fixing that ...
+The main issue here is that the trainee are distributed equally across all centers. 
 
