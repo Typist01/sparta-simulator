@@ -20,4 +20,9 @@ public class TrainingHub extends Centre{
         return false;
     }
 
+    public ArrayList<Trainee> getList(){
+        return list;
+    }
+
+
 }

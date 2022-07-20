@@ -3,7 +3,11 @@ package com.sparta.simulator.model;
 import java.util.*;
 
 public class Intake {
-	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
+	enum centres {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
+
+	public Collection<Centre> getTrainingCentres() {
+		return trainingCentres;
+	}
 
 	private final Collection<Centre> trainingCentres;
 	private final Collection<Centre> closedCentres;
@@ -58,7 +62,7 @@ public class Intake {
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
 		return switch (centreType) {
-			case TRAINEE_HUB -> new TrainingHub();
+			case TRAINING_HUB -> new TrainingHub();
 			case BOOTCAMP -> new BootCamp();
 			case TECH_CENTRE -> new TechCenter();
 			default -> throw new GenerateCentreException("Could not determine centre type");
@@ -75,23 +79,32 @@ public class Intake {
 	}
 
 	// create new centres
-	public void createCentresRandomly() {
+	public int createCentresRandomly() {
 		int randNum = new Random().nextInt(3);
 		centres name;
 		switch (randNum) {
 			case (0):
-				name = centres.TRAINEE_HUB;
+				name = centres.TRAINING_HUB;
 				int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
 				for (int i = 0; i < centreNum; i++) {
 					addCentre(name);
 				}
+				break;
 			case (1):
-				name = centres.BOOTCAMP;
-				addCentre(name);
+				if (getCentreNumByType("bootcamp")<2){
+					name = centres.BOOTCAMP;
+					addCentre(name);
+					break;
+				} else{
+					createCentresRandomly();
+					return 1;
+				}
 			case (2):
 				name = centres.TECH_CENTRE;
 				addCentre(name);
+				break;
 		}
+		return randNum;
 	}
 
 	public int numOfTotalTrainees() {
@@ -194,10 +207,10 @@ public class Intake {
 		return openCentres;
 	}
 
-	private List<Centre> getFullCentres() {
+	public List<Centre> getFullCentres() {
 		List<Centre> fullCentres = new ArrayList();
 		for (Centre centre : trainingCentres) {
-			if (!centre.isFull()) {
+			if (centre.isFull()) {
 				fullCentres.add(centre);
 			}
 		}
@@ -309,6 +322,12 @@ public class Intake {
 
 	public Collection<Centre> getClosedCentres() {
 		return closedCentres;
+	}
+
+	public Collection<Centre> getCenters(){return trainingCentres;}
+
+	public void testAddCenter(Centre centre){
+		trainingCentres.add(centre);
 	}
 
 
