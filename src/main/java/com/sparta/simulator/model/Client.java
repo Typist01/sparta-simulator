@@ -24,6 +24,16 @@ public class Client {
 			//call addTrainee here
 		}
 	}*/
+	int numToTake(int numTrainees){ //returns number of free spaces this Client can take
+		if (numTrainees + traineeList.size() > maxTrainees){
+			numTrainees = numTrainees - (traineeList.size() - numTrainees);
+		}
+		return numTrainees;
+	}
+
+	CourseType getCourseType(){
+		return courseType;
+	}
 
 	void clearTrainees(){
 		traineeList.clear();
@@ -36,7 +46,7 @@ public class Client {
 	boolean addTrainee(Trainee trainee){
 		if (maxTrainees >= traineeList.size() && trainee.getType().equals(courseType)) {
 			return traineeList.add(trainee);
-		}else {
+		} else {
 			return false;
 		}
 

@@ -8,10 +8,10 @@ import com.sparta.simulator.model.centres.TrainingHub;
 import java.util.*;
 
 public class Intake {
-	enum CentresEnum {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
+	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private final Collection<Centre> trainingCentres;
-	private final Collection<Centre> closedCentres;
+	private final List<Centre> trainingCentres;
+	private final List<Centre> closedCentres;
 	private final Deque<Trainee> waitingList;
 	private final ArrayList<Client> clientList;
 	private final HashMap<CourseType, List<Trainee>> benchList;
@@ -34,7 +34,26 @@ public class Intake {
 	}
 
 
+	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
+		List<Trainee> tempList;
+		for (CourseType course : CourseType.values()){
+			for (Client client : clientList) {
+				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
 
+					tempList = benchList.get(course); //list of benched trainees relevant course
+					int traineesWanted = new Random().nextInt(1, 15); //takes between 1 and 15 trainees
+
+					traineesWanted = client.numToTake(traineesWanted); //doesn't allow more than they can handle
+					int index = 0;
+					while (tempList.size() > 0 && index < traineesWanted && index < tempList.size() ){ // adds trainees here and removes from benchlist
+						client.addTrainee(tempList.remove(0));
+						index++;
+					}
+
+				}
+			}
+		}
+	}
 
 	public void removeUnsatClients() { //this runs at the end of the year
 		for (int i = 0; i < clientList.size() - 1; i++) { //check the "-1" here
@@ -55,13 +74,11 @@ public class Intake {
 		int numOfClients = new Random().nextInt(1, 5);
 
 		for (int i = 0; i < numOfClients; i++) {
-			int randTrainees = new Random().nextInt(15, 30); //for num of trainees
+			int randTrainees = RandGenerator.generateClientRequest(); //for num of trainees
 			int randCourse = new Random().nextInt(5); //for course type
 
 			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
 		}
-
-
 	}
 
 	public void incrementTimeTrained() {
@@ -98,7 +115,7 @@ public class Intake {
 		int randNum = new Random().nextInt(3);
 		CentresEnum centreType = CentresEnum.values()[randNum];
 
-		if (centreType.equals(CentresEnum.TRAINEE_HUB)) {
+		if (centreType.equals(CentresEnum.TRAINING_HUB)) {
 			int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
 			for (int i = 0; i < centreNum; i++) {
 				addCentre(new TrainingHub());
@@ -177,9 +194,11 @@ public class Intake {
 		Random random = new Random();
 		boolean allFull = false;
 		Queue<Trainee> temp = new LinkedList<>();
+		Collections.shuffle(trainingCentres);
 		//DEBUG ______
 		//Queue <Trainee> debugQueue = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
+
 			allFull = true;
 			//DEBUG___
 			/*System.out.println(waitingList.peek());
@@ -191,7 +210,7 @@ public class Intake {
 				if (!centre.isFull() && waitingList.size() > 0) {
 					if (centre.acceptsTrainee(waitingList.peek())){
 						allFull = false;
-						if (random.nextBoolean() && waitingList.size() > 0) {
+						if (random.nextInt(4)==0 && waitingList.size() > 0) {
 							centre.addTrainee(waitingList.remove());
 						}
 					}
@@ -351,7 +370,7 @@ public class Intake {
 	public ArrayList<Client> getClientList() { //changing client list
 		return clientList;
 	}
-	public Collection<Centre> getTrainingCentres() {
+	public List<Centre> getTrainingCentres() {
 		return trainingCentres;
 	}
 	public Queue<Trainee> getWaitingList() {

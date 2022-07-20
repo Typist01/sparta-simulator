@@ -1,7 +1,8 @@
 package com.sparta.simulator.model;
 
-import java.util.Arrays;
-import java.util.Queue;
+import com.sparta.simulator.model.centres.Centre;
+
+import java.util.*;
 
 public class  Simulator {
 	private final Intake intake;
@@ -31,6 +32,7 @@ public class  Simulator {
 		if (currentMonth > 12){
 			//generate 1 to 5 Clients
 			intake.addClients();
+			intake.addTraineesToClient();
 		}
 		if (currentMonth % 12 == 0 && currentMonth !=12){//runs at the end of every year except year 1
 			//remove unsatisfied clients here

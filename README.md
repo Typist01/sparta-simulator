@@ -1,11 +1,11 @@
 **This ReadME.md would include each of the phases and how we completed them and what challenges we faced.**
 
-[Jamie Macaulay Scofield - Scrum Master](https://github.com/JamieScofield)
-[Muhammad Mustafa Nawaz - Git Master ](https://github.com/Typist01)
-[Mac Murray -](https://github.com/Erratika)
-[Alfred Abraham -](https://github.com/AlfredAbra)
-[Jeffrey Steven Champion - ](https://github.com/Jchampion42)
-[Abdur-Rahmaan Azam - ](https://github.com/abdurshazam)
+[Jamie Macaulay Scofield - Scrum Master](https://github.com/JamieScofield) -
+[Muhammad Mustafa Nawaz - Git Master ](https://github.com/Typist01) -
+[Mac Murray -](https://github.com/Erratika) -
+[Alfred Abraham -](https://github.com/AlfredAbra) -
+[Jeffrey Steven Champion - ](https://github.com/Jchampion42) -
+[Abdur-Rahmaan Azam - ](https://github.com/abdurshazam) - 
 
 ### TASK
 
@@ -26,6 +26,9 @@
     - number of full centers
     - number of trainees currently training
     - number of trainees in waiting list
+    - 
+**Solution**
+All the tasks here where completed and up to standard.
 
 **Phase Two**
 
@@ -50,6 +53,12 @@
     - number of full centres (breakdown for each type)
     - number of trainees currently training (breakdown for each type)
     - number of trainees on the waiting list (breakdown for each type)
+    - 
+**Solution**
+Phase two has been completed. However, there were alot of bugs and issues overall. We all banded our minds together to figure 
+out what is needed and the best way we could fix them all. OVerall, there was just minor errors in the code and were fixed shortly 
+after examination.
+
 
 **Phase Three**
 - If a trainee has been in training for 3 months, they are moved to a bench state.
@@ -63,4 +72,5 @@
 **SOLUTION**
 We completed the tasks the where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
+The main issue here is that the trainee are distributed equally across all centers. The way we are going around to fixing that ...
 
