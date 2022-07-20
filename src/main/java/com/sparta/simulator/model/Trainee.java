@@ -3,32 +3,14 @@ package com.sparta.simulator.model;
 import java.util.Random;
 
 public class Trainee {
-    private String courseType;
+    private final CourseType courseType;
     private int monthsTrained = 0;
 
     public Trainee(){
         int randomNum = new Random().nextInt(5);
+        courseType = CourseType.values()[randomNum];
 
-        if (randomNum == 0)
-        {
-            courseType = "Java";
-        }
-        else if (randomNum == 1)
-        {
-            courseType = "C#";
-        }
-        else if(randomNum == 2)
-        {
-            courseType = "Data";
-        }
-        else if(randomNum == 3)
-        {
-            courseType = "DevOps";
-        }
-        else if(randomNum == 4)
-        {
-            courseType = "Business";
-        }
+
     }
 //    Trainee(String courseType){
 //        courseType = courseType
@@ -36,10 +18,10 @@ public class Trainee {
     public void incrementTimeTrained(){
         monthsTrained++;
     }
-    public int getTimetrained(){
+    public int getTimeTrained(){
         return monthsTrained;
     }
-    public String getType() {
+    public CourseType getType() {
         return courseType;
     }
 

@@ -25,6 +25,9 @@ public class  Simulator {
 		intake.addTraineeGroup();
 		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
+		if (currentMonth > 12){
+			//generate 1 to 5 Clients
+		}
 
 	}
 
@@ -37,6 +40,9 @@ public class  Simulator {
 			}
 		tick();
 		currentMonth++;
+		intake.incrementTimeTrained(); //for incrementing trainee months trained
+		intake.benchTrainee();
+
 		this.totalTrainees=intake.numOfTotalTrainees();
 		this.openCenters=intake.numOfOpenCentres();
 		this.waitingList=intake.getWaitingCount();
