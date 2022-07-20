@@ -8,11 +8,7 @@ import com.sparta.simulator.model.centres.TrainingHub;
 import java.util.*;
 
 public class Intake {
-	enum centres {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
-
-	public Collection<Centre> getTrainingCentres() {
-		return trainingCentres;
-	}
+	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
 	private final Collection<Centre> trainingCentres;
 	private final Collection<Centre> closedCentres;
@@ -99,7 +95,7 @@ public class Intake {
 		int randNum = new Random().nextInt(3);
 		CentresEnum centreType = CentresEnum.values()[randNum];
 
-		if (centreType.equals(CentresEnum.TRAINEE_HUB)) {
+		if (centreType.equals(CentresEnum.TRAINING_HUB)) {
 			int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
 			for (int i = 0; i < centreNum; i++) {
 				addCentre(new TrainingHub());
