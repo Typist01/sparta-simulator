@@ -58,7 +58,6 @@ public class Intake {
 	}
 
 
-
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
 		return switch (centreType) {
@@ -147,7 +146,7 @@ public class Intake {
 
 
 	public void addWaitingTraineesToCentre() {
-		Collections.shuffle(trainingCentres);
+
 		Random random = new Random();
 		boolean allFull = false;
 		Queue <Trainee> temp = new LinkedList<>();
@@ -256,7 +255,6 @@ public class Intake {
 		}
 		return sum;
 	}
-
 
 	public int getClosedCentresNum() {
 		return closedCentres.size();
