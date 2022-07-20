@@ -25,6 +25,7 @@ public class  Simulator {
 		intake.addTraineeGroup();
 		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
+		intake.benchingTrainees();
 
 	}
 

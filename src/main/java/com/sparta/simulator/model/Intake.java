@@ -7,8 +7,9 @@ public class Intake {
 
 	private final Collection<Centre> trainingCentres = new ArrayList();
 	private final Collection<Centre> closedCentres = new ArrayList();
-	private final Queue<Trainee> waitingList = new LinkedList<>();
+	private final Deque<Trainee> waitingList = new LinkedList<>();
 
+	private final Collection<Trainee> benchedTrainee = new ArrayList<>();
 
 	public Collection<Centre> getClosedCentres() {
 		return closedCentres;
@@ -126,9 +127,33 @@ public class Intake {
 				centresToBeClosed.add(centre);
 			}
 		}
+		for(Trainee trainee:spareTrainees){
+			waitingList.addFirst(trainee);
+		}
 		trainingCentres.removeAll(centresToBeClosed);
-		waitingList.addAll(spareTrainees);
+
 	}
+	public void benchingTrainees(){
+		List<Trainee> traineesToBeBenched = new ArrayList<>();
+		for(Centre centre: trainingCentres){
+			for(Trainee trainee: centre.getTraineeList()){
+				if(trainee.finishedTraining()){
+					traineesToBeBenched.add(trainee);
+				}
+			}
+		}
+		benchedTrainee.addAll(traineesToBeBenched);
+		for(Centre centre: trainingCentres){
+			centre.getTraineeList().removeIf(Trainee::finishedTraining);
+		}
+	}
+
+
+
+
+
+
+
 
 	private List<Centre> getOpenCentres() {
 		List<Centre> openCentres = new ArrayList();
