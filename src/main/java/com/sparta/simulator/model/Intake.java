@@ -24,10 +24,6 @@ public class Intake {
 	}
 
 
-	public Collection<Centre> getClosedCentres() {
-		return closedCentres;
-	}
-
 	public ArrayList<Client> getClientList(){ return clientList; }
 
 	public void addClients(){
@@ -57,9 +53,6 @@ public class Intake {
 		}
 	}
 
-	public int getWaitingCount() {
-		return waitingList.size();
-	}
 
 
 	//returns centre object
