@@ -35,13 +35,13 @@ public class View {
     }
     //___________CLIENTS_________
     public void allClients(int clientCount){
-        System.out.println("Total: " + clientCount);
+        System.out.println("Current  : " + clientCount);
     }
     public void happyClients(int clientCount){
-        System.out.println("Satisfied: ");
+        System.out.println("Satisfied: " + clientCount);
     }
     public void sadClients(int clientCount){
-        System.out.println("Unsatisfied: ");
+        System.out.println("Left     : " + clientCount);
     }
 
     //_______WAITING LIST___________
