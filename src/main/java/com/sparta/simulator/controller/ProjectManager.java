@@ -25,7 +25,6 @@ public class ProjectManager {
                 throw new RuntimeException(e);
             }
             simulator = new Simulator(view.getUserTime());
-            // TODO create two variants, one for one month with iterator, one for all
             Intake intake= simulator.getIntake();
                 while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
                     simulator.run();
