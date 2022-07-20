@@ -5,21 +5,11 @@ import java.util.*;
 public class Intake {
 	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private final Collection<Centre> trainingCentres = new ArrayList();
-	private final Collection<Centre> closedCentres = new ArrayList();
-	private final Deque<Trainee> waitingList = new LinkedList<>();
+	private  Collection<Centre> trainingCentres = new ArrayList();
+	private  Collection<Centre> closedCentres = new ArrayList();
+	private  Deque<Trainee> waitingList = new LinkedList<>();
 
-	private final Collection<Trainee> benchedTrainee = new ArrayList<>();
-
-	public Collection<Centre> getClosedCentres() {
-		return closedCentres;
-	}
-
-
-	public int getWaitingCount() {
-		return waitingList.size();
-	}
-
+	private  Collection<Trainee> benchedTrainee = new ArrayList<>();
 
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
