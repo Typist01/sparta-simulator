@@ -17,25 +17,25 @@ public abstract class Centre {
 
     private ArrayList<Trainee> traineeList = new ArrayList();
 
-    boolean addTrainee(Trainee trainee){
+    public boolean addTrainee(Trainee trainee){
         if (!isFull()){
             return  traineeList.add(trainee);
         }
         return false;
     }
 
-    int getNumOfTrainees(){
+    public int getNumOfTrainees(){
         return traineeList.size();
     }
 
-    boolean isFull(){
+    public boolean isFull(){
         return CAPACITY == traineeList.size();
     }
 
-    boolean isClosable(){
+    public boolean isClosable(){
         return traineeList.size() <= 25;
     }
-    boolean acceptsTrainee(Trainee trainee){
+    public boolean acceptsTrainee(Trainee trainee){
         return true;
     }
 

@@ -15,7 +15,7 @@ public class TechCenter extends Centre{
 
 
     @Override
-    boolean acceptsTrainee(Trainee trainee) {
+    public boolean acceptsTrainee(Trainee trainee) {
         // DEBUG CODE
         //try {
 

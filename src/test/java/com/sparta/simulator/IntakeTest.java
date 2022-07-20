@@ -1,6 +1,9 @@
 package com.sparta.simulator;
 
+import com.sparta.simulator.model.Centre;
 import com.sparta.simulator.model.Intake;
+import com.sparta.simulator.model.Trainee;
+import com.sparta.simulator.model.TrainingHub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,9 +33,6 @@ class IntakeTest {
     }
     @Test
     void testGenerateCentre(){
-        System.out.println(intake.getTrainingCentres());
-        intake.createCentresRandomly();
-        System.out.println(intake.getTrainingCentres());
 
     }
     
@@ -42,7 +42,7 @@ class IntakeTest {
     @DisplayName("check for number of full centers")
     void testnumFullCenters(){
         Intake intake = new Intake();
-        TrainingHub hub = new TrainingHub();
+        Centre hub = new TrainingHub();
         int index = 0;
         while(index<100){
             hub.addTrainee(new Trainee());
