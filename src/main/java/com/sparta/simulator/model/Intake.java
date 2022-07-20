@@ -5,21 +5,11 @@ import java.util.*;
 public class Intake {
 	enum centres {TRAINEE_HUB, BOOTCAMP, TECH_CENTRE}
 
-	private final Collection<Centre> trainingCentres = new ArrayList();
-	private final Collection<Centre> closedCentres = new ArrayList();
-	private final Deque<Trainee> waitingList = new LinkedList<>();
+	private  Collection<Centre> trainingCentres = new ArrayList();
+	private  Collection<Centre> closedCentres = new ArrayList();
+	private  Deque<Trainee> waitingList = new LinkedList<>();
 
-	private final Collection<Trainee> benchedTrainee = new ArrayList<>();
-
-	public Collection<Centre> getClosedCentres() {
-		return closedCentres;
-	}
-
-
-	public int getWaitingCount() {
-		return waitingList.size();
-	}
-
+	private  Collection<Trainee> benchedTrainee = new ArrayList<>();
 
 	//returns centre object
 	Centre generateCentre(centres centreType) throws GenerateCentreException {
@@ -102,18 +92,35 @@ public class Intake {
 	public void addWaitingTraineesToCentre() {
 		Random random = new Random();
 		boolean allFull = false;
+		Queue <Trainee> temp = new LinkedList<>();
+		//DEBUG ______
+		//Queue <Trainee> debugQueue = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
 			allFull = true;
+			//DEBUG___
+			/*System.out.println(waitingList.peek());
+			if (waitingList.peek()==null){
+				System.out.println("There was a null trainess");
+				debugQueue.add(waitingList.remove());
+			}*/
 			for (Centre centre : trainingCentres) {
-				if (!centre.isFull()) {
-					allFull = false;
+				if (!centre.isFull() && waitingList.size() > 0) {
+					System.out.println(waitingList.size());
 					if (centre.acceptsTrainee(waitingList.peek())){
+						allFull = false;
 						if (random.nextBoolean() && waitingList.size() > 0) {
 							centre.addTrainee(waitingList.remove());
 						}
 					}
 				}
 			}
+			if (waitingList.size() > 0 && allFull){
+				temp.add(waitingList.remove());
+				allFull=false;
+			}
+		}
+		while (temp.size()>0){
+			waitingList.add(temp.remove());
 		}
 	}
 
@@ -265,5 +272,17 @@ public class Intake {
 		}
 		return sum;
 	}
+	//_______________GETTERS_______________
+	public Queue<Trainee> getWaitingList() {
+		return waitingList;
+	}
 
+	public Collection<Centre> getClosedCentres() {
+		return closedCentres;
+	}
+
+
+	public int getWaitingCount() {
+		return waitingList.size();
+	}
 }

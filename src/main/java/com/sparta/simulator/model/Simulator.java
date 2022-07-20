@@ -1,5 +1,8 @@
 package com.sparta.simulator.model;
 
+import java.util.Arrays;
+import java.util.Queue;
+
 public class  Simulator {
 	private Intake intake;
 
@@ -23,6 +26,8 @@ public class  Simulator {
 	public void tick(){
 		//Generate new Trainees through intake.
 		intake.addTraineeGroup();
+
+		Queue<Trainee> temp = intake.getWaitingList();
 		intake.addWaitingTraineesToCentre();
 		intake.closingCenters();
 		intake.benchingTrainees();

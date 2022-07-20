@@ -99,7 +99,7 @@ public class View {
             }
             else System.out.println(" it is not full");
         }
-        else System.out.println("There is a total of " + totalCentres + " training hubs of which " + fullCentres + " have full capacity");
+        else System.out.println("There is a total of " + totalCentres + " boot camps of which " + fullCentres + " have full capacity");
     }
     public void bootCampTrainees(int traineeCount){
         System.out.println("There  are currently " + traineeCount + " people training at boot camps");
