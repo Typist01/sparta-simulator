@@ -3,32 +3,41 @@ package com.sparta.simulator.model;
 import java.util.ArrayList;
 
 public abstract class Centre {
+    public int getCAPACITY() {
+        return CAPACITY;
+    }
+
+    private final int CAPACITY;
     public ArrayList<Trainee> getTraineeList() {
         return traineeList;
     }
-
-    public void setTraineeList(ArrayList<Trainee> traineeList) {
-        this.traineeList = traineeList;
+    protected Centre(int CAPACITY){
+        this.CAPACITY = CAPACITY;
     }
 
     private ArrayList<Trainee> traineeList = new ArrayList();
 
-    Centre(){
+    boolean addTrainee(Trainee trainee){
+        if (!isFull()){
+            return  traineeList.add(trainee);
+        }
+        return false;
     }
-
-    //TODO change to boolean? if can't add trainee return false otherwise if trainee was added return true.
-    abstract void addTrainee(Trainee trainee);
 
     int getNumOfTrainees(){
         return traineeList.size();
     }
 
-    abstract boolean isFull();
+    boolean isFull(){
+        return CAPACITY == traineeList.size();
+    }
 
     boolean isClosable(){
         return traineeList.size() <= 25;
     }
-    abstract boolean acceptsTrainee(Trainee trainee);
+    boolean acceptsTrainee(Trainee trainee){
+        return true;
+    }
 
 
 }
