@@ -25,6 +25,10 @@ public class Client {
 		}
 	}*/
 
+	void clearTrainees(){
+		currentTrainees.clear();
+	}
+
 	boolean checkSatisfaction(){	//check after a year //if true they come back next year
 		return currentTrainees.size() == maxTrainees;
 	}
