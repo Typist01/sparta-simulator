@@ -42,6 +42,9 @@ public class View {
     public void sadClients(int clientCount){
         System.out.println("Left     : " + clientCount);
     }
+    public void contractsComplete(int contracts) {
+        System.out.println("\nCompleted contracts: " + contracts);
+    }
 
     //_______WAITING LIST___________
     public void allWaitingCount(int waitingTrainees){

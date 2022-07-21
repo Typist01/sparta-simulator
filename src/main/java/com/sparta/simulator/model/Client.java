@@ -6,6 +6,7 @@ public class Client {
 	private final int maxTrainees;
 	private final ArrayList<Trainee> traineeList;
 	private final CourseType courseType;
+	private int monthCount=0;
 
 	public Client(CourseType courseType, int amountOfTrainees){ //amountOfTrainees should be >= 15
 		this.courseType = courseType;
@@ -19,7 +20,9 @@ public class Client {
 		}
 		return numTrainees;
 	}
-
+	public void increaseMonth(){
+		monthCount++;
+	}
 	public CourseType getCourseType(){
 		return courseType;
 	}
@@ -39,6 +42,9 @@ public class Client {
 			return false;
 		}
 
+	}
+	public int getMonthCount() {
+		return monthCount;
 	}
 
 }
