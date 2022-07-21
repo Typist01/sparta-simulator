@@ -8,12 +8,12 @@ public class Client {
 	private final int maxTrainees;
 	private final ArrayList<Trainee> traineeList;
 	private final CourseType courseType;
-	private int monthCount=0;
+	private int monthCount = 0;
 
 	public Client(){ //amountOfTrainees should be >= 15
-		this.courseType =RandGenerator.generateRandomCourse();
+		this.courseType = RandGenerator.generateRandomCourse();
 		this.traineeList = new ArrayList<>();
-		maxTrainees = RandGenerator.generateClientRequest();
+		this.maxTrainees = RandGenerator.generateClientRequest();
 
 	}
 	public int numToTake(int numTrainees){ //returns number of free spaces this Client can take
