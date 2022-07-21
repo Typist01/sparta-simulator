@@ -7,21 +7,9 @@
 [Jeffrey Steven Champion - ](https://github.com/Jchampion42) -
 [Abdur-Rahmaan Azam - ](https://github.com/abdurshazam) -
 
-
-[PRESENTATION](https://1drv.ms/p/s!AihWGuP9ei1-hSWH1qJt6YPf1mpK?e=WQimcE)
-
 ### TASK
 
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
-
-**Technologies Used**
-ENUMS
-NVC pattern
-abstract class
-agile methodology
-***solid principles***
-open and close principle
-liskov substitution principle
 
 **Phase One**
 
