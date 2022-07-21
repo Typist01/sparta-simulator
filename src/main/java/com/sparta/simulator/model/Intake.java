@@ -156,7 +156,7 @@ public class Intake {
 	}
 
 	// return the number of bootcamps
-	private int numOfBootCamps() {
+	public int numOfBootCamps() {
 		int numOfBootCamp = 0;
 		for (Centre centre : trainingCentres) {
 			if (centre instanceof BootCamp) {

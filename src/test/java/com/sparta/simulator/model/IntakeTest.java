@@ -1,5 +1,6 @@
 package com.sparta.simulator.model;
 
+import com.sparta.simulator.model.centres.BootCamp;
 import org.junit.jupiter.api.Assertions;
 import com.sparta.simulator.model.centres.Centre;
 import com.sparta.simulator.model.centres.TrainingHub;
@@ -86,6 +87,32 @@ class IntakeTest {
         Assertions.assertEquals(3,intake.getClosedCentresNum());
         Assertions.assertEquals(3,intake.getClosedCentresNumByType("TrainingHub"));
 
+    }
+    @Test
+    @DisplayName("Total num of trainees")
+    void testTotalNumOfTrainees(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        int i = 0;
+        while (i<60){
+            hub.addTrainee(new Trainee());
+            i++;
+        }
+        intake.addCentre(hub);
+        Assertions.assertEquals(60,intake.numOfTotalTrainees());
+    }
+    @Test
+    @DisplayName("Total num of bootcamps")
+    void testTotalNumOfBootCamps(){
+        Intake intake = new Intake();
+        BootCamp hub = new BootCamp();
+        int i = 0;
+        while (i<60){
+            hub.addTrainee(new Trainee());
+            i++;
+        }
+        intake.addCentre(hub);
+        Assertions.assertEquals(1,intake.numOfBootCamps());
     }
 
 
