@@ -10,6 +10,7 @@ public class Client {
 	private final CourseType courseType;
 	private int monthCount = 0;
 
+
 	public Client(){ //amountOfTrainees should be >= 15
 		this.courseType = RandGenerator.generateRandomCourse();
 		this.traineeList = new ArrayList<>();
