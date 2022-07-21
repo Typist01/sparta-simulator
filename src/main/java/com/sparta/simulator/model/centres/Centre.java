@@ -25,9 +25,6 @@ public abstract class Centre {
         }
         return false;
     }
-    public Trainee removeTrainee(int index){
-        return traineeList.remove(index);
-    }
 
     public int getNumOfTrainees(){
         return traineeList.size();
@@ -38,11 +35,10 @@ public abstract class Centre {
     }
 
     public boolean isClosable(){
-        return traineeList.size() <= 25;
+        return traineeList.size() < 25;
     }
     public boolean acceptsTrainee(Trainee trainee){
         return true;
     }
-
 
 }
