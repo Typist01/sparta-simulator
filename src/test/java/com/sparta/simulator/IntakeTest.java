@@ -21,6 +21,7 @@ class IntakeTest {
         for (int i = 0; i < 100; i++) {
             intake.addTraineeGroup();
            Assertions.assertTrue(intake.getWaitingCount() >= 50 && intake.getWaitingCount()<=100);
+           intake.clearWaiting();
         }
     }
     @Test
