@@ -11,16 +11,6 @@
 [PRESENTATION](https://1drv.ms/p/s!AihWGuP9ei1-hSWH1qJt6YPf1mpK?e=WQimcE)
 
 ### TASK
-<<<<<<< HEAD
-
-**User**
-This is how to use the program.
-Firt, you run main, you are
-(ADD PICTURES HERE)
-EXAMPELS OF THE PROGRAM.
-
-=======
->>>>>>> b2205f9b6e7d5e4d18b0d2611dcb86ab6027f40e
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
 
 **Technologies Used**
@@ -92,13 +82,10 @@ after examination.
 **SOLUTION**
 We completed the tasks the where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
-<<<<<<< HEAD
-The main issue here is that the trainee are distributed equally across all centers. 
-=======
 The main issue here is that the trainees were not distributed equally across all centers. The main way we fixed this issue was the use 
 of the debugger and the help of out fellow colleagues.
 
 **Final Photos**
-
->>>>>>> b2205f9b6e7d5e4d18b0d2611dcb86ab6027f40e
-
+![image one](https://cdn.discordapp.com/attachments/999673958536319039/999674047304581170/unknown.png)
+![image tew](https://cdn.discordapp.com/attachments/999673958536319039/999674069282721912/unknown.png)
+![image three](https://cdn.discordapp.com/attachments/999673958536319039/999674092032643142/unknown.png)
