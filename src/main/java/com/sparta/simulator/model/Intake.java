@@ -6,7 +6,7 @@ import com.sparta.simulator.model.centres.TechCenter;
 import com.sparta.simulator.model.centres.TrainingHub;
 
 import java.util.*;
-
+// Manages trainee movement to and from training centres
 public class Intake {
 	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
@@ -17,7 +17,6 @@ public class Intake {
 	private final HashMap<CourseType, List<Trainee>> benchList;
 	private final ArrayList<Client> happyList;
 	private final ArrayList<Client> unHappyList;
-
 
 	public Intake() {
 		trainingCentres = new ArrayList<>();
@@ -32,7 +31,6 @@ public class Intake {
 			benchList.put(course, new LinkedList<>());
 		}
 	}
-
 
 	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
 		List<Trainee> tempList;
@@ -103,7 +101,6 @@ public class Intake {
 		}
 	}
 
-
 	// adds centre to list
 	public void addCentre(Centre centre) {
 		trainingCentres.add(centre);
@@ -140,7 +137,7 @@ public class Intake {
 			}
 		}
 	}
-
+// return the number of bootcamps
 	private int numOfBootCamps() {
 		int numOfBootCamp = 0;
 		for (Centre centre : trainingCentres) {
@@ -150,7 +147,7 @@ public class Intake {
 		}
 		return numOfBootCamp;
 	}
-
+// returns the total number of trainees in centres
 	public int numOfTotalTrainees() {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
@@ -159,15 +156,17 @@ public class Intake {
 		return sum;
 	}
 
+	// returns the number of centres that are full
 	public int numOfFullCentres() {
 		return getFullCentres().size();
 	}
 
+	//returns the number of centres that are open
 	public int numOfOpenCentres() {
 		return getOpenCentres().size();
 	}
 
-	//Add new random trainees to the waiting list.
+	// Generates a new trainee group and adds it to the waiting list.
 	public void addTraineeGroup() {
 
 		Queue<Trainee> intakeList = new LinkedList<>();

@@ -4,7 +4,7 @@ import com.sparta.simulator.model.CourseType;
 import com.sparta.simulator.model.Trainee;
 
 import java.util.Random;
-
+// Class for creating centres of type tech centre
 public class TechCenter extends Centre{
 
     private final CourseType techType;

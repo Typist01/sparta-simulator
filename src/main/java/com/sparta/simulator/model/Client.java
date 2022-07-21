@@ -1,7 +1,7 @@
 package com.sparta.simulator.model;
 
 import java.util.ArrayList;
-
+// class for creating Clients, each requiring trainees of a specific course type.
 public class Client {
 	private final int maxTrainees;
 	private final ArrayList<Trainee> traineeList;

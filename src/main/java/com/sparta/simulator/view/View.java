@@ -1,6 +1,5 @@
 package com.sparta.simulator.view;
 
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -13,7 +12,7 @@ public class View {
 
     // function will call to userChoice class, which will only let the user return a value of 1 or greater
     public int getUserTime(){
-        return UserChoiceModule.getUserMonths();
+        return UserChoiceModule.getUserYears()*12+2;
     }
 
     // this function will return true if the user wishes to iterate over every month
@@ -103,16 +102,16 @@ public class View {
             }
             return  userValue;
         }
-        public static int getUserMonths(){
+        public static int getUserYears(){
             // boolean to hold while loop
             boolean userChoosing=true;
             Scanner scanner = new Scanner(System.in);
             int userValue=1;
             while (userChoosing) {
-                System.out.println("Please input an amount of months to use in the simulation");
+                System.out.println("Please input an amount of years to use in the simulation");
                 userValue= StringConverter.stringToInt(scanner.next()); // uses converter to only return a positive int, and loop refuses a null array.
                 if (userValue <= 0){
-                    System.out.println("cannot have 0 or negative weeks");
+                    System.out.println("cannot have 0 or negative years");
                     userChoosing=true;
                 }
                 else userChoosing=false;
