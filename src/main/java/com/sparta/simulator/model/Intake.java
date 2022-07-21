@@ -34,6 +34,7 @@ public class Intake {
 
 	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
 		List<Trainee> tempList;
+		Collections.sort(clientList,(a,b)-> a.getMonthCount()<b.getMonthCount()?1:a.getMonthCount()==b.getMonthCount()?0:-1);
 		for (CourseType course : CourseType.values()){
 			for (Client client : clientList) {
 				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
