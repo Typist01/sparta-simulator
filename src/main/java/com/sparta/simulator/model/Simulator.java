@@ -4,6 +4,8 @@ import com.sparta.simulator.model.centres.Centre;
 
 import java.util.*;
 
+import static com.sparta.simulator.model.main.Main.logger;
+
 
 // starts the simulation and keeps track of the simulation run time
 public class  Simulator {
@@ -24,28 +26,31 @@ public class  Simulator {
 		this.totalDuration = totalDuration;
 	}
 	//Will probably return some results back to the controller so may not be void.
-	public void tick(){
+	public void tick() {
 		//Generate new Trainees through intake.
+		logger.info("generating trainees");
 		intake.addTraineeGroup();
+		logger.info("moving waiting list to centres");
 		intake.addWaitingTraineesToCentre();
+		logger.info("closing centres");
 		intake.closingCenters();
-		if (currentMonth > 12){
+		if (currentMonth > 12) {
 			//generate 1 to 5 Clients
-			intake.addClients();
+			logger.info("adding trainees to client");
 			intake.addTraineesToClient();
-		}
-		if (currentMonth % 12 == 0 && currentMonth !=12){//runs at the end of every year except year 1
-			//remove unsatisfied clients here
+			intake.incrementClientMonth();
+			logger.info("removing unsatisfied clients from client list");
 			intake.removeUnsatClients();
+			logger.info("generating clients");
+			intake.addClients();
 		}
-
 	}
 
 	public void run(){
 		if(currentMonth<totalDuration+1)
 			if(currentMonth % CENTRE_GENERATION_INTERVAL == 0 && currentMonth > 1){
 				//Generate new TrainingCentre through Intake then tick.
-//				System.out.println("generating centres");
+				logger.info("generating centres");
 				intake.createCentresRandomly();
 			}
 		tick();
