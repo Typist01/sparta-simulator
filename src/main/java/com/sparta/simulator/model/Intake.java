@@ -71,13 +71,9 @@ public class Intake {
 
 	public void addClients() { // 1 to 5 clients per month
 		int numOfClients = new Random().nextInt(1, 5);
-
 		for (int i = 0; i < numOfClients; i++) {
-			int randTrainees = RandGenerator.generateClientRequest(); //for num of trainees
-			int randCourse = new Random().nextInt(5); //for course type
-
 			//Add clients to list with rand course and random trainee req
-			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+			clientList.add(new Client());
 		}
 	}
 

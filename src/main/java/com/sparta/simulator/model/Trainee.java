@@ -9,8 +9,7 @@ public class Trainee {
     private int monthsTrained = 0;
 
     public Trainee(){
-        int randomNum = new Random().nextInt(5);
-        courseType = CourseType.values()[randomNum];
+        courseType = RandGenerator.generateRandomCourse();
 
 
     }

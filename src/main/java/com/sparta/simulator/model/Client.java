@@ -1,16 +1,18 @@
 package com.sparta.simulator.model;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 // class for creating Clients, each requiring trainees of a specific course type.
 public class Client {
 	private final int maxTrainees;
 	private final ArrayList<Trainee> traineeList;
 	private final CourseType courseType;
 
-	public Client(CourseType courseType, int amountOfTrainees){ //amountOfTrainees should be >= 15
-		this.courseType = courseType;
+	public Client(){ //amountOfTrainees should be >= 15
+		this.courseType =RandGenerator.generateRandomCourse();
 		this.traineeList = new ArrayList<>();
-		maxTrainees = amountOfTrainees;
+		maxTrainees = RandGenerator.generateClientRequest();
 
 	}
 	public int numToTake(int numTrainees){ //returns number of free spaces this Client can take
