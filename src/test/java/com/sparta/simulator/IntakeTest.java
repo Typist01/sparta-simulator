@@ -1,30 +1,104 @@
 package com.sparta.simulator;
 
+import com.sparta.simulator.model.*;
+import org.junit.jupiter.api.Assertions;
+import com.sparta.simulator.model.centres.Centre;
+import com.sparta.simulator.model.Intake;
+import com.sparta.simulator.model.Trainee;
+import com.sparta.simulator.model.centres.TrainingHub;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class IntakeTest {
 
+    @BeforeEach
+    void setUp(){
+
+    }
     @Test
+    @DisplayName("waiting list generation test")
     void testWaitingListGeneration(){
+        Intake intake = new Intake();
         for (int i = 0; i < 100; i++) {
-            Intake intake = new Intake();
             intake.addTraineeGroup();
-            assertTrue(intake.getWaitingList() >= 50 && intake.getWaitingList()<=100);
+           Assertions.assertTrue(intake.getWaitingCount() >= 50 && intake.getWaitingCount()<=100);
         }
     }
     @Test
-    void testCentreDistribution(){
-        for (int i = 0; i < 100; i++) {
-            Intake intake = new Intake();
-            intake.addCentre();
-            intake.addTraineeGroup();
-            assertTrue(intake.numOfTotalTrainees()>=0 && intake.numOfTotalTrainees() <=50);
-            assertTrue(intake.getWaitingList()>=0 && intake.getWaitingList()<=100);
+    void testGenerateCentre(){
+        Intake intake = new Intake();
+        System.out.println(intake.getTrainingCentres());
+        intake.createCentresRandomly();
+        System.out.println(intake.getTrainingCentres());
+
+    }
+    
+    
+    
+    @Test
+    @DisplayName("check for number of full centers")
+    void testnumFullCenters(){
+        Intake intake = new Intake();
+        Centre hub = new TrainingHub();
+        int index = 0;
+        while(index<100){
+            hub.addTrainee(new Trainee());
+            index++;
         }
+        intake.testAddCenter(hub);
+        Assertions.assertEquals(1,intake.getFullCentres().size());
     }
 
+    @Test
+    @DisplayName("Testing full centers by type")
+    void testingNumFullCentersByType(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        int i = 0;
+        while(i<100){
+            hub.addTrainee(new Trainee());
+            i++;
+        }
+        intake.testAddCenter(hub);
+        Assertions.assertEquals(1,intake.getFullCentreNumByType("TrainingHub"));
+    }
+    @Test
+    @DisplayName("Testing get centre num by type")
+    void testGetNumOfTraineesByCenterType(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        int i = 0;
+        while (i<50){
+            hub.addTrainee(new Trainee());
+            i++;
+        }
+        intake.testAddCenter(hub);
+        Assertions.assertEquals(50,intake.getNumTraineesByCentreType("TrainingHub"));
+    }
+    @Test
+    @DisplayName("Testing number of closed centers and by type")
+    void testNumClosedCenters(){
+        Intake intake = new Intake();
+        TrainingHub hub = new TrainingHub();
+        TrainingHub hub2 = new TrainingHub();
+        TrainingHub hub3 = new TrainingHub();
+        intake.testAddClosedCenter(hub);
+        intake.testAddClosedCenter(hub2);
+        intake.testAddClosedCenter(hub3);
+        Assertions.assertEquals(3,intake.getClosedCentresNum());
+        Assertions.assertEquals(3,intake.getClosedCentresNumByType("TrainingHub"));
+
+    }
 
 
 }

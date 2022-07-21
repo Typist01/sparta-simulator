@@ -6,6 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sparta-simulator4" />
+        <module name="sparta-simulator2" />
+        <module name="sparta-simulator3" />
         <module name="sparta-simulator" />
       </profile>
     </annotationProcessing>

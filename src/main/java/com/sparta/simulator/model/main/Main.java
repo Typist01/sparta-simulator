@@ -1,4 +1,7 @@
-package com.sparta.simulator;
+package com.sparta.simulator.model.main;
+
+import com.sparta.simulator.controller.ProjectManager;
+import com.sparta.simulator.model.Trainee;
 
 public class Main {
     public static void main(String[] args) {
