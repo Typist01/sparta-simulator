@@ -7,9 +7,20 @@
 [Jeffrey Steven Champion - ](https://github.com/Jchampion42) -
 [Abdur-Rahmaan Azam - ](https://github.com/abdurshazam) -
 
-### TASK
 
+[PRESENTATION](https://1drv.ms/p/s!AihWGuP9ei1-hSWH1qJt6YPf1mpK?e=WQimcE)
+
+### TASK
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
+
+**Technologies Used**
+-ENUMS
+-NVC pattern
+-abstract class
+-agile methodology
+***solid principles***
+-open and close principle
+-liskov substitution principle
 
 **Phase One**
 
@@ -59,7 +70,6 @@ Phase two has been completed. However, there were a lot of bugs and issues overa
 out what is needed and the best way we could fix them all. OVerall, there was just minor errors in the code and were fixed shortly 
 after examination.
 
-
 **Phase Three**
 - If a trainee has been in training for 3 months, they are moved to a bench state.
 - Clients will begin to be randomly created after 1 year of the simulation.
@@ -74,5 +84,7 @@ We completed the tasks the where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
 The main issue here is that the trainees were not distributed equally across all centers. The main way we fixed this issue was the use 
 of the debugger and the help of out fellow colleagues.
+
+**Final Photos**
 
 
