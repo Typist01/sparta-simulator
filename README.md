@@ -86,5 +86,6 @@ The main issue here is that the trainees were not distributed equally across all
 of the debugger and the help of out fellow colleagues.
 
 **Final Photos**
-
-
+![image one](https://cdn.discordapp.com/attachments/991634120742539304/999657690898911312/unknown.png)
+![image tew]()
+![image three]()
