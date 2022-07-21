@@ -41,7 +41,7 @@ public class ProjectManager {
             executeProgram=view.continueCheck();
         }
     }
-    // 
+    //
     public void printSection(Intake intake, String sectionName) {
         view.centreDisplay(intake.getCentreNumByType(sectionName), intake.getFullCentreNumByType(sectionName));
         view.centreClosed(intake.getClosedCentresNumByType(sectionName));
