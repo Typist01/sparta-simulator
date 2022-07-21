@@ -2,6 +2,7 @@ package com.sparta.simulator.model;
 
 import java.util.Random;
 
+// Random number generators
 public class RandGenerator {
 
     public static int randomTrainee() {

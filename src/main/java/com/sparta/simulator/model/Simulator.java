@@ -1,9 +1,12 @@
 package com.sparta.simulator.model;
 
+import com.sparta.simulator.controller.Writer;
 import com.sparta.simulator.model.centres.Centre;
 
 import java.util.*;
 
+
+// starts the simulation and keeps track of the simulation run time
 public class  Simulator {
 	private final Intake intake;
 
@@ -17,14 +20,14 @@ public class  Simulator {
 	private final int totalDuration; // Total duration of the simulation (months).
 	private int currentMonth=1;
 
-
-
 	public Simulator(int totalDuration){
 		this.intake = new Intake();
 		this.totalDuration = totalDuration;
 	}
 	//Will probably return some results back to the controller so may not be void.
+
 	public void tick(){
+
 		//Generate new Trainees through intake.
 		intake.addTraineeGroup();
 		intake.addWaitingTraineesToCentre();

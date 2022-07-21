@@ -5,9 +5,13 @@
 [Mac Murray -](https://github.com/Erratika) -
 [Alfred Abraham -](https://github.com/AlfredAbra) -
 [Jeffrey Steven Champion - ](https://github.com/Jchampion42) -
-[Abdur-Rahmaan Azam - ](https://github.com/abdurshazam) - 
+[Abdur-Rahmaan Azam - ](https://github.com/abdurshazam) -
+
+
+[PRESENTATION](https://1drv.ms/p/s!AihWGuP9ei1-hSWH1qJt6YPf1mpK?e=WQimcE)
 
 ### TASK
+<<<<<<< HEAD
 
 **User**
 This is how to use the program.
@@ -15,7 +19,18 @@ Firt, you run main, you are
 (ADD PICTURES HERE)
 EXAMPELS OF THE PROGRAM.
 
+=======
+>>>>>>> b2205f9b6e7d5e4d18b0d2611dcb86ab6027f40e
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
+
+**Technologies Used**
+-ENUMS
+-NVC pattern
+-abstract class
+-agile methodology
+***solid principles***
+-open and close principle
+-liskov substitution principle
 
 **Phase One**
 
@@ -34,7 +49,7 @@ EXAMPELS OF THE PROGRAM.
     - number of trainees in waiting list
     - 
 **Solution**
-All the tasks here where completed and up to standard.
+All the tasks here where completed up to standard.
 
 **Phase Two**
 
@@ -61,10 +76,9 @@ All the tasks here where completed and up to standard.
     - number of trainees on the waiting list (breakdown for each type)
     - 
 **Solution**
-Phase two has been completed. However, there were alot of bugs and issues overall. We all banded our minds together to figure 
+Phase two has been completed. However, there were a lot of bugs and issues overall. We all banded our minds together to figure 
 out what is needed and the best way we could fix them all. OVerall, there was just minor errors in the code and were fixed shortly 
 after examination.
-
 
 **Phase Three**
 - If a trainee has been in training for 3 months, they are moved to a bench state.
@@ -78,5 +92,13 @@ after examination.
 **SOLUTION**
 We completed the tasks the where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
+<<<<<<< HEAD
 The main issue here is that the trainee are distributed equally across all centers. 
+=======
+The main issue here is that the trainees were not distributed equally across all centers. The main way we fixed this issue was the use 
+of the debugger and the help of out fellow colleagues.
+
+**Final Photos**
+
+>>>>>>> b2205f9b6e7d5e4d18b0d2611dcb86ab6027f40e
 

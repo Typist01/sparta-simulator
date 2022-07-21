@@ -1,5 +1,6 @@
 package com.sparta.simulator.model;
 
+// ENUMs for defining course types.
 public enum CourseType {
 	JAVA("Java"),CSHARP("C#"),BUSINESS("Business"),DATA("Data"),DEVOPS("DevOps");
 	private final String courseName;

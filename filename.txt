@@ -1,0 +1,2 @@
+
+{runtime_in_years:50,clients:4,satisfied:98,unsatisfied:1463,openCentres:3,closed_centres:485,fullCentresNum:0}

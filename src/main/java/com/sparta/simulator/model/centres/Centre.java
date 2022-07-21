@@ -4,6 +4,7 @@ import com.sparta.simulator.model.Trainee;
 
 import java.util.ArrayList;
 
+// parent class of all centres.
 public abstract class Centre {
 
     private final int CAPACITY;
