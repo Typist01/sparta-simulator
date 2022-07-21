@@ -1,14 +1,10 @@
 package com.sparta.simulator.model;
 
-import com.sparta.simulator.model.centres.BootCamp;
-import com.sparta.simulator.model.centres.Centre;
-import com.sparta.simulator.model.centres.TechCenter;
-import com.sparta.simulator.model.centres.TrainingHub;
+import com.sparta.simulator.model.centres.*;
 
 import java.util.*;
 
 public class Intake {
-	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
 	private final List<Centre> trainingCentres;
 	private final List<Centre> closedCentres;
@@ -34,9 +30,9 @@ public class Intake {
 	}
 
 
-	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
+	public void addTraineesToClient() { //check if they have free spaces and give them some from benchList
 		List<Trainee> tempList;
-		for (CourseType course : CourseType.values()){
+		for (CourseType course : CourseType.values()) {
 			for (Client client : clientList) {
 				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
 
@@ -45,7 +41,7 @@ public class Intake {
 
 					traineesWanted = client.numToTake(traineesWanted); //doesn't allow more than they can handle
 					int index = 0;
-					while (tempList.size() > 0 && index < traineesWanted && index < tempList.size() ){ // adds trainees here and removes from benchlist
+					while (tempList.size() > 0 && index < traineesWanted && index < tempList.size()) { // adds trainees here and removes from benchlist
 						client.addTrainee(tempList.remove(0));
 						index++;
 					}
@@ -57,7 +53,7 @@ public class Intake {
 
 	public void removeUnsatClients() { //this runs at the end of the year
 		Iterator<Client> clientIterator = clientList.listIterator();
-		while (clientIterator.hasNext()){
+		while (clientIterator.hasNext()) {
 			Client client = clientIterator.next();
 			if (!client.checkSatisfaction()) {
 				//remove unhappy clients, maybe add them to an unhappy list later on
@@ -120,35 +116,34 @@ public class Intake {
 	// create new centres
 	public void createCentresRandomly() {
 		int randNum = new Random().nextInt(3);
-		CentresEnum centreType = CentresEnum.values()[randNum];
-
-		if (centreType.equals(CentresEnum.TRAINING_HUB)) {
+		CentreType centreType = CentreType.values()[randNum];
+		if (centreType.equals(CentreType.BOOTCAMP) && numOfBootCamps() < 2) {
+			addCentre(CentreFactory.createCentre(centreType));
+		} else if (centreType.equals(CentreType.TRAINING_HUB)) {
 			//Create random amount of training hubs.
 			int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
 			for (int i = 0; i < centreNum; i++) {
-				addCentre(new TrainingHub());
+				addCentre(CentreFactory.createCentre(centreType));
 			}
-		} else if (centreType.equals(CentresEnum.TECH_CENTRE)) {
+		} else if (centreType.equals(CentreType.TECH_CENTRE)) {
 			//Create new Tech Centre.
-			addCentre(new TechCenter());
-		} else if (centreType.equals(CentresEnum.BOOTCAMP)) {
-			if (numOfBootCamps() < 2) {
-				addCentre(new BootCamp());
-			} else {
-				//If 2 bootcamps already exist then make a  random hub or tech centre
-				int rand = new Random().nextInt(2);
-				switch (rand) {
-					case 0:
-						int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
-						for (int i = 0; i < centreNum; i++) {
-							addCentre(new TrainingHub());
-						}
-					case 1:
-						addCentre(new TechCenter());
-				}
+			addCentre(CentreFactory.createCentre(centreType));
+		} else {
+			//If 2 bootcamps already exist then make a  random hub or tech centre
+			int rand = new Random().nextInt(2);
+			centreType = new CentreType[]{CentreType.TECH_CENTRE, CentreType.TRAINING_HUB}[rand];
+			switch (rand) {
+				case 0:
+					int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
+					for (int i = 0; i < centreNum; i++) {
+						addCentre(new TrainingHub());
+					}
+				case 1:
+					addCentre(new TechCenter());
 			}
 		}
 	}
+
 
 	private int numOfBootCamps() {
 		int numOfBootCamp = 0;
@@ -195,9 +190,9 @@ public class Intake {
 			allFull = true;
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull() && waitingList.size() > 0) {
-					if (centre.acceptsTrainee(waitingList.peek())){
+					if (centre.acceptsTrainee(waitingList.peek())) {
 						allFull = false;
-						if (random.nextInt(4)==0 && waitingList.size() > 0) {
+						if (random.nextInt(4) == 0 && waitingList.size() > 0) {
 							centre.addTrainee(waitingList.remove());
 						}
 					}
@@ -217,7 +212,7 @@ public class Intake {
 		ArrayList<Trainee> spareTrainees = new ArrayList<>();
 		Iterator<Centre> centreIterator = trainingCentres.listIterator();
 		//Loop through all current training centres
-		while (centreIterator.hasNext()){
+		while (centreIterator.hasNext()) {
 			Centre centre = centreIterator.next();
 			//If centre fulfills the reqs to be closed then move it to closed list
 			if (centre.isClosable()) {
@@ -251,15 +246,17 @@ public class Intake {
 		}
 		return fullCentres;
 	}
-	public int getTraineeNumByType(CourseType element){
-		int sum=0;
-		for (Trainee trainee: waitingList){
-			if (trainee.getType().equals(element)){
+
+	public int getTraineeNumByType(CourseType element) {
+		int sum = 0;
+		for (Trainee trainee : waitingList) {
+			if (trainee.getType().equals(element)) {
 				sum++;
 			}
 		}
 		return sum;
 	}
+
 	public int getFullCentreNumByType(String centreName) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
@@ -347,6 +344,7 @@ public class Intake {
 		}
 		return sum;
 	}
+
 	//_______________GETTERS_______________
 	public ArrayList<Client> getHappyList() {
 		return happyList;
@@ -359,9 +357,11 @@ public class Intake {
 	public ArrayList<Client> getClientList() { //changing client list
 		return clientList;
 	}
+
 	public List<Centre> getTrainingCentres() {
 		return trainingCentres;
 	}
+
 	public Queue<Trainee> getWaitingList() {
 		return waitingList;
 	}
@@ -370,9 +370,11 @@ public class Intake {
 		return closedCentres;
 	}
 
-	public Collection<Centre> getCenters(){return trainingCentres;}
+	public Collection<Centre> getCenters() {
+		return trainingCentres;
+	}
 
-	public void testAddClosedCenter(Centre center){
+	public void testAddClosedCenter(Centre center) {
 		closedCentres.add(center);
 	}
 
@@ -385,7 +387,7 @@ public class Intake {
 	}
 
 	//_____________TEST CODE______________
-	public void testAddCenter(Centre centre){
+	public void testAddCenter(Centre centre) {
 		trainingCentres.add(centre);
 	}
 }
