@@ -6,6 +6,7 @@ import com.sparta.simulator.model.centres.TechCenter;
 import com.sparta.simulator.model.centres.TrainingHub;
 
 import java.util.*;
+
 // Manages trainee movement to and from training centres
 public class Intake {
 	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
@@ -32,10 +33,11 @@ public class Intake {
 		}
 	}
 
-	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
+	public void addTraineesToClient() { //check if they have free spaces and give them some from benchList
 		List<Trainee> tempList;
-		Collections.sort(clientList,(a,b)-> a.getMonthCount()<b.getMonthCount()?1:a.getMonthCount()==b.getMonthCount()?0:-1);
-		for (CourseType course : CourseType.values()){
+		Collections.sort(clientList, (a, b) -> a.getMonthCount() < b.getMonthCount() ? 1 : a.getMonthCount() == b.getMonthCount() ? 0 : -1);
+		for (CourseType course : CourseType.values()) {
+
 			for (Client client : clientList) {
 				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
 
@@ -44,7 +46,7 @@ public class Intake {
 
 					traineesWanted = client.numToTake(traineesWanted); //doesn't allow more than they can handle
 					int index = 0;
-					while (tempList.size() > 0 && index < traineesWanted && index < tempList.size() ){ // adds trainees here and removes from benchlist
+					while (tempList.size() > 0 && index < traineesWanted && index < tempList.size()) { // adds trainees here and removes from benchlist
 						client.addTrainee(tempList.remove(0));
 						index++;
 					}
@@ -53,17 +55,19 @@ public class Intake {
 			}
 		}
 	}
-	public void incrementClientMonth(){
-		for (Client c : clientList){
-		c.increaseMonth();
+
+	public void incrementClientMonth() {
+		for (Client c : clientList) {
+			c.increaseMonth();
 		}
 	}
 
 	public void removeUnsatClients() { //this runs at the end of the year
 		Iterator<Client> clientIterator = clientList.listIterator();
-		while (clientIterator.hasNext()){
+		while (clientIterator.hasNext()) {
 			Client client = clientIterator.next();
-			if (client.getMonthCount()>=12) {
+			if (client.getMonthCount() >= 12) {
+
 				if (!client.checkSatisfaction()) {
 					//remove unhappy clients, maybe add them to an unhappy list later on
 					unHappyList.add(client);
@@ -79,13 +83,9 @@ public class Intake {
 
 	public void addClients() { // 1 to 5 clients per month
 		int numOfClients = new Random().nextInt(1, 5);
-
 		for (int i = 0; i < numOfClients; i++) {
-			int randTrainees = RandGenerator.generateClientRequest(); //for num of trainees
-			int randCourse = new Random().nextInt(5); //for course type
-
 			//Add clients to list with rand course and random trainee req
-			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
+			clientList.add(new Client());
 		}
 	}
 
@@ -154,7 +154,8 @@ public class Intake {
 			}
 		}
 	}
-// return the number of bootcamps
+
+	// return the number of bootcamps
 	private int numOfBootCamps() {
 		int numOfBootCamp = 0;
 		for (Centre centre : trainingCentres) {
@@ -164,7 +165,8 @@ public class Intake {
 		}
 		return numOfBootCamp;
 	}
-// returns the total number of trainees in centres
+
+	// returns the total number of trainees in centres
 	public int numOfTotalTrainees() {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
@@ -202,9 +204,9 @@ public class Intake {
 			allFull = true;
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull() && waitingList.size() > 0) {
-					if (centre.acceptsTrainee(waitingList.peek())){
+					if (centre.acceptsTrainee(waitingList.peek())) {
 						allFull = false;
-						if (random.nextInt(4)==0 && waitingList.size() > 0) {
+						if (random.nextInt(4) == 0 && waitingList.size() > 0) {
 							centre.addTrainee(waitingList.remove());
 						}
 					}
@@ -224,7 +226,7 @@ public class Intake {
 		ArrayList<Trainee> spareTrainees = new ArrayList<>();
 		Iterator<Centre> centreIterator = trainingCentres.listIterator();
 		//Loop through all current training centres
-		while (centreIterator.hasNext()){
+		while (centreIterator.hasNext()) {
 			Centre centre = centreIterator.next();
 			//If centre fulfills the reqs to be closed then move it to closed list
 			if (centre.isClosable()) {
@@ -258,15 +260,17 @@ public class Intake {
 		}
 		return fullCentres;
 	}
-	public int getTraineeNumByType(CourseType element){
-		int sum=0;
-		for (Trainee trainee: waitingList){
-			if (trainee.getType().equals(element)){
+
+	public int getTraineeNumByType(CourseType element) {
+		int sum = 0;
+		for (Trainee trainee : waitingList) {
+			if (trainee.getType().equals(element)) {
 				sum++;
 			}
 		}
 		return sum;
 	}
+
 	public int getFullCentreNumByType(String centreName) {
 		int sum = 0;
 		for (Centre centre : trainingCentres) {
@@ -354,6 +358,7 @@ public class Intake {
 		}
 		return sum;
 	}
+
 	//_______________GETTERS_______________
 	public ArrayList<Client> getHappyList() {
 		return happyList;
@@ -366,9 +371,11 @@ public class Intake {
 	public ArrayList<Client> getClientList() { //changing client list
 		return clientList;
 	}
+
 	public List<Centre> getTrainingCentres() {
 		return trainingCentres;
 	}
+
 	public Queue<Trainee> getWaitingList() {
 		return waitingList;
 	}
@@ -377,9 +384,11 @@ public class Intake {
 		return closedCentres;
 	}
 
-	public Collection<Centre> getCenters(){return trainingCentres;}
+	public Collection<Centre> getCenters() {
+		return trainingCentres;
+	}
 
-	public void testAddClosedCenter(Centre center){
+	public void testAddClosedCenter(Centre center) {
 		closedCentres.add(center);
 	}
 
@@ -392,7 +401,7 @@ public class Intake {
 	}
 
 	//_____________TEST CODE______________
-	public void testAddCenter(Centre centre){
+	public void testAddCenter(Centre centre) {
 		trainingCentres.add(centre);
 	}
 

@@ -1,9 +1,7 @@
-package com.sparta.simulator;
+package com.sparta.simulator.model;
 
 import org.junit.jupiter.api.Assertions;
 import com.sparta.simulator.model.centres.Centre;
-import com.sparta.simulator.model.Intake;
-import com.sparta.simulator.model.Trainee;
 import com.sparta.simulator.model.centres.TrainingHub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

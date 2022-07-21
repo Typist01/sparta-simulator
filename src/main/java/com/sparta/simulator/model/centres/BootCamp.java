@@ -2,7 +2,6 @@ package com.sparta.simulator.model.centres;
 
 // Class for creating centres of type bootcamp.
 public class BootCamp extends Centre {
-	private final int MAX_LOW_ATTENDANCE_DURATION = 3;
 	private int lowAttendanceDuration;
 
 	public BootCamp() {
@@ -14,6 +13,7 @@ public class BootCamp extends Centre {
 	@Override
 	public boolean isClosable() {
 		// Increment low attendance duration
+		final int MAX_LOW_ATTENDANCE_DURATION = 2;
 		if (super.getTraineeList().size() < 25 && lowAttendanceDuration < MAX_LOW_ATTENDANCE_DURATION) {
 			//Increment for consecutive months with less than 25
 			lowAttendanceDuration++;
