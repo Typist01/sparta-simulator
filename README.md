@@ -11,8 +11,9 @@
 
 **User**
 This is how to use the program.
-Firt you run main, you are 
-
+Firt, you run main, you are
+(ADD PICTURES HERE)
+EXAMPELS OF THE PROGRAM.
 
 *Build a simulator which will help track the number of people currently training with Sparta Global.*
 
