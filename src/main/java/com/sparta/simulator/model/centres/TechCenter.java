@@ -4,7 +4,7 @@ import com.sparta.simulator.model.CourseType;
 import com.sparta.simulator.model.Trainee;
 
 import java.util.Random;
-
+// Class for creating centres of type tech centre
 public class TechCenter extends Centre{
 
     private final CourseType techType;
@@ -18,19 +18,6 @@ public class TechCenter extends Centre{
 
     @Override
     public boolean acceptsTrainee(Trainee trainee) {
-        // DEBUG CODE
-        //try {
-
-           // if (trainee.getType().equalsIgnoreCase(this.techType)) {
-             //   return true;
-            //} else return false;
-        //}
-//        catch (Exception e){
-//            System.out.println(trainee);
-//            System.out.println(trainee.getType());
-//            e.printStackTrace();
-//        }
-//        //return false;
         return trainee.getType().equals(this.techType);
     }
 

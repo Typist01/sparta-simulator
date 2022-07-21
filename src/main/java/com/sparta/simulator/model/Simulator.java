@@ -4,6 +4,8 @@ import com.sparta.simulator.model.centres.Centre;
 
 import java.util.*;
 
+
+// starts the simulation and keeps track of the simulation run time
 public class  Simulator {
 	private final Intake intake;
 
@@ -16,8 +18,6 @@ public class  Simulator {
 	// about the
 	private final int totalDuration; // Total duration of the simulation (months).
 	private int currentMonth=1;
-
-
 
 	public Simulator(int totalDuration){
 		this.intake = new Intake();
