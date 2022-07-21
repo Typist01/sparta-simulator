@@ -54,12 +54,13 @@ public class Intake {
 	}
 
 	public void removeUnsatClients() { //this runs at the end of the year
-		for (int i = 0; i < clientList.size() - 1; i++) { //check the "-1" here
-			Client client = clientList.get(i);
+		Iterator<Client> clientIterator = clientList.listIterator();
+		while (clientIterator.hasNext()){
+			Client client = clientIterator.next();
 			if (!client.checkSatisfaction()) {
 				//remove unhappy clients, maybe add them to an unhappy list later on
 				unHappyList.add(client);
-				clientList.remove(i);
+				clientIterator.remove();
 			} else {
 				//clear happy client's currentTrainees, maybe add to a happy list
 				happyList.add(client);
@@ -75,6 +76,7 @@ public class Intake {
 			int randTrainees = RandGenerator.generateClientRequest(); //for num of trainees
 			int randCourse = new Random().nextInt(5); //for course type
 
+			//Add clients to list with rand course and random trainee req
 			clientList.add(new Client(CourseType.values()[randCourse], randTrainees));
 		}
 	}
@@ -82,6 +84,7 @@ public class Intake {
 	public void incrementTimeTrained() {
 		for (Centre centre : trainingCentres) {
 			for (Trainee trainee : centre.getTraineeList()) {
+				//Increment time trained for all Trainees in centres.
 				trainee.incrementTimeTrained();
 			}
 		}
@@ -89,11 +92,15 @@ public class Intake {
 	}
 
 	public void benchTrainee() {
+		//Loop through all training centres
 		for (Centre centre : trainingCentres) {
 			Iterator<Trainee> traineeIterator = centre.getTraineeList().iterator();
+			//Loop through trainees in the centre
 			while (traineeIterator.hasNext()) {
 				Trainee trainee = traineeIterator.next();
-				if (trainee.getTimeTrained() == 3) {    //checks if training for 3 months
+				//checks if training for 3 months
+				if (trainee.getTimeTrained() == 3) {
+					//Remove them from the bench and from centre.
 					benchList.get(trainee.getType()).add(trainee);
 					traineeIterator.remove();
 				}
@@ -113,17 +120,19 @@ public class Intake {
 		CentresEnum centreType = CentresEnum.values()[randNum];
 
 		if (centreType.equals(CentresEnum.TRAINING_HUB)) {
+			//Create random amount of training hubs.
 			int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
 			for (int i = 0; i < centreNum; i++) {
 				addCentre(new TrainingHub());
 			}
-			addCentre(new TechCenter());
 		} else if (centreType.equals(CentresEnum.TECH_CENTRE)) {
+			//Create new Tech Centre.
 			addCentre(new TechCenter());
 		} else if (centreType.equals(CentresEnum.BOOTCAMP)) {
 			if (numOfBootCamps() < 2) {
 				addCentre(new BootCamp());
 			} else {
+				//If 2 bootcamps already exist then make a  random hub or tech centre
 				int rand = new Random().nextInt(2);
 				switch (rand) {
 					case 0:
@@ -168,23 +177,10 @@ public class Intake {
 
 	// Generates a new trainee group and adds it to the waiting list.
 	public void addTraineeGroup() {
-
 		Queue<Trainee> intakeList = new LinkedList<>();
 		for (int i = 0; i < RandGenerator.randomTrainee(); i++) {
 			intakeList.add(new Trainee());
 		}
-/*
-		for (Centre centre : trainingCentres) {
-			if (!centre.isFull() && intakeList.size() > 0) {
-				for (int i = 0; i < RandGenerator.randomCenter(); i++) {
-					if (!centre.isFull()) {
-						centre.addTrainee(intakeList.remove());
-					}
-				}
-			}
-		}
-		REDUNDANT REQUIREMENT FROM PHASE 1 TO PHASE 2---DONT DELETE
-		*/
 		waitingList.addAll(intakeList);
 	}
 
@@ -194,17 +190,8 @@ public class Intake {
 		boolean allFull = false;
 		Queue<Trainee> temp = new LinkedList<>();
 		Collections.shuffle(trainingCentres);
-		//DEBUG ______
-		//Queue <Trainee> debugQueue = new LinkedList<>();
 		while (waitingList.size() > 0 && !allFull) {
-
 			allFull = true;
-			//DEBUG___
-			/*System.out.println(waitingList.peek());
-			if (waitingList.peek()==null){
-				System.out.println("There was a null trainess");
-				debugQueue.add(waitingList.remove());
-			}*/
 			for (Centre centre : trainingCentres) {
 				if (!centre.isFull() && waitingList.size() > 0) {
 					if (centre.acceptsTrainee(waitingList.peek())){
@@ -227,23 +214,25 @@ public class Intake {
 
 	public void closingCenters() {
 		ArrayList<Trainee> spareTrainees = new ArrayList<>();
-		List<Centre> centresToBeClosed = new ArrayList<>();
-		for (Centre centre : trainingCentres) {
+		Iterator<Centre> centreIterator = trainingCentres.listIterator();
+		//Loop through all current training centres
+		while (centreIterator.hasNext()){
+			Centre centre = centreIterator.next();
+			//If centre fulfills the reqs to be closed then move it to closed list
 			if (centre.isClosable()) {
 				spareTrainees.addAll(centre.getTraineeList());
 				closedCentres.add(centre);
-				centresToBeClosed.add(centre);
+				centreIterator.remove();
 			}
 		}
 		for (Trainee trainee : spareTrainees) {
 			waitingList.addFirst(trainee);
 		}
-		trainingCentres.removeAll(centresToBeClosed);
 
 	}
 
 	private List<Centre> getOpenCentres() {
-		List<Centre> openCentres = new ArrayList();
+		List<Centre> openCentres = new ArrayList<>();
 		for (Centre centre : trainingCentres) {
 			if (centre.isFull()) {
 				openCentres.add(centre);
@@ -253,7 +242,7 @@ public class Intake {
 	}
 
 	public List<Centre> getFullCentres() {
-		List<Centre> fullCentres = new ArrayList();
+		List<Centre> fullCentres = new ArrayList<>();
 		for (Centre centre : trainingCentres) {
 			if (centre.isFull()) {
 				fullCentres.add(centre);
