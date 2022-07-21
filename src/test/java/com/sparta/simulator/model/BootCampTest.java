@@ -16,21 +16,19 @@ class BootCampTest {
 	@Test
 	void testLowAttendance(){
 		BootCamp bootCamp = new BootCamp();
-
-/*		assertTrue(bootCamp.checkForLowAttendance());
-		assertTrue(bootCamp.checkForLowAttendance());
-		assertTrue(bootCamp.checkForLowAttendance());*/
+		assertFalse(bootCamp.isClosable());
+		assertFalse(bootCamp.isClosable());
+		assertTrue(bootCamp.isClosable());
 	}
 
 	@Test
 	void testAddFull(){
 		for (int i = 0; i<500;i++){
-			bootCamp.addTrainee(new Trainee());
+			assertTrue(bootCamp.addTrainee(new Trainee()));
 		}
 		assertTrue(bootCamp.isFull());
-		bootCamp.addTrainee(new Trainee());
+		assertFalse(bootCamp.addTrainee(new Trainee()));
 		assertTrue(bootCamp.isFull());
-		//assertFalse(bootCamp.addTrainee(new Trainee()));
 	}
 
 }
