@@ -9,6 +9,8 @@ public class ProjectManager {
     View view = new View();
     Simulator simulator;
 
+    public void printSection(){}
+
     public void run(){
         view.introduction();
         boolean executeProgram=true;

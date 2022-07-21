@@ -42,7 +42,6 @@ public class RandGenerator {
         } else {
             return random.nextInt(60, 100); // 40% chance
         }
-
     }
 
 }
