@@ -34,6 +34,7 @@ public class Intake {
 
 	public void addTraineesToClient(){ //check if they have free spaces and give them some from benchList
 		List<Trainee> tempList;
+		Collections.sort(clientList,(a,b)-> a.getMonthCount()<b.getMonthCount()?1:a.getMonthCount()==b.getMonthCount()?0:-1);
 		for (CourseType course : CourseType.values()){
 			for (Client client : clientList) {
 				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
@@ -52,19 +53,26 @@ public class Intake {
 			}
 		}
 	}
+	public void incrementClientMonth(){
+		for (Client c : clientList){
+		c.increaseMonth();
+		}
+	}
 
 	public void removeUnsatClients() { //this runs at the end of the year
 		Iterator<Client> clientIterator = clientList.listIterator();
 		while (clientIterator.hasNext()){
 			Client client = clientIterator.next();
-			if (!client.checkSatisfaction()) {
-				//remove unhappy clients, maybe add them to an unhappy list later on
-				unHappyList.add(client);
-				clientIterator.remove();
-			} else {
-				//clear happy client's currentTrainees, maybe add to a happy list
-				happyList.add(client);
-				client.clearTrainees();
+			if (client.getMonthCount()>=12) {
+				if (!client.checkSatisfaction()) {
+					//remove unhappy clients, maybe add them to an unhappy list later on
+					unHappyList.add(client);
+					clientIterator.remove();
+				} else {
+					//clear happy client's currentTrainees, maybe add to a happy list
+					happyList.add(client);
+					client.clearTrainees();
+				}
 			}
 		}
 	}
