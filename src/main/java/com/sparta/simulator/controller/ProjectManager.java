@@ -29,7 +29,6 @@ public class ProjectManager {
             simulator = new Simulator(view.getUserTime());
             logger.info("user time fetched and simulator initiated");
             Intake intake= simulator.getIntake();
-
             // loop to execute the program for the desired number of months
             while(simulator.getCurrentMonth()<simulator.getTotalDuration()){
                 // simulator run causes the simulation to iterate for one month
@@ -46,6 +45,7 @@ public class ProjectManager {
             logger.info("entering final month readout");
             displayMonthoutput(intake);
             logger.info("returned from final month readout");
+
             executeProgram=view.continueCheck();
             logger.debug("user has chosen " + executeProgram + " for loop again request");
         }
@@ -125,4 +125,5 @@ public class ProjectManager {
 
         view.waitForUser();
     }
+
 }

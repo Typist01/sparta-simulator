@@ -5,17 +5,24 @@ import java.util.Random;
 
 // class for creating Clients, each requiring trainees of a specific course type.
 public class Client {
-	private final int maxTrainees;
 	private final ArrayList<Trainee> traineeList;
+	private final int maxTrainees;
 	private final CourseType courseType;
 	private int monthCount = 0;
 
 
-	public Client(){ //amountOfTrainees should be >= 15
-		this.courseType = RandGenerator.generateRandomCourse();
+	public Client(CourseType courseType, int maxTrainees){ //amountOfTrainees should be >= 15
+		this.courseType = courseType;
 		this.traineeList = new ArrayList<>();
-		this.maxTrainees = RandGenerator.generateClientRequest();
+		this.maxTrainees = maxTrainees;
 
+	}
+	public int getMaxTrainees() {
+		return maxTrainees;
+	}
+
+	public ArrayList<Trainee> getTraineeList() {
+		return traineeList;
 	}
 	public int numToTake(int numTrainees){ //returns number of free spaces this Client can take
 		if (numTrainees + traineeList.size() > maxTrainees){

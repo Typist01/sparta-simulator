@@ -8,8 +8,8 @@ public class Trainee {
     private final CourseType courseType;
     private int monthsTrained = 0;
 
-    public Trainee(){
-        courseType = RandGenerator.generateRandomCourse();
+    public Trainee(CourseType courseType){
+        this.courseType = courseType;
 
 
     }

@@ -1,5 +1,6 @@
 package com.sparta.simulator.model.centres;
 
+import com.sparta.simulator.model.RandGenerator;
 import com.sparta.simulator.model.Trainee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,9 +24,9 @@ class TechCenterTest {
 			if (i<24){
 				assertTrue(centre.isClosable());
 			}
-			assertTrue(centre.addTrainee(new Trainee()));
+			assertTrue(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		}
-		assertTrue(centre.addTrainee(new Trainee()));
+		assertTrue(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		//Shouldnt be closable since it has hit the minimum amount of trainees.
 		assertFalse(centre.isClosable());
 	}
@@ -39,12 +40,12 @@ class TechCenterTest {
 				assertFalse(centre.isFull());
 			}
 			//can add up to 500 trainees
-			assertTrue(centre.addTrainee(new Trainee()));
+			assertTrue(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		}
 		//bootcamp should be full
 		assertTrue(centre.isFull());
 		//Shouldnt be able to add another employee.
-		assertFalse(centre.addTrainee(new Trainee()));
+		assertFalse(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		//Check is still full
 		assertTrue(centre.isFull());
 	}
@@ -54,7 +55,7 @@ class TechCenterTest {
 		TechCenter techCenter = (TechCenter) centre;
 		//Generate some trainees and see if the tech center will accept them.
 		for (int i = 0; i < 50; i++) {
-			Trainee trainee = new Trainee();
+			Trainee trainee = new Trainee(RandGenerator.generateCourse());
 			if (trainee.getType().equals(techCenter.getTechType())){
 				assertTrue(techCenter.acceptsTrainee(trainee));
 			}else {
