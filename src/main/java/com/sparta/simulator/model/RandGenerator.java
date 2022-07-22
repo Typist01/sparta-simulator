@@ -28,7 +28,6 @@ public class RandGenerator {
         return CourseType.values()[random];
     }
 
-<<<<<<< HEAD
     public static int generateClientRequestStepped() {
         Random random = new Random();
         double randNum = random.nextFloat(0, 1);
@@ -63,6 +62,5 @@ public class RandGenerator {
         } else
             return generateRandomFromGaussian();
     }
-=======
->>>>>>> 32de92d8e61257b2fe5ddd00cad66232fe027bae
+
 }
