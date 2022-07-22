@@ -13,7 +13,7 @@ public class RandGenerator {
     public static int randomCenter(){
         return random.nextInt(50);
     }
-    public static int generateClientRequest() {
+    public static int generateClientMaxTrainees() {
         switch (random.nextInt(9)){
             case 0,1,2,3: return random.nextInt(15,20); //40% chance for 15-20
             case 4 ,5 ,6: return random.nextInt(12,25); //30% chance for 12-25
@@ -22,23 +22,9 @@ public class RandGenerator {
         }
         return 15;
     }
-    public static CourseType generateRandomCourse(){
+    public static CourseType generateCourse(){
         int random = new Random().nextInt(5);
         return CourseType.values()[random];
-    }
-
-    public static int generateClientRequestStepped() {
-        Random random = new Random();
-        double randNum = random.nextFloat(0, 1);
-        if (randNum <= 0.2) {
-            return random.nextInt(1, 15); //20% chance
-        } else if (randNum <= 0.6) {
-            return random.nextInt(15, 30); // 40% chance
-        } else if (randNum <= 0.9) {
-            return random.nextInt(30, 60); // 30% chance
-        } else {
-            return random.nextInt(60, 100); // 40% chance
-        }
     }
 
 }

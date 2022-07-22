@@ -1,5 +1,6 @@
 package com.sparta.simulator.model.centres;
 
+import com.sparta.simulator.model.RandGenerator;
 import com.sparta.simulator.model.Trainee;
 import com.sparta.simulator.model.centres.BootCamp;
 import com.sparta.simulator.model.centres.Centre;
@@ -28,13 +29,13 @@ class BootCampTest {
 
 		centre = new BootCamp();
 		for (int i = 0; i < 25; i++) {
-			assertTrue(centre.addTrainee(new Trainee()));
+			assertTrue(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		}
 		for (int i = 0; i < 2; i++) {
 			//Shouldnt be closable for first 2 months
 			assertFalse(centre.isClosable());
 		}
-		assertTrue(centre.addTrainee(new Trainee()));
+		assertTrue(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		//Shouldnt be closable since it has hit the minimum amount of trainees.
 		assertFalse(centre.isClosable());
 
@@ -49,18 +50,18 @@ class BootCampTest {
 				assertFalse(centre.isFull());
 			}
 			//can add up to 500 trainees
-			assertTrue(centre.addTrainee(new Trainee()));
+			assertTrue(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		}
 		//bootcamp should be full
 		assertTrue(centre.isFull());
 		//Shouldnt be able to add another employee.
-		assertFalse(centre.addTrainee(new Trainee()));
+		assertFalse(centre.addTrainee(new Trainee(RandGenerator.generateCourse())));
 		//Check is still full
 		assertTrue(centre.isFull());
 	}
 	@Test
 	void acceptsTrainee(){
-		Trainee trainee = new Trainee();
+		Trainee trainee = new Trainee(RandGenerator.generateCourse());
 		assertTrue(centre.acceptsTrainee(trainee));
 
 	}
