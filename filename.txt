@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1,3,0,0,3,7,0
 2,33,2,0,3,18,0
 3,31,31,30,4,21,0
@@ -9,3 +10,10 @@
 9,36,200,202,2,86,0
 10,30,237,237,2,105,0
 11,25,253,262,3,120,0
+=======
+
+{runtime_in_years:50,clients:4,satisfied:98,unsatisfied:1463,openCentres:3,closed_centres:485,fullCentresNum:0}
+{runtime_in_years:5,clients:39,satisfied:103,unsatisfied:99,openCentres:2,closed_centres:40,fullCentresNum:0}
+{runtime_in_years:10,clients:28,satisfied:229,unsatisfied:238,openCentres:4,closed_centres:83,fullCentresNum:0}
+{runtime_in_years:100,clients:32,satisfied:2600,unsatisfied:2885,openCentres:3,closed_centres:983,fullCentresNum:0}
+>>>>>>> origin/development
