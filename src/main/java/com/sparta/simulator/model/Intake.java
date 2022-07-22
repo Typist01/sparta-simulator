@@ -35,7 +35,7 @@ public class Intake {
 
 	public void addTraineesToClient() { //check if they have free spaces and give them some from benchList
 		List<Trainee> tempList;
-		Collections.sort(clientList, (a, b) -> a.getMonthCount() < b.getMonthCount() ? 1 : a.getMonthCount() == b.getMonthCount() ? 0 : -1);
+		clientList.sort((a, b) -> Integer.compare(b.getMonthCount(), a.getMonthCount()));
 		for (CourseType course : CourseType.values()) {
 
 			for (Client client : clientList) {
@@ -85,7 +85,7 @@ public class Intake {
 		int numOfClients = new Random().nextInt(1, 5);
 		for (int i = 0; i < numOfClients; i++) {
 			//Add clients to list with rand course and random trainee req
-			clientList.add(new Client());
+			clientList.add(new Client(RandGenerator.generateCourse(),RandGenerator.generateClientMaxTrainees()));
 		}
 	}
 
@@ -189,7 +189,7 @@ public class Intake {
 	public void addTraineeGroup() {
 		Queue<Trainee> intakeList = new LinkedList<>();
 		for (int i = 0; i < RandGenerator.randomTrainee(); i++) {
-			intakeList.add(new Trainee());
+			intakeList.add(new Trainee(RandGenerator.generateCourse()));
 		}
 		waitingList.addAll(intakeList);
 	}

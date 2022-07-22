@@ -39,7 +39,7 @@ class IntakeTest {
         Centre hub = new TrainingHub();
         int index = 0;
         while(index<100){
-            hub.addTrainee(new Trainee());
+            hub.addTrainee(new Trainee(RandGenerator.generateCourse()));
             index++;
         }
         intake.testAddCenter(hub);
@@ -53,7 +53,7 @@ class IntakeTest {
         TrainingHub hub = new TrainingHub();
         int i = 0;
         while(i<100){
-            hub.addTrainee(new Trainee());
+            hub.addTrainee(new Trainee(RandGenerator.generateCourse()));
             i++;
         }
         intake.testAddCenter(hub);
@@ -66,7 +66,7 @@ class IntakeTest {
         TrainingHub hub = new TrainingHub();
         int i = 0;
         while (i<50){
-            hub.addTrainee(new Trainee());
+            hub.addTrainee(new Trainee(RandGenerator.generateCourse()));
             i++;
         }
         intake.testAddCenter(hub);
