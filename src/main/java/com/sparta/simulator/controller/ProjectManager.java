@@ -81,9 +81,12 @@ public class ProjectManager {
         int closedCentres = intake.getClosedCentresNum();
         int openCentres = intake.numOfOpenCentres();
         int fullCentresNum = intake.numOfFullCentres();
-        Writer.writeToFile("{" + "runtime_in_years:" + ((simulator.getCurrentMonth()-2)/12) + "," + "clients:" + currentClientNum + "," + "satisfied:" + satisfiedClientNum + ","
-                + "unsatisfied:" + unsatisfiedClientNum + "," + "openCentres:" + openCentres + ","
-                + "closed_centres:" + closedCentres + "," + "fullCentresNum:" + fullCentresNum + "}"  );
+//        Writer.writeToFile("{" + "runtime_in_years:" + ((simulator.getCurrentMonth()-2)/12) + "," + "clients:" + currentClientNum + "," + "satisfied:" + satisfiedClientNum + ","
+//                + "unsatisfied:" + unsatisfiedClientNum + "," + "openCentres:" + openCentres + ","
+//                + "closed_centres:" + closedCentres + "," + "fullCentresNum:" + fullCentresNum + "}"  );
+        Writer.writeToFile(+ ((simulator.getCurrentMonth()-2)/12) + "," + currentClientNum + "," + satisfiedClientNum + ","
+                + unsatisfiedClientNum + ","  + openCentres + ","
+                + closedCentres + "," + fullCentresNum );
     }
     public void displayMonthoutput(Intake intake){
         System.out.println("CURRENT MONTH :" + (simulator.getCurrentMonth()-1));

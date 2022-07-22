@@ -39,7 +39,7 @@ public class Intake {
 				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
 
 					tempList = benchList.get(course); //list of benched trainees relevant course
-					int traineesWanted = new Random().nextInt(1, 15); //takes between 1 and 15 trainees
+					int traineesWanted = new Random().nextInt(1, client.getMaxTrainees()); //takes between 1 and client maximum
 
 					traineesWanted = client.numToTake(traineesWanted); //doesn't allow more than they can handle
 					int index = 0;
