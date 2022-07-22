@@ -95,7 +95,7 @@ class IntakeTest {
         TrainingHub hub = new TrainingHub();
         int i = 0;
         while (i<60){
-            hub.addTrainee(new Trainee());
+            hub.addTrainee(new Trainee(RandGenerator.generateCourse()));
             i++;
         }
         intake.addCentre(hub);
@@ -108,7 +108,7 @@ class IntakeTest {
         BootCamp hub = new BootCamp();
         int i = 0;
         while (i<60){
-            hub.addTrainee(new Trainee());
+            hub.addTrainee(new Trainee(RandGenerator.generateCourse()));
             i++;
         }
         intake.addCentre(hub);
