@@ -5,6 +5,7 @@ import java.util.Random;
 // Random number generators
 public class RandGenerator {
     private static final Random random= new Random();
+    private static final double PI = 3.14;
 
     public static int randomTrainee(){
         return  random.nextInt(50)+50;
@@ -41,4 +42,24 @@ public class RandGenerator {
         }
     }
 
+
+    // Alternative random generator without steps (rejection method)
+    // Might be very inefficient because it uses a normalised gaussian
+    // The probability of any number a range of numbers being generated should be the area under the gaussian curve within that range.
+    // the range is restricted from 0 to 100.
+    public static double getComparison(){
+        return new Random().nextDouble(0, 1);
+    }
+    public static double funcGaussian(int x){
+        double a = 11; // lower values concentrates the gaussian close to the mean value.
+        double b = 38; // determines the center of the gaussian
+        return ((1/(a*Math.sqrt(2*PI)))*Math.exp((-0.5*((x-b)/a))));
+    }
+    public static int generateRandomFromGaussian(){
+        int rand = new Random().nextInt(15, 100);
+        if (funcGaussian(rand)>getComparison()){
+            return rand;
+        } else
+            return generateRandomFromGaussian();
+    }
 }
