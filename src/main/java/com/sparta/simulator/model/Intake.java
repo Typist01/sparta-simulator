@@ -404,4 +404,8 @@ public class Intake {
 	public void testAddCenter(Centre centre) {
 		trainingCentres.add(centre);
 	}
+
+	public void clearWaiting(){
+		waitingList.clear();
+	}
 }
