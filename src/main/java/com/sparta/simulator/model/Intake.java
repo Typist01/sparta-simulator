@@ -1,15 +1,11 @@
 package com.sparta.simulator.model;
 
-import com.sparta.simulator.model.centres.BootCamp;
-import com.sparta.simulator.model.centres.Centre;
-import com.sparta.simulator.model.centres.TechCenter;
-import com.sparta.simulator.model.centres.TrainingHub;
+import com.sparta.simulator.model.centres.*;
 
 import java.util.*;
 
 // Manages trainee movement to and from training centres
 public class Intake {
-	enum CentresEnum {TRAINING_HUB, BOOTCAMP, TECH_CENTRE}
 
 	private final List<Centre> trainingCentres;
 	private final List<Centre> closedCentres;
@@ -37,6 +33,7 @@ public class Intake {
 		List<Trainee> tempList;
 		clientList.sort((a, b) -> Integer.compare(b.getMonthCount(), a.getMonthCount()));
 		for (CourseType course : CourseType.values()) {
+
 
 			for (Client client : clientList) {
 				if (client.getCourseType() == course) { //checks if client's course is the course course iteration
@@ -125,23 +122,23 @@ public class Intake {
 	// create new centres
 	public void createCentresRandomly() {
 		int randNum = new Random().nextInt(3);
-		CentresEnum centreType = CentresEnum.values()[randNum];
-
-		if (centreType.equals(CentresEnum.TRAINING_HUB)) {
-			//Create random amount of training hubs.
-			int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
-			for (int i = 0; i < centreNum; i++) {
-				addCentre(new TrainingHub());
-			}
-		} else if (centreType.equals(CentresEnum.TECH_CENTRE)) {
-			//Create new Tech Centre.
-			addCentre(new TechCenter());
-		} else if (centreType.equals(CentresEnum.BOOTCAMP)) {
-			if (numOfBootCamps() < 2) {
-				addCentre(new BootCamp());
+		CentreType centreType = CentreType.values()[randNum];
+		try {
+			if (centreType.equals(CentreType.BOOTCAMP) && numOfBootCamps() < 2) {
+				addCentre(CentreFactory.createCentre(centreType));
+			} else if (centreType.equals(CentreType.TRAINING_HUB)) {
+				//Create random amount of training hubs.
+				int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
+				for (int i = 0; i < centreNum; i++) {
+					addCentre(CentreFactory.createCentre(centreType));
+				}
+			} else if (centreType.equals(CentreType.TECH_CENTRE)) {
+				//Create new Tech Centre.
+				addCentre(CentreFactory.createCentre(centreType));
 			} else {
 				//If 2 bootcamps already exist then make a  random hub or tech centre
 				int rand = new Random().nextInt(2);
+				centreType = new CentreType[]{CentreType.TECH_CENTRE, CentreType.TRAINING_HUB}[rand];
 				switch (rand) {
 					case 0:
 						int centreNum = new Random().nextInt(3) + 1; // randomly generates 1/2/3
@@ -152,6 +149,8 @@ public class Intake {
 						addCentre(new TechCenter());
 				}
 			}
+		}catch (GenerateCentreException e){
+			e.printStackTrace();
 		}
 	}
 
