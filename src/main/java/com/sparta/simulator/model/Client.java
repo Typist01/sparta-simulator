@@ -26,7 +26,7 @@ public class Client {
 	}
 	public int numToTake(int numTrainees){ //returns number of free spaces this Client can take
 		if (numTrainees + traineeList.size() > maxTrainees){
-			numTrainees = numTrainees - (traineeList.size() - numTrainees);
+			numTrainees = maxTrainees-traineeList.size();
 		}
 		return numTrainees;
 	}

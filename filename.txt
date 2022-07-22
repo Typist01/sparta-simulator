@@ -1,2 +1,13 @@
 
 {runtime_in_years:50,clients:4,satisfied:98,unsatisfied:1463,openCentres:3,closed_centres:485,fullCentresNum:0}
+<<<<<<< HEAD
+{runtime_in_years:20,clients:34,satisfied:31,unsatisfied:502,openCentres:4,closed_centres:163,fullCentresNum:0}
+{runtime_in_years:20,clients:29,satisfied:42,unsatisfied:546,openCentres:3,closed_centres:191,fullCentresNum:0}
+{runtime_in_years:20,clients:66,satisfied:620,unsatisfied:512,openCentres:4,closed_centres:196,fullCentresNum:0}
+{runtime_in_years:20,clients:65,satisfied:647,unsatisfied:510,openCentres:3,closed_centres:173,fullCentresNum:0}
+{runtime_in_years:20,clients:26,satisfied:503,unsatisfied:525,openCentres:4,closed_centres:185,fullCentresNum:0}
+=======
+{runtime_in_years:5,clients:39,satisfied:103,unsatisfied:99,openCentres:2,closed_centres:40,fullCentresNum:0}
+{runtime_in_years:10,clients:28,satisfied:229,unsatisfied:238,openCentres:4,closed_centres:83,fullCentresNum:0}
+{runtime_in_years:100,clients:32,satisfied:2600,unsatisfied:2885,openCentres:3,closed_centres:983,fullCentresNum:0}
+>>>>>>> 5fd00856901a0e4f547825a23f04156db45af02f
