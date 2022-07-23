@@ -1,11 +1,11 @@
 **This ReadME.md would include each of the phases and how we completed them and what challenges we faced.**
 
-[Jamie Macaulay Scofield - Scrum Master](https://github.com/JamieScofield) -
-[Muhammad Mustafa Nawaz - Git Master ](https://github.com/Typist01) -
-[Mac Murray -](https://github.com/Erratika) -
-[Alfred Abraham -](https://github.com/AlfredAbra) -
-[Jeffrey Steven Champion - ](https://github.com/Jchampion42) -
-[Abdur-Rahmaan Azam - ](https://github.com/abdurshazam) -
+[Jamie - Scrum Master](https://github.com/JamieScofield) -
+[Mustafa - Git Master ](https://github.com/Typist01) -
+[Marc](https://github.com/Erratika) -
+[Alfred](https://github.com/AlfredAbra) -
+[Jeffrey](https://github.com/Jchampion42) -
+[Ray](https://github.com/abdurshazam) -
 
 
 [PRESENTATION](https://1drv.ms/p/s!AihWGuP9ei1-hSWH1qJt6YPf1mpK?e=WQimcE)
@@ -39,7 +39,7 @@
     - number of trainees in waiting list
     - 
 **Solution**
-All the tasks here where completed up to standard.
+All the tasks here were completed up to standard.
 
 **Phase Two**
 
@@ -80,7 +80,7 @@ after examination.
 - If a client does collect enough trainees from the bench within a year, they will leave happy and return the next year with the same requirement.
 
 **SOLUTION**
-We completed the tasks the where issued.
+We completed the tasks that where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
 The main issue here is that the trainees were not distributed equally across all centers. The main way we fixed this issue was the use 
 of the debugger and the help of out fellow colleagues.
