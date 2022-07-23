@@ -1,7 +1,7 @@
 **This ReadME.md would include each of the phases and how we completed them and what challenges we faced.**
 
 [Jamie - Scrum Master](https://github.com/JamieScofield),
-[Mustafa - Git Master ](https://github.com/Typist01),
+[Mustafa - Git Manager ](https://github.com/Typist01),
 [Marc](https://github.com/Erratika),
 [Alfred](https://github.com/AlfredAbra),
 [Jeffrey](https://github.com/Jchampion42),
@@ -64,7 +64,7 @@ All the tasks here were completed up to standard.
     - number of full centres (breakdown for each type)
     - number of trainees currently training (breakdown for each type)
     - number of trainees on the waiting list (breakdown for each type)
-    - 
+    
 **Solution**
 Phase two has been completed. However, there were a lot of bugs and issues overall. We all banded our minds together to figure 
 out what is needed and the best way we could fix them all. OVerall, there was just minor errors in the code and were fixed shortly 
@@ -82,8 +82,8 @@ after examination.
 **SOLUTION**
 We completed the tasks that where issued.
 New trainees get put on a waiting list and the oldest trainees on the waiting list have a higher priority!
-The main issue here is that the trainees were not distributed equally across all centers. The main way we fixed this issue was the use 
-of the debugger and the help of out fellow colleagues.
+The main issue here is that the trainees were not distributed equally across all centers. The way we fixed this issue was the use 
+of the debugger and the help from fellow colleagues.
 
 **Final Photos**
 
@@ -92,3 +92,9 @@ of the debugger and the help of out fellow colleagues.
 ![image tew](https://cdn.discordapp.com/attachments/999673958536319039/999674069282721912/unknown.png)
 
 ![image three](https://cdn.discordapp.com/attachments/999673958536319039/999674092032643142/unknown.png)
+
+![e3e4e5ad-99b6-4e76-94b3-aa6b976e91dc](https://user-images.githubusercontent.com/99654337/180606271-7777e5bb-f147-4400-9031-6eb60e189f42.jpg)
+
+![bdc5467c-43d3-4c91-9938-e2d4221aebed](https://user-images.githubusercontent.com/99654337/180606281-53dfac5f-a213-48ad-a45f-e7fa5c33cd0d.jpg)
+
+![929d5815-5619-4dfb-954d-0f37e0f62e20](https://user-images.githubusercontent.com/99654337/180606284-43328440-b60a-497a-ab4d-d549afabc543.jpg)
