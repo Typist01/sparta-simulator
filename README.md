@@ -1,5 +1,4 @@
-**This ReadME.md would include each of the phases and how we completed them and what challenges we faced.**
-
+Collaborators:
 [Jamie - Scrum Master](https://github.com/JamieScofield),
 [Mustafa - Git Manager ](https://github.com/Typist01),
 [Marc](https://github.com/Erratika),
