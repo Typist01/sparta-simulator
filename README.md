@@ -1,11 +1,11 @@
 **This ReadME.md would include each of the phases and how we completed them and what challenges we faced.**
 
-[Jamie - Scrum Master](https://github.com/JamieScofield) -
-[Mustafa - Git Master ](https://github.com/Typist01) -
-[Marc](https://github.com/Erratika) -
-[Alfred](https://github.com/AlfredAbra) -
-[Jeffrey](https://github.com/Jchampion42) -
-[Ray](https://github.com/abdurshazam) -
+[Jamie - Scrum Master](https://github.com/JamieScofield),
+[Mustafa - Git Master ](https://github.com/Typist01),
+[Marc](https://github.com/Erratika),
+[Alfred](https://github.com/AlfredAbra),
+[Jeffrey](https://github.com/Jchampion42),
+[Ray](https://github.com/abdurshazam)
 
 
 [PRESENTATION](https://1drv.ms/p/s!AihWGuP9ei1-hSWH1qJt6YPf1mpK?e=WQimcE)
